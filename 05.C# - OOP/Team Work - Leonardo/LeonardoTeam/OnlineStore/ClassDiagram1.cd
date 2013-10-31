@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OnlineStore.Laptop">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAECAAIAAAgCAAAMAAAAAAAAAAAAAAAAIAAAACABAA=</HashCode>
+      <FileName>Laptop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OnlineStore.SmartPhone">
+    <Position X="5.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SmartPhone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Product">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEDAAAAAUAAAAAEEAAAAAAQAAAAAAAAAAgAAAAJAgA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OnlineStore.Storage">
+    <Position X="11.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAACQECAAAAIACAAAAgAAAAAA=</HashCode>
+      <FileName>Storage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.StoreEngine">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAQAAACQAAAAgAACAAAABAAAAABAAEBEAAAAI=</HashCode>
+      <FileName>StoreEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Configuration">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OnlineStore.CPU">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>CPU.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.HDD">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>HDD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Memory">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAABAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Memory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Parts">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Parts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.RAM">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RAM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Menu">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAABAIAAAAAAAAAAAAAAEAAAACCAABEAAAQAIAA=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.InsufficientStockException&lt;T&gt;">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAA=</HashCode>
+      <FileName>InsufficientStockException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="OnlineStore.IConfigurable">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IConfigurable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OnlineStore.ISellable">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISellable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OnlineStore.IStorable">
+    <Position X="3.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStorable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="OnlineStore.Brand">
+    <Position X="13.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAICAAAAEAAAIABABAACAIAQACAAAAABBAIAIAAEAI=</HashCode>
+      <FileName>Brand.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
