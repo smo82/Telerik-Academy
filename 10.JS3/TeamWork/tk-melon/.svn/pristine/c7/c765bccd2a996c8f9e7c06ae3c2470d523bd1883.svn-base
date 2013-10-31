@@ -1,0 +1,210 @@
+<?php
+    
+    require('initialize.php');
+
+    //echo login("simo.smo@gmail.com", "simo");
+
+    if (isset($_REQUEST['action'])) {
+        $response = array();
+
+        switch($_REQUEST['action']) {
+
+            case 'register':
+                $result = register(
+                    $_REQUEST['name'],
+                    $_REQUEST['email'],
+                    $_REQUEST['password']);
+
+                if ($result)
+                {
+                    $response['success'] = true;
+                    $response['message'] = 'Congratulations ' .
+                        $_REQUEST["name"] . ' you are now registerd!';
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['message'] = 'Oops.. This email is already registered..';
+                }
+
+                break;
+
+            case 'login':
+                $result = login(
+                    $_REQUEST['email'],
+                    $_REQUEST['password']);
+
+                if ($result)
+                {
+                    $response['success'] = true;
+                    $response['userid'] = $result['id'];
+                    setSessionField('user', $result);
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['userid'] = null;
+                }
+
+                break;
+
+            case 'addProject':
+                $result = addProject(
+                    $_REQUEST['name'],
+                    $_REQUEST['description']);
+
+                if ($result)
+                {
+                    $response['success'] = true;
+                    $response['message'] = 'Project ' .
+                        $_REQUEST["name"] . ' is now added!';
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['message'] = 'Oops.. ' .
+                        'There was a problem adding your project';
+                }
+
+                break;
+
+            case 'getUser':
+                $user = getSessionField('user');
+
+                if ($user != null)
+                {
+                    $response['success'] = true;
+                    $response['user'] = $user;
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['user'] = null;
+                }
+
+                break;
+
+            case 'get':
+                $tablename = $_REQUEST['table'];
+                $data = get($tablename);
+
+                if ($data != null)
+                {
+                    $response['success'] = true;
+                    $response['data'] = $data;
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['data'] = array();
+                }
+
+                break;
+
+            case 'getSessionField':
+                $field = $_REQUEST['field'];
+                $data = getSessionField($field);
+
+                if ($data != null)
+                {
+                    $response['success'] = true;
+                    $response['data'] = $data;
+                }
+                else
+                {
+                    $response['error'] = true;
+                    $response['data'] = array();
+                }
+
+                break;
+
+            case 'setSessionField':
+                $field = $_REQUEST['field'];
+                $data = $_REQUEST['data'];
+                setSessionField($data);
+                
+                $response['success'] = true;
+                
+                break;
+        }
+
+        $encoded = json_encode($response);
+        header('Content-type: application/json');
+        exit($encoded); 
+    }
+
+    function register($name, $email, $password)
+    {
+        $db = new SQLite3("db.db3");
+
+        $tablename = "users";
+        $password=md5($password);
+
+        $query = "SELECT * FROM $tablename WHERE (email = '$email')";
+        $result = $db -> querySingle($query);
+
+        if ($result)
+        {
+            return false;
+        }
+
+        $query = "INSERT INTO $tablename(name, password, email)
+                    VALUES ('$name', '$password', '$email')";
+        $result = $db -> exec($query);
+
+        return true;
+    }
+
+    function login($email, $password)
+    {
+        $db = new SQLite3("db.db3");
+
+        $tablename = "users";
+        $password=md5($password);
+
+        $query = "SELECT * FROM $tablename WHERE (email = '$email') AND (password = '$password')";
+        $result = $db -> query($query);
+
+        if ($row = $result->fetchArray()){
+            return $row;
+        }
+        return $result;
+    }
+
+    function addProject($name, $description)
+    {
+        $db = new SQLite3("db.db3");
+
+        $tablename = "projects";
+
+        $query = "SELECT * FROM $tablename WHERE (name = '$name')";
+        $result = $db -> querySingle($query);
+
+        if ($result)
+        {
+            return false;
+        }
+
+        $query = "INSERT INTO $tablename(name, description)
+                    VALUES ('$name', '$description')";
+        $result = $db -> exec($query);
+
+        return true;
+    }
+
+
+    function get($tablename)
+    {
+        $db = new SQLite3("db.db3");
+
+        $query = "SELECT * FROM $tablename";
+        $queryObject = $db -> query($query);
+
+        $result = array();
+        while ($row = $queryObject->fetchArray()){
+            $result[] = $row;
+        }
+
+        return $result;
+    }
+?>

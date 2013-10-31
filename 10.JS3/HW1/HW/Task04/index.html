@@ -1,0 +1,41 @@
+<!-- 
+Task04
+
+Create a favorite sites bar
+- The favorite sites bar should keep a set of urls and set of folders
+- Folders have a title and set of urls
+- Urls have a title and a url
+- The favorite sites bar should have a functionality to display urls and folders
+- If an url is clicked, it should be open in new tab in the browser
+- Use Classical OOP with Class.create()
+
+-->
+
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="scripts/class-create-inherit.js"></script>
+  <script type="text/javascript" src="scripts/favorites-bar-control.js"> </script>
+  <link rel="stylesheet" type="text/css" href="css/slider.css" />
+</head>
+<body>
+  <div id="favorites-holder"></div>
+  <script type="text/javascript">
+    var favoritesBar = controls.getFavoritesBar("#favorites-holder");
+      favoritesBar.addUrl("Telerik", "http://www.telerik.com/");
+      favoritesBar.addUrl("Google", "https://www.google.bg/");
+      var telerikAcademyFolder = controls.createFolder("Telerik Academy");
+        var jsFolder = controls.createFolder("JS");
+          jsFolder.addUrl("JS - part1", "http://telerikacademy.com/Courses/Courses/Details/30");
+          jsFolder.addUrl("JS - part2", "http://telerikacademy.com/Courses/Courses/Details/64");
+          jsFolder.addUrl("JS - part3", "http://telerikacademy.com/Courses/Courses/Details/87");
+        telerikAcademyFolder.addFolder(jsFolder);        
+        var cSharpFolder = controls.createFolder("CSharp");
+          cSharpFolder.addUrl("C# - part1", "http://telerikacademy.com/Courses/Courses/Details/1");
+          cSharpFolder.addUrl("C# - part2", "http://telerikacademy.com/Courses/Courses/Details/20");
+        telerikAcademyFolder.addFolder(cSharpFolder);
+      favoritesBar.addFolder(telerikAcademyFolder);
+    favoritesBar.render();
+  </script>
+</body>
+</html>

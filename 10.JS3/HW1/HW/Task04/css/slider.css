@@ -1,0 +1,8 @@
+li{
+	list-style: none;
+	margin: 5px;
+}
+
+.folder-title{
+	font-weight: bolder;
+}

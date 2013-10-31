@@ -1,0 +1,48 @@
+var homeVm = {
+  user: ko.observable(),
+  tasks: ko.observableArray([]),
+  selectedItem: ko.observable()
+};
+
+homeVm.addTask = function (task){
+  homeVm.tasks.push(task);
+}
+
+$(document).ready(function() {
+
+  //----------------------------------
+  // Fill with dummy data
+  //----------------------------------
+
+  var dummyUser = new classes.User("simo.smo@gmail.com", "Simeon");
+  data.addUser(dummyUser);
+
+  var date = new Date();
+  var dummyTask = new classes.Task("Task1", "Some test task", date.getDate(), 30);
+  data.add(dummyTask);
+
+  var dummyTaskParticipation = new classes.TaskParticipation(dummyTask, "simo.smo@gmail.com");
+  data.add(dummyTaskParticipation);
+
+  //----------------------------------
+
+
+
+  //----------------------------------
+  // Actual code
+  //----------------------------------
+
+  var currentUser = data.getUser();
+  homeVm.user(currentUser);
+
+  var allTaskParticipations = data.get("taskParticipations");
+  for (var i = 0; i < allTaskParticipations.length; i++) {
+    if (allTaskParticipations[i].userEmail == currentUser.email()){
+      var taskData = jQuery.extend(true, {}, allTaskParticipations[i].task);
+      taskData.status = ko.observable(allTaskParticipations[i].status);
+      homeVm.addTask(taskData);
+    }
+  };
+
+  ko.applyBindings(homeVm);
+});

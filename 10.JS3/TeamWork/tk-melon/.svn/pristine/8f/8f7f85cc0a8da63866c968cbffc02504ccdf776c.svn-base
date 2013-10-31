@@ -1,0 +1,46 @@
+function ProjectsViewModel(uid) {
+	var self = this;
+
+	self.myProjects = ko.observableArray([]);
+	self.sideProjects = ko.observableArray([]);
+
+
+	self.getMyProjects = function () {
+		var request = {
+			action: 'getUserProjects',
+			id: uid
+		};
+
+		$.post('ss/controller.php', request, function (response) {
+			if (response.success)
+			{
+				var mappedProjects = ko.utils.arrayMap(response.data, function (data) {
+					return new Project(data);
+				});
+
+				self.myProjects(mappedProjects);
+			}
+		});
+	};
+
+	self.getSideProjects = function () {
+		var request = {
+			action: 'getProjectsByUser',
+			id: uid
+		};
+
+		$.post('ss/controller.php', request, function (response) {
+			if (response.success)
+			{
+				var mappedProjects = ko.utils.arrayMap(response.data, function (data) {
+					return new Project(data);
+				});
+
+				self.sideProjects(mappedProjects);
+			}
+		});
+	};
+
+	self.getMyProjects();
+	self.getSideProjects();
+}

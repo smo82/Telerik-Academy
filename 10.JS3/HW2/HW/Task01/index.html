@@ -1,0 +1,36 @@
+<!-- 
+Task01
+
+Create a slider control using jQuery
+- The slider can have many slides
+- Only one slide is visible at a time
+- Each slide contains HTML code
+	- i.e. it can contain images, forms, divs, headers, links, etc…
+- Implement functionality for changing the visible slide after 5 seconds
+- Create buttons for next and previous slide
+
+-->
+
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="scripts/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript" src="scripts/object-create.js"></script>
+  <script type="text/javascript" src="scripts/slider.js"> </script>
+  <link rel="stylesheet" type="text/css" href="css/slider.css" />
+</head>
+<body>
+  <div id="sliderHolder"></div>
+  <script type="text/javascript">
+    var slider = controls.getSlider("#sliderHolder");
+    slider.addItem('<h1>Item1</h1>');
+    slider.addItem('<ul>Item2:<li>SubItem1</li><li>SubItem2</li></ul>');
+    slider.addItem('<img src=\"images/lion_small.jpg\">');
+    slider.addItem('<img src=\"images/lion2_small.jpg\">');
+    slider.addItem('<img src=\"images/lion3_small.jpg\">');
+    slider.addItem('<img src=\"images/tiger_small.jpg\">');
+    slider.render();
+  </script>
+
+</body>
+</html>

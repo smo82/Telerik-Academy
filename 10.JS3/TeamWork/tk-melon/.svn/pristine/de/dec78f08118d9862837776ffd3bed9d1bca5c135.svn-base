@@ -1,0 +1,52 @@
+var classes = (function(){
+	var Project = Class.create({
+		init: function(title, description, projectLeader) {
+			this.title = ko.observable(title);
+			this.description = ko.observable(description);
+			this.projectLeader = ko.observable(projectLeader);
+			this.participants = ko.observableArray([]);
+			this.tasks = ko.observableArray([]);
+		},
+		addParticipant : function (email){
+			this.participants.push(email);
+		},
+		addTask : function (task){
+			this.tasks.push(task);
+		}
+	});
+
+	var Task = Class.create({
+		init: function(title, description, startDate, duration) {
+			this.title = ko.observable(title);
+			this.description = ko.observable(description);
+			this.startDate = ko.observable(startDate);
+			this.duration = ko.observable(duration);
+
+			this.deadLine = ko.computed(function() {
+				return this.startDate() + " " + this.duration();
+			}, this);
+		}
+	});
+
+	var User = Class.create({
+		init: function(email, name) {
+			this.email = ko.observable(email);
+			this.name = ko.observable(name);
+		}
+	});
+
+	var TaskParticipation = Class.create({
+		init: function(task, userEmail) {
+			this.task = task;
+			this.userEmail = userEmail;
+			this.status = "Not started";
+		}
+	});
+
+	return{
+		Project : Project, 
+		Task : Task, 
+		User : User,
+		TaskParticipation : TaskParticipation
+	}
+})()

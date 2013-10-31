@@ -1,0 +1,95 @@
+<!-- 
+
+Task01
+
+Create a TreeView jQuery Plugin
+- Initially only the top items must be visible
+- On item click
+   - If its children are hidden (collapsed), they must be made visible (expanded)
+   - If its children are visible (expanded), they must be made hidden (collapsed)
+Research about events
+
+
+-->
+
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="scripts/jquery-1.10.1.js"></script>
+  <script type="text/javascript" src="scripts/treeView.js"></script>
+  <style type="text/css">
+    .zoom{
+      width:150;
+      height:150;
+      background-color:#cccccc;
+      border:1px solid red;
+      display:inline-block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tree view in mode 1</h1>
+  <div id="treeViewHolder1"></div>
+
+  <h1>Tree view in mode 2</h1>
+  <div id="treeViewHolder2"></div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var treeViewData = [];
+      var treeViewItem1 = {
+        text: "Item1",
+        childs: [
+          {
+            text: "SubItem1.1",
+            childs: [
+              { text: "SubItem1.1.1" },
+              { text: "SubItem1.1.2" }
+            ]
+          },          
+          {
+            text: "SubItem1.2",
+            childs: [
+              { text: "SubItem1.2.1" },
+              { text: "SubItem1.2.2" },
+              { text: "SubItem1.2.3" }
+            ]
+          }
+        ]
+      };
+
+      treeViewData.push(treeViewItem1);
+
+      var treeViewItem2 = {
+        text: "Item2",
+        childs: [
+          {
+            text: "SubItem2.1",
+            childs: [
+              { text: "SubItem2.1.1" },
+              { text: "SubItem2.1.2" }
+            ]
+          },          
+          {
+            text: "SubItem2.2",
+            childs: [
+              { text: "SubItem2.2.1" },
+              { text: "SubItem2.2.2" },
+              { text: "SubItem2.2.3" }
+            ]
+          }
+        ]
+      };
+
+      treeViewData.push(treeViewItem2);
+
+      // First mode
+      $("#treeViewHolder1").treeView({treeViewData: treeViewData});
+
+      // Second mode
+      $("#treeViewHolder2").treeView({treeViewData: treeViewData}, "singleItemOpen");
+    });
+  </script>
+
+</body>
+</html>

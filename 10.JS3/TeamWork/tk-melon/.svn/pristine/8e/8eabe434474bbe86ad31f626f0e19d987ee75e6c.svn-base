@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div data-bind="with: $root.app">
+		<p>First name: <strong data-bind="text: firstName"></strong></p>
+		<p>Last name: <strong data-bind="text: lastName"></strong></p>
+	</div>
+	<div data-bind="with: $root.inner">
+		<p>First name: <strong data-bind="text: person.fname"></strong></p>
+		<p>Last name: <strong data-bind="text: person.lname"></strong></p>
+	</div>
+	<div data-bind="with: $root.app">
+		<p>First name: <input data-bind="value: firstName" /></p>
+		<p>Last name: <input data-bind="value: lastName" /></p>
+		<p>Full name: <strong data-bind="text: fullName"></strong></p>
+		<button data-bind="click: capitalizeLastName">Go caps</button>
+	</div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src='js/knockout-2.2.1.js'></script>
+    <script>
+
+function AppViewModel() {
+    this.firstName = ko.observable("Bert");
+    this.lastName = ko.observable("Bertington");
+
+    this.fullName = ko.computed(function() {
+        return this.firstName() + " " + this.lastName();    
+    }, this);
+
+    this.capitalizeLastName = function() {
+        var currentVal = this.lastName();        // Read the current value
+        this.lastName(currentVal.toUpperCase()); // Write back a modified value
+    };    
+}
+
+function InnerViewModel () {
+	this.person = new Person("Kiro", "Fakiro");
+}
+
+function Person (fname, lname) {
+	this.fname = ko.observable(fname);
+	this.lname = ko.observable(lname);
+}
+
+var viewModel = {
+	app: new AppViewModel(),
+	inner: new InnerViewModel()
+};
+ko.applyBindings(viewModel);
+
+    </script>
+</body>
+</html>

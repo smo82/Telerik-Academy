@@ -1,0 +1,54 @@
+<div id="overviewPage" class="page">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <!-- SIDEBAR -->
+            <div id="userInfo" class="span3">
+                <div class="page-header clearfix text-center">
+                    <a href="#profile">
+                        <img class="clearfix img-rounded" width="200" height="200" data-bind="attr: { src: userInfo.avatar }">
+                    </a>
+                    <hr>
+                    <h4>
+                        <a href="#profile" data-bind="text: userInfo.name"></a>
+                    </h4>
+                    <p>
+                        <strong data-bind="text: userInfo.email"></strong>
+                    </p>
+                </div>
+                <p data-bind="text: userInfo.description"></p>
+            </div>
+            <!-- MAIN CONTAINER -->
+            <div id="sections" class="span9">
+                <!-- TASKS -->
+                <p>ALL TASKS</p>
+                <p>TWITEER FEED</p>
+                <!--
+                <div id="allTasks" class="section" data-bind="with: tasks">
+                    <div class="page-header">
+                        <h4>
+                            <a href="#users">Tasks</a>
+                            <small>(<span data-bind="text: $data.length"></span>)</small>
+                        </h4>
+                    </div>
+                    <ul data-bind="foreach: $data">
+                        <a data-bind="attr: { href: '#users/' + id }">
+                            <img width="96" height="96" data-bind="attr: { src: avatar }, bootstrapPopover: { title: name, content: email }" class="img-circle">
+                        </a>
+                    </ul>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/models.js"></script>
+<script src="js/customBindingHandlers.js"></script>
+<script src="js/userInfoViewModel.js"></script>
+<script>
+(function() {
+    ko.applyBindings(
+        new UserInfoViewModel(),
+        document.getElementById('userInfo'));
+}());
+
+</script>

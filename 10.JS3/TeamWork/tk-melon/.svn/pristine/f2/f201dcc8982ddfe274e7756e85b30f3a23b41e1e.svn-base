@@ -1,0 +1,136 @@
+$(function() {
+  module("view model tests");
+
+  asyncTest("test Home line initial state", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      $brandLink = $(".brand");
+      $brandTarget = $brandLink.attr("href");
+      equal($brandTarget,undefined);
+      start();
+    });
+  });
+
+  asyncTest("test loginMail and loginPass fields after login", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val("svetlin@nakov.com");
+      $loginPass = $('#loginPass');
+      $loginPass.val("password");
+      navigationViewModel.login().done(function(){
+        $brandLink = $(".brand");
+        $brandTarget = $brandLink.attr("href");
+        equal($loginMail.val(),'');
+        equal($loginPass.val(),'');
+        start();
+      })
+    });
+  });
+ 
+   /*     test("initial item length", function() {
+            equals(viewModel.items().length, 2, "items length");
+        });
+        
+        test("initial first item", function() {
+           expect(2);
+           equals(viewModel.items()[0].id(), 1, "first item's id is 1");
+           equals(viewModel.items()[0].name(), "One", "first item's name is One");
+        });
+        
+        test("initial second item", function() {
+           expect(2);
+           equals(viewModel.items()[1].id(), 2, "second item's id is 2");
+           equals(viewModel.items()[1].name(), "Two", "second item's name is Two");
+        });
+            
+        test("adding an item", function() {
+            viewModel.addItem();
+            expect(3);
+            equals(viewModel.items().length, 3, "items length is now 3");
+            equals(viewModel.items()[2].id(), 0, "new item's id is 0");
+            equals(viewModel.items()[2].name(), "new", "new item's name is new");     
+        });
+        
+        test("removing an item", function() {
+           viewModel.removeItem(viewModel.items()[2]);
+           expect(3);
+           equals(viewModel.items().length, 2, "items length is back to 2");
+           equals(viewModel.items()[1].id(), 2, "second item's id is still 2");
+           equals(viewModel.items()[1].name(), "Two", "second item's name is still Two"); 
+        });
+       
+   //act on the view model and verify UI changes appropriately
+   module("view model -> view tests");
+    test("inital display contains two list items", function() {
+        equals($("ul").children().size(), 2, "two li in initial display");
+    }); 
+   
+    test("initial display first item", function() {
+        expect(2);
+        equals($("ul li:first input:first").val(), "1", "first input value is 1");
+        equals($("ul li:first input:nth-child(2)").val(), "One", "second input value is 'One'");
+    });
+    
+    test("initial display second item", function() {
+        expect(2);
+        equals($("ul li:nth-child(2) input:first").val(), "2", "first input value is 2");
+        equals($("ul li:nth-child(2) input:nth-child(2)").val(), "Two", "second input value is 'Two'");
+    });
+    
+    test("adding an item", function() {
+       viewModel.addItem();
+       expect(3);
+       equals($("ul").children().size(), 3, "now there are three li");
+       equals($("ul li:nth-child(3) input:first").val(), "0", "first input value is 0");
+       equals($("ul li:nth-child(3) input:nth-child(2)").val(), "new", "second input value is 'new'");
+    });
+    
+    test("edit an item's id", function() {
+       viewModel.items()[2].id(3);
+       equals($("ul li:nth-child(3) input:first").val(), "3", "first input value is now 3");
+    });
+    
+    test("edit an item's name", function() {
+       viewModel.items()[2].name("Three");
+        equals($("ul li:nth-child(3) input:nth-child(2)").val(), "Three", "second input value is now 'Three'");
+    });
+    
+    test("removing an item", function() {
+       viewModel.removeItem(viewModel.items()[2]);
+       expect(3);
+       equals($("ul").children().size(), 2, "back to two li");
+       equals($("ul li:nth-child(2) input:first").val(), "2", "first input value is still 2");
+       equals($("ul li:nth-child(2) input:nth-child(2)").val(), "Two", "second input value is still 'Two'");
+    });
+         
+   //act on UI and verify view model and UI changes appropriately
+   module("view -> view model tests");
+    
+    test("adding an item", function() {
+       $("#addItem").click();
+       expect(3);
+        equals(viewModel.items().length, 3, "items length is now 3");
+        equals(viewModel.items()[2].id(), 0, "new item's id is 0");
+        equals(viewModel.items()[2].name(), "new", "new item's name is new");     
+    });
+    
+    test("edit an item's id", function() {
+       $("ul li:nth-child(3) input:first").val("3").change();
+        equals(viewModel.items()[2].id(), "3", "new item's id is now 3");
+    });
+    
+    test("edit an item's name", function() {
+        $("ul li:nth-child(3) input:nth-child(2)").val("Three").change();
+        equals(viewModel.items()[2].name(), "Three", "new item's name is now 'Three'");
+    });
+    
+    test("removing an item", function() {
+        $("ul li:nth-child(3) a").click();
+       expect(3);
+       equals(viewModel.items().length, 2, "items length is back to 2");
+       equals(viewModel.items()[1].id(), 2, "second item's id is still 2");
+       equals(viewModel.items()[1].name(), "Two", "second item's name is still Two"); 
+    });*/
+});

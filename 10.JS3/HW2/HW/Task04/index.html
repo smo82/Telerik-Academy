@@ -1,0 +1,29 @@
+<!-- 
+Task04
+
+Implement functionality to change the background color of a web page
+- i.e. select a color from a color picker and set this color as the background color of the page
+
+
+-->
+
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Slider - Colorpicker</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" type="text/css" href="css/ColorPicker.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script type="text/javascript" src="scripts/object-create.js"></script>
+  <script type="text/javascript" src="scripts/ColorPicker.js"> </script>
+</head>
+<body class="ui-widget-content" style="border: 0;">   
+    <div id="colorPickerHolder"></div>
+    <script>
+      controls.initColorSelector("#colorPickerHolder", "html");
+    </script> 
+</body>
+</html>

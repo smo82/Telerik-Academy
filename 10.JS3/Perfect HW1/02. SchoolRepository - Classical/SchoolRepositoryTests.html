@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>02. SchoolRepository - Classical</title>
+    <script src="scripts/OOPUtils.js"></script>
+    <script src="scripts/Person.js"></script>
+    <script src="scripts/Student.js"></script>
+    <script src="scripts/Teacher.js"></script>
+    <script src="scripts/ClassOfStudents.js"></script>
+    <script src="scripts/School.js"></script>
+    <script src="scripts/SchoolRepository.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            Implement a repository to keep students and teachers in schools
+        </p>
+        <ul>
+            <li>Each school have a name, town and classes of students</li>
+            <li>Students have firstname, last name, age and grade</li>
+            <li>Teachers have firstname, last name, age and speciality</li>
+            <li>Students and Teachers can introduce themselves by printing all their non-function properties in the format PropertyName: PropertyValue
+                <ul>
+                    <li>Student introducement - Name: Peter Ivanov, Age: 13, grade: 7</li>
+                </ul>
+            </li>
+            <li>Classes have name, capacity of students, a set of students and a form-teacher (класен ръководител)</li>
+        </ul>
+    </div>
+    <script>
+        var mara = new Student("mara", "ot drujba", "17", 3);
+        var spiro = new Student("Spiro", "Spirtov", "11", 3);
+        var kolio = new Student("Kolio", "Piandeto", "9", 3);
+
+        var baiStoqdin = new Teacher("Bai", "Stoqdin", 55, "sekva");
+
+        var thirdGrade = new ClassOfStudents("3a", 26, baiStoqdin);
+        thirdGrade.addStudent(kolio);
+        thirdGrade.addStudent(mara);
+        thirdGrade.addStudent(spiro);
+
+        var elitenShkolnik = new School("elitnoto", "Nadejda");
+        elitenShkolnik.addClassOfStudents(thirdGrade);
+
+        var schoolRepository = new SchoolRepository();
+        schoolRepository.addSchool(elitenShkolnik);
+
+        // get the class of students
+        var school = schoolRepository.schools[0];
+        // get a class
+        var classOfStds = school.classesOfstudents[0];
+        // introduce the teacher
+        console.log(classOfStds.formTeacher.introduce());
+        // introduce one of the students
+        console.log(classOfStds.setOfStudents[0].introduce());
+    </script>
+</body>
+</html>

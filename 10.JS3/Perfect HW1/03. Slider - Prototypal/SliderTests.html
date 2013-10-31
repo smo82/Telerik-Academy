@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>03. Slider - Prototypal</title>
+    <script src="scripts/ImageInfo.js"></script>
+    <script src="scripts/Slider.js"></script>
+    <script src="scripts/ImageCollection.js"></script>
+    <script src="scripts/OOPUtils.js"></script>
+    <style>
+        #slider {
+            margin: 0 auto;
+            border-radius: 10px;
+            width: 980px;
+            border: solid 1px black;
+            background-color: #dedede;
+            text-align:center;
+        }
+            #slider img {
+                max-width: 100%;
+                margin: 5px;
+            }
+        #sliderSelected {
+            top: 101%;
+            width: 980px;
+            position: absolute;  
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: #dedede;       
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Implement a image slider control using Prototypal OOP</p>
+        <ul>
+            <li>The slider has a set of images and only one can be enlarged</li>
+            <li>Each image in the image slider has a title and two urls (thumbnail url and large image url)</li>
+            <li>When an image from the thumbnails is clicked</li>
+            <li>The slider must have buttons for prev/next image</li>
+        </ul>
+    </div>
+    <div id="slider"></div>
+    <script>
+        var slider = Object.create(Slider);
+        slider.init("#slider", "sliderSelected");
+        slider.addImage("DreamHouse", "images/DreamHouse.jpg", "images/DreamHouse_thub.jpg");
+        slider.addImage("Lake", "images/Lake.jpg", "images/Lake_thub.jpg");
+        slider.addImage("SeaSide", "images/SeaSide.jpg", "images/SeaSide_thub.jpg");
+        slider.addImage("MountainLake", "images/Mountain.jpg", "images/Mountain_thumbsnail.jpg");
+        slider.addImage("Sky", "images/sky.jpg", "images/sky_thumb.jpg");
+        slider.addImage("Thailand", "images/thailand.jpg", "images/thailand_thubs.jpg");
+        slider.render();
+    </script>
+
+</body>
+</html>

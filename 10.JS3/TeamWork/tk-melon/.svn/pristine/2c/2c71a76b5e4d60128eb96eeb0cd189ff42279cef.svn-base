@@ -1,0 +1,33 @@
+var homeVm = {
+  user: ko.observable(),
+  tasks: ko.observableArray([])
+};
+
+homeVm.addTask = function (task){
+  homeVm.tasks.push(task);
+}
+
+jQuery(document).ready(function() {
+  
+  // We wait to take the current user data
+  data.getUser().
+    then(function (currentUser){
+      homeVm.user(currentUser);
+
+      // We wait to take the data for all the tasks
+      data.get("tasks").
+        then(function (allTasks){
+          if (allTasks == undefined){
+            return;
+          }
+
+          for (var i = 0; i < allTasks.length; i++) {
+            if (allTasks[i].idOwner() == currentUser.id()){
+              homeVm.addTask(allTasks[i]);
+            }
+          };
+
+          ko.applyBindings(homeVm);
+        }, function(){})
+    });
+});

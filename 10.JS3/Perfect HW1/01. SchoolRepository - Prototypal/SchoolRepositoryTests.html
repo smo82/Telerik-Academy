@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>01. SchoolRepository - Prototypal</title>
+    <script src="scripts/ClassOfStudents.js"></script>
+    <script src="scripts/OOPUtils.js"></script>
+    <script src="scripts/Person.js"></script>
+    <script src="scripts/School.js"></script>
+    <script src="scripts/Student.js"></script>
+    <script src="scripts/Teacher.js"></script>
+    <script src="scripts/SchoolRepository.js"></script>
+</head>
+<body>
+    <div>
+        <p>
+            Implement a repository to keep students and teachers in schools
+        </p>
+        <ul>
+            <li>Each school have a name, town and classes of students</li>
+            <li>Students have firstname, last name, age and grade</li>
+            <li>Teachers have firstname, last name, age and speciality</li>
+            <li>Students and Teachers can introduce themselves by printing all their non-function properties in the format PropertyName: PropertyValue
+                <ul>
+                    <li>Student introducement - Name: Peter Ivanov, Age: 13, grade: 7</li>
+                </ul>
+            </li>
+            <li>Classes have name, capacity of students, a set of students and a form-teacher (класен ръководител)</li>
+        </ul>
+    </div>
+    <script>       
+        var mara = Object.create(Student);
+        mara.init("mara", "ot drujba", "17", 3);
+        var spiro = Object.create(Student);
+        spiro.init("Spiro", "Spirtov", "11", 3);
+        var kolio = Object.create(Student);
+        kolio.init("Kolio", "Piandeto", "9", 3);
+
+        var baiStoqdin = Object.create(Teacher);
+        baiStoqdin.init("Bai", "Stoqdin", 55, "sekva");        
+
+        var thirdGrade = Object.create(ClassOfStudents);
+        thirdGrade.init("3a", 26, baiStoqdin);
+        thirdGrade.addStudent(kolio);
+        thirdGrade.addStudent(mara);
+        thirdGrade.addStudent(spiro);
+
+        var elitenShkolnik = Object.create(School);
+        elitenShkolnik.init("elitnoto", "Nadejda");
+        elitenShkolnik.addClassOfStudents(thirdGrade);
+
+        var schoolRepository = Object.create(SchoolReposioty);
+        schoolRepository.init();
+        schoolRepository.addSchool(elitenShkolnik);
+        console.log(schoolRepository);
+
+        // get the class of students
+        var school = schoolRepository.schools[0];
+
+        // get a class
+        var classOfStds = school.classesOfstudents[0];
+        
+        // introduce the teacher
+        console.log(classOfStds.formTeacher.introduce());
+        // introduce one of the students
+        console.log(classOfStds.setOfStudents[0].introduce());
+    </script>
+</body>
+</html>

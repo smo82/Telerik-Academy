@@ -1,0 +1,65 @@
+var classes = (function(){	
+	var Project = Class.create({
+		initialize: function(id, title, description, projectLeaderId) {
+			this.id = ko.observable(id);
+			this.title = ko.observable(title);
+			this.description = ko.observable(description);
+			this.projectLeaderId = ko.observable(projectLeaderId);
+			this.participants = ko.observableArray([]);
+			this.tasks = ko.observableArray([]);
+		},
+		addParticipant : function (email){
+			this.participants.push(email);
+		},
+		addTask : function (task){
+			this.tasks.push(task);
+		}
+	});
+
+	var Task = Class.create({
+		initialize: function(id, title, description, startDate, duration, idOwner, statusId) {
+			this.id = ko.observable(id);
+			this.title = ko.observable(title);
+			this.description = ko.observable(description);
+			this.startDate = ko.observable(startDate);
+			this.duration = ko.observable(duration);
+			this.idOwner = ko.observable(idOwner);
+			this.statusId = ko.observable(statusId);
+
+			this.deadLine = ko.computed(function() {
+				return this.startDate() + this.duration();
+			}, this);
+
+			this.status = ko.computed(function() {
+				switch(this.statusId())
+                {
+                case 0:
+                  return "Not started";
+                  break;
+                case 1:
+                  return "Started";
+                  break;
+                case 2:
+                  return "Finished";
+                  break;
+                default:
+                  return "Unknown";
+                }
+			}, this);
+		}
+	});
+
+	var User = Class.create({
+		initialize: function(id, email, name) {
+			this.id = ko.observable(id);
+			this.email = ko.observable(email);
+			this.name = ko.observable(name);
+		}
+	});
+
+	return{
+		Project : Project, 
+		Task : Task, 
+		User : User
+	}
+})()

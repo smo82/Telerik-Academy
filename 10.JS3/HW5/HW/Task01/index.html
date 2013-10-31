@@ -1,0 +1,41 @@
+<!-- 
+Task01
+
+Create an “Online Map Tourism” application using Google maps
+ - Choose 10 capital cities from the world
+ - Make two buttons for “Next” and “Previous” which should iterate through the cities
+ - When one of the buttons is clicked, map should pan to the new location of the new city
+ - Each city should have Infobox with more information about it on the map
+ - Show lists of the cities on the page. If the user chooses a city, the map should pan directly to it
+
+
+-->
+
+<html>
+<head>
+  <title></title>
+  <style>
+      #map-canvas {
+          margin: 0;
+          padding: 0;
+          height: 500px;
+          width: 1000px;
+      }
+      #navigation{
+        float: left;
+        width: 110px;
+      }
+      button{
+        width: 100px;
+      }
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&language=bg"></script>
+</head>
+<body>
+  <button id="previous">Previous</button>
+  <button id="next">Next</button>
+  <div id="navigation"></div>
+  <div id="map-canvas"></div>
+  <script type="text/javascript" src="scripts/browseCities.js"> </script>
+</body>
+</html>

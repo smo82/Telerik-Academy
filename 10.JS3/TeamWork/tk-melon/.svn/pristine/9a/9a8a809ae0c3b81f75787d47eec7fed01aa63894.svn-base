@@ -1,0 +1,22 @@
+function listAllTasksByUserViewModel() {
+    var self = this;
+    self.tasksByUsersList = ko.observableArray([]);
+
+    self.getAllTasksByUser = function () {
+        var request = {
+             action: 'getAllTasksByUser'
+        };
+
+        $.getJSON('ss/controller.php', request, function (response) {
+            if (response.success)
+            {
+                var mappedTasksByUsersList = ko.utils.arrayMap(response.data, function (data) {
+                    return new User(data);
+                });
+                self.tasksByUsersList(mappedTasksByUsersList);
+            }
+        });
+    };
+
+    self.getAllTasksByUser();
+};

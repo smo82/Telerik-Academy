@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<p>ID: <strong data-bind="text: user.id"></strong></p>
+	<p>Name: <strong data-bind="text: user.name"></strong></p>
+	<button data-bind="click: displayUser">Show User</button>
+
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src='js/knockout-2.2.1.js'></script>
+    <script src="js/knockout.mapping-latest.js"></script>
+    <script>
+
+function User (id, name, email, avatar) {
+	this.id = id;
+	this.name = name;
+	this.email = email;
+	this.avatar = avatar;
+}
+
+function AppViewModel() {
+	var self = this;
+    this.user = ko.mapping.fromJS(new User());
+
+    this.displayUser = function () {
+    	$.post('ss/controller.php', { action: 'getUser', avatarSize: '200' }, function (response) {
+		    if (response.success)
+		        ko.mapping.fromJS(response.data, self.user);
+		    else
+		    	ko.mapping.fromJS(new User(), self.user);
+		});
+    }
+}
+
+var avm = new AppViewModel();
+
+ko.applyBindings(avm);
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+var data = (function (){
+    var projects = [];
+    var tasks = [];
+    var users = [];
+    var taskParticipations = [];
+
+    function getSessionField(field){
+        var deferred = Q.defer();
+
+        var data = null;
+        jQuery.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'getSessionField',
+                field: field
+            }
+        }).done(function (response) {
+            data = response['data'];
+    
+            deferred.resolve(data);
+        });
+
+        return deferred.promise;
+    }
+
+    function setSessionField(field, data){
+        var deferred = Q.defer();
+
+        var data;
+        jQuery.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'setSessionField',
+                field: field,
+                data: data
+            }
+        }).done(function (response) {});
+
+        return deferred.promise;
+    }
+
+    function getUser(){
+        var deferred = Q.defer();
+
+        var loggedUser = null;
+        jQuery.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'getUser'
+            }
+        }).done(function (response) {
+            loggedUser = response['user'];
+    
+            var user;
+            if (loggedUser != null){
+                user = new classes.User(loggedUser['id'], loggedUser['email'], loggedUser['name']);
+            }
+
+            deferred.resolve(user);
+        });
+
+        return deferred.promise;
+    }
+
+    function get(tableName){
+        var deferred = Q.defer();
+
+        var resultData = null;
+        jQuery.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'get',
+                table: tableName
+            }
+        }).done(function (response) {
+            resultData = response['data'];
+    
+            var resultObjects;
+            if (resultData != null && resultData != undefined){
+                var resultClass;
+
+                switch(tableName)
+                {
+                case 'projects':
+                  resultObjects = parseProjects(resultData);
+                  break;
+                case 'tasks':
+                  resultObjects = parseTasks(resultData);
+                  break;
+                case 'users':
+                  resultObjects = parseUsers(resultData);
+                  break;
+                default:
+                    deferred.reject("Unknown table '" + tableName + "'!");
+                }
+            }
+            
+            deferred.resolve(resultObjects);
+        });
+
+        return deferred.promise;
+    }
+
+    function parseProjects(data){
+        var result = [];
+        var row;
+        for (var i = 0; i < data.length; i++) {
+            row = data[i];
+            result.push(new classes.Project(row['id'], row['name'], row['description'], row['id_leader']));
+        }
+
+        return result;
+    }
+
+    function parseTasks(data){
+        var result = [];
+        var row;
+        for (var i = 0; i < data.length; i++) {
+            row = data[i];
+            result.push(new classes.Task(row['id'], row['title'], row['description'], row['start_date'], row['duration'], row['id_owner'], row['status']));
+        }
+
+        return result;
+    }
+
+    function parseUsers(data){
+        var result = [];
+        var row;
+        for (var i = 0; i < data.length; i++) {
+            row = data[i];
+            result.push(new classes.User(row['id'], row['email'], row['name']));
+        }
+
+        return result;
+    }
+
+    return{
+        get : get,
+        getUser : getUser,
+        getSessionField : getSessionField,
+        setSessionField : setSessionField
+    }
+})()

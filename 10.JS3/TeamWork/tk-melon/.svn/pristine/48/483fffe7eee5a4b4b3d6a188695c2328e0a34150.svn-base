@@ -1,0 +1,518 @@
+<?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mellon Team Collaboratior</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+        .popover {
+            width: 200px;
+        }
+
+        .jumbotron {
+            margin: 80px 0;
+            text-align: center;
+        }
+        .jumbotron h1 {
+            font-size: 100px;
+            line-height: 1;
+        }
+        .jumbotron .lead {
+            font-size: 24px;
+            line-height: 1.25;
+        }
+        .jumbotron .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+
+        #users img:hover {
+            box-shadow: 0 0 15px -2px;
+        }
+
+        #userInfo img {
+            box-shadow: 0 2px 15px -5px;
+        }
+
+        #userInfo img:hover {
+            box-shadow: 0 1px 15px -4px;
+        }
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div id="nav" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button class="btn btn-navbar" type="button" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Melon</a>
+
+                <!-- KNOCKOUT USER MENU -->
+                <div class="nav-collapse collapse" data-bind="visible: userLogged">
+                    <ul class="nav" data-bind="foreach: sections">
+                        <li data-bind="attr: { class: $data == $root.chosenSection() ? 'active' : '' }"><a data-bind="text: $data, click: $root.goToSection"></a></li>
+                    </ul>
+                    <div class="pull-right">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-cog"></i></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#profile"><i class="icon-cog"></i> Profile</a></li>
+                                    <li><a href="#help"><i class="icon-envelope"></i> Help</a></li>
+                                    <li class="divider"></li>
+                                    <li><a id="logoutBtnSubmit" href="#"><i class="icon-off"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+<!-- The old way of logging out
+                    <form id="logoutForm" class="navbar-form pull-right" method="post" action="ss/controller.php">
+                        <button id="logoutBtnSubmit" class="btn">Sign out</button>
+                    </form>
+-->
+                </div>
+                <div class="nav-collapse collapse" data-bind="visible: !userLogged()">
+                    <form id="loginForm" class="navbar-form pull-right" method="post" action="ss/controller.php">
+                        <input id="loginMail" class="span2" type="text" placeholder="Email">
+                        <input id="loginPass" class="span2" type="password" placeholder="Password">
+                        <button id="loginBtnSubmit" type="submit" class="btn">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- MAIN PAGE CONTENT -->
+        <div id="indexPage" data-bind="visible: !userLogged()">
+            <div class="jumbotron">
+                <h1>Lorem Ipsum!</h1>
+                <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <!-- REGISTRATION FORM MODAL TRIGGER -->
+                <button class="btn btn-large btn-primary" href="#registerForm" data-toggle="modal">Sign up</button>
+            </div>
+
+            <!-- REGISTRATION FORM -->
+            <div id="registerForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
+                <div class="modal-header">
+                    <button class="close" type="button" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h3 id="myModalLabel">Sign up</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="span5">
+                        <form method="post" action="ss/controller.php">
+                            <input id="regName" class="span5" type="text" name="name" placeholder="Name"> 
+                            <input id="regEmail" class="span5" type="text" name="email" placeholder="Email">  
+                            <input id="regPassword" class="span5" type="password" name="Password" placeholder="Password">
+                            <div id="regAlert" class="alert hide">
+                                <strong id="regMessage"></strong>
+                            </div>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="regClose" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button id="regSubmit" class="btn btn-primary">Register</button>
+                </div>
+            </div>
+
+            <!-- ARTICLE ROW -->
+            <div class="row">
+                <div class="span4">
+                    <h2>Lorem</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                </div>
+                <div class="span4">
+                    <h2>Ipsum</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                </div>
+                <div class="span4">
+                    <h2>Dolor</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div data-bind="visible: userLogged">
+            <!-- <div id="overview"> -->
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <!--Sidebar content-->
+
+                            <div id="userInfo" data-bind="with: userInfo">
+                                <div class="page-header clearfix text-center">
+                                    <a href="#profile">
+                                        <img width="200" height="200" data-bind="attr: { src: $data.avatar }" class="clearfix img-rounded" style='margin-right:10px'>
+                                    </a>
+                                    <span data-bind"text: alabala"></span>
+                                    <hr>
+                                    <h4><a href="#profile" data-bind="text: $data.name"></a></h4>
+                                    <p><strong data-bind="text: $data.email"></strong></p>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, placeat, asperiores, facilis, error aperiam quidem delectus laborum molestias impedit maiores maxime ipsam ab nihil animi quia natus est eum fugit!</p>
+                            </div>
+                        </div>
+
+                        <div id="sections" class="span9">
+
+                            <div id="overview" class="section">
+                                <span>OVERVIEW</span>
+                            </div>
+
+                            <!-- ko stopBinding: true -->
+                            <div id="users" class="section" data-bind="with: usersList">
+                                <div id="participants">
+                                    <div>
+                                        <div class="page-header">
+                                            <h4>
+                                                <a href="#users">Users</a>
+                                                <small>(<span data-bind="text: $data.length"></span>)</small>
+                                            </h4>
+                                        </div>
+                                        <ul data-bind="foreach: $data">
+                                            <a data-bind="attr: { href: '#uid=' + id }">
+                                                <img width="96" height="96" data-bind="attr: { src: avatar }, bootstrapPopover: { title: name, content: email }" class="img-circle">
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+
+                            <!-- ko stopBinding: true -->
+                            <div id="projects" class="section" data-bind="with: projectsList">
+                                <div class="page-header">
+                                    <h4>
+                                        <a href="#projects">Projects</a>
+                                        <small>(<span data-bind="text: $data.length"></span>)</small>
+                                    </h4>
+                                </div>
+
+                                <ul class="thumbnails" data-bind="foreach: $data">
+                                  <li class="span3">
+                                    <div class="thumbnail text-center" data-bind="bootstrapPopover: { content: description }">
+                                      <h3>
+                                          <a data-bind="text: title, attr: { href: '#pid=' + id}"></a>
+                                      </h3>
+                                    </div>
+                                  </li>
+                                </ul>
+
+                            </div>
+                            <!-- /ko -->
+
+                            <div id="calendar" class="section">
+                                <span>CALENDAR</span>
+                            </div>
+
+                            <div id="profile" class="section">
+                                <span>PROFILE</span>
+                            </div>
+
+                            <div id="help" class="section">
+                                <span>HELP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </div>
+
+        <hr>
+        <footer>
+        <p>&copy; Lorem Ipsum 2013</p>
+        </footer>
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src='js/knockout-2.2.1.js'></script>
+    <script src="js/sammy-latest.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+(function () {
+    // Temp class implementations
+    function User(data) {
+        this.id = data.id;
+        this.name = data.name;
+        this.email = data.email;
+        this.avatar = data.avatar;
+    }
+
+    function Project(data) {
+        this.id = data.id;
+        this.ownerid = data.owner;
+        this.title = data.title;
+        this.description = data.description;
+    }
+
+    // Knockout custom bindings
+    ko.bindingHandlers.bootstrapPopover = {
+        init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+            var options = ko.utils.unwrapObservable(valueAccessor());
+            var defaultOptions = {
+                animation : true,
+                trigger : 'hover',
+                placement : 'bottom'
+            };
+            options = $.extend(true, {}, defaultOptions, options);
+            $(element).popover(options);
+        }
+    };
+
+    ko.bindingHandlers.stopBinding = {
+        init: function() {
+            return { controlsDescendantBindings: true };
+        }
+    };
+
+    // Allow bindgin start/stop mechanism
+    ko.virtualElements.allowedBindings.stopBinding = true;
+
+    // View-Models
+    function NavigationViewModel() {
+        var self = this;
+        self.sections = ['users', 'projects', 'calendar'];
+        self.chosenSection = ko.observable();
+        self.userLogged = ko.observable(false);
+
+        self.goToSection = function (section) {
+            location.hash = section;
+        }
+        self.displaySection = function (section) {
+            // TODO: optimize
+            $('.section').fadeOut(0);
+            $('#' + section).fadeIn(200);
+        }
+        self.updateUser = function () {
+            $.ajax({
+                type: 'POST',
+                url: 'ss/controller.php',
+                data: {
+                    action: 'getUserId'
+                }
+            }).done(function (response) {
+                if (response.success) {
+                    self.userLogged(true);
+                } else {
+                    self.userLogged(false);
+                }
+            });
+        }
+
+        // Logged user initial check
+        self.updateUser();
+
+        Sammy(function () {
+            this.get('#:section', function() {
+                self.chosenSection(this.params.section);
+                self.displaySection(this.params.section);
+            });
+
+            this.get('#projects/:projectName', function() {
+                // TODO:
+            });
+        
+            // Default
+            this.get('', function () {
+                this.app.runRoute('get', '#overview')
+            });
+
+        }).run();    
+    }
+
+    function UserInfoViewModel() {
+        var self = this;
+        self.alabala = ko.observable(5);
+        self.userInfo = ko.observable();
+
+        $.post('ss/controller.php', { action: 'getUser', avatarSize: '200' }, function (response) {
+            if (response.success)
+            {
+                self.userInfo(new User(response.data));
+                self.alabala(10);
+            }
+        });
+    }
+
+    function ListAllUsersViewModel() {
+        var self = this;
+        self.usersList = ko.observableArray([]);
+
+        $.getJSON('ss/controller.php', { action: 'getAllUsers' }, function (response) {
+            if (response.success)
+            {
+                var mappedUsers = $.map(response.data, function (data) {
+                    return new User(data)
+                });
+                self.usersList(mappedUsers);
+            }
+        });
+    }
+
+    function ListAllProjectsViewModel() {
+        var self = this;
+        self.projectsList = ko.observableArray([]);
+
+        $.getJSON('ss/controller.php', { action: 'getAllProjects' }, function (response) {
+            if (response.success)
+            {
+                var mappedProjects = $.map(response.data, function (data) {
+                    return new Project(data)
+                });
+                self.projectsList(mappedProjects);
+            }
+        });
+    }
+
+    // View-Model instances
+    var allProjectsViewModel = new ListAllProjectsViewModel();
+    var allUsersViewModel = new ListAllUsersViewModel();
+    var userViewModel = new UserInfoViewModel();
+    var navViewModel = new NavigationViewModel();
+
+    //
+    // REGISTRATION FORM
+    //
+    var delay = 500,
+        $regName = $('#regName'),
+        $regMail = $('#regEmail'),
+        $regPass = $('#regPassword'),
+        $regAlert = $('#regAlert'),
+        $regMsg = $('#regMessage'),
+        $regSubmit = $('#regSubmit'),
+        $regClose = $('#regClose');
+
+    $regSubmit.on('click', function (ev) {
+        ev.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'register',
+                name : $regName.val(),
+                email : $regMail.val(),
+                password : $regPass.val()
+             }
+        }).done(function (response) {
+            $regMsg.text(response.message);
+
+            if (response.error) {
+                $regAlert.addClass('alert-error');
+                $regAlert.fadeIn(delay);
+                $regName.focus();
+            } else if (response.success) {
+                $regAlert.removeClass('alert-error');
+                $regAlert.addClass('alert-success');
+                $regAlert.fadeIn(delay);
+                $regSubmit.hide(); 
+            }
+        });
+    });
+
+    $regClose.on('click', function () {
+        setTimeout(function () {
+            $regAlert.removeClass('alert-error');
+            $regAlert.removeClass('alert-success');
+            $regAlert.hide();
+            $regSubmit.show()
+        }, delay);
+    });
+
+    //
+    // LOGIN FORM
+    //
+    var $logForm = $('#loginForm'),
+        $logMail = $('#loginMail'),
+        $logPass = $('#loginPass'),
+        $logSubmit = $('#loginBtnSubmit');
+
+    $logSubmit.popover({
+        animation : true,
+        placement : 'bottom',
+        trigger : 'manual',
+        content : 'Invalid Email or Password..'
+    });
+
+    $logForm.on('click', function (ev) {
+        ev.preventDefault();
+        
+        switch (ev.target.id) {
+            case 'loginBtnSubmit':
+                $.ajax({
+                    type: 'POST',
+                    url: 'ss/controller.php',
+                    data: {
+                        action: 'login',
+                        email : $logMail.val(),
+                        password : $logPass.val()
+                    }
+                }).done(function (response) {
+                    if (response.error) {
+                        $logSubmit.popover('show');
+                    }
+                    else
+                    {
+                        navViewModel.userLogged(true);
+                    }
+                });
+                break;
+
+            default :
+                $logSubmit.popover('hide');
+                break;
+        }
+    });
+
+    //
+    // LOGOUT FORM
+    //
+    var $logoutForm = $('#logoutForm'),
+        $logoutSubmit = $('#logoutBtnSubmit');
+
+    $logoutSubmit.on('click', function (ev) {
+        ev.preventDefault();
+        
+        $.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'logout'
+            }
+        }).done(function (response) {
+            if (response.success) {
+                navViewModel.userLogged(false);
+            }
+        });
+    });
+
+    //
+    // VIEW MODEL BINDINGS
+    //
+    ko.applyBindings(navViewModel);
+    ko.applyBindings(userViewModel, $('#userInfo')[0]);
+    ko.applyBindings(allUsersViewModel, $('#users')[0]);
+    ko.applyBindings(allProjectsViewModel, $('#projects')[0]);
+}());
+    </script>
+</body>
+</html>

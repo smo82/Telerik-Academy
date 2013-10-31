@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mellon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+
+    </style>
+    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="page-header">
+            <h4>Users
+                <small>(<span data-bind="text: usersList().length"></span>)</small>
+            </h4>
+        </div>
+            <div id="participants">
+                    <div class="page-header">
+                        <h4>Users
+                            <small>(<span data-bind="text: usersList().length"></span>)</small>
+                        </h4>
+                    </div>
+                    <ul data-bind="foreach: usersList">
+                        <a data-bind="attr: { href: '#uid=' + id }">
+                            <img width="96" height="96" data-bind="attr: { src: avatar }, bootstrapPopover: { html: true, title: name, content: email + (description ? '<br><hr>' + description : '') }" class="img-circle">
+                        </a>
+                    </ul>
+                </div>
+            </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="../js/lib/knockout-2.2.1.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript">
+(function () {
+
+function User(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.email = data.email;
+    this.avatar = data.avatar;
+    this.description = data.description;
+}
+
+ko.bindingHandlers.bootstrapPopover = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+        var options = ko.utils.unwrapObservable(valueAccessor());
+        var defaultOptions = {
+            animation : true,
+            trigger : 'hover',
+            placement : 'bottom'
+        };
+        options = $.extend(true, {}, defaultOptions, options);
+        $(element).popover(options);
+    }
+};
+
+function ListAllUsersViewModel() {
+    var self = this;
+    self.usersList = ko.observableArray([]);
+
+    $.getJSON('../ss/controller.php', { action: 'getAllUsers' }, function (response) {
+        if (response.success)
+        {
+            var mappedUsers = $.map(response.data, function (data) {
+                return new User(data)
+            });
+            self.usersList(mappedUsers);
+            console.log(self.userInfo);
+        }
+    });
+}
+
+ko.applyBindings(new ListAllUsersViewModel());
+
+}());
+    </script>
+</body>
+</html>

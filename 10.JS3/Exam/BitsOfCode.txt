@@ -1,0 +1,31 @@
+***********************************************
+Fiddler Request
+***********************************************
+Type: GET/POST
+
+URL: http://localhost:40643/api/user/register
+
+Request Header:
+ User-Agent: Fiddler
+ Content-Type: application/json
+ *Host: localhost:40643
+ *Content-lenght: 51
+
+Request Body:
+ {
+  "username": "pesho",
+  "nickname": "Pesho Trybata",
+  "authCode":
+ }
+
+***********************************************
+Error Responce
+***********************************************
+
+Object.responseText
+
+***********************************************
+Database for the project
+***********************************************
+
+BullsAndCows/BullsAndCows/App_Data

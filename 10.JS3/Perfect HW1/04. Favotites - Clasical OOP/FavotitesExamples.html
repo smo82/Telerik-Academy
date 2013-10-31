@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>04. Favotites - Clasical OOP</title>
+    <script src="scripts/OOPUtils.js"></script>
+    <script src="scripts/Folder.js"></script>
+    <script src="scripts/SiteBar.js"></script>
+    <script src="scripts/URL.js"></script>
+
+    <style>
+        #favorites ul {
+            list-style: none;
+        }
+        #favorites li {
+            line-height:32px;
+        }
+        #favorites ul li a{
+            padding: 6px 0;
+            padding-left: 32px;
+            background-image: url("images/anchor.png");   
+            background-repeat: no-repeat;
+        }
+        #favorites div {
+            background-image: url("images/folderImg.png");   
+            background-repeat: no-repeat;
+            padding-left: 32px;
+            line-height: 32px;
+        }
+
+    </style>
+</head>
+<body>
+    <div>Create a favorite sites bar</div>
+    <ul>
+        <li>The favorite sites bar should keep a set of urls and set of folders</li>
+        <li>Folders have a title and set of urls</li>
+        <li>Urls have a title and a url</li>
+        <li>The favorite sites bar should have a functionality to display urls and folders</li>
+        <li>If an url is clicked, it should be open in new tab in the browser</li>
+        <li>Use Classical OOP with Class.create()</li>
+    </ul>
+    <div id="favorites"></div>
+    <script>
+        var topFolder = new Sitebar("Your Favorites", "#favorites");
+        var fun = topFolder.addFolder("fun");
+            fun.addURL("uber fun", "http://www.urbandictionary.com/define.php?term=%26%20uber%20funny");
+            var games = fun.addFolder("games");
+                var rpgs = games.addFolder("RPGs");
+                    rpgs.addURL("Divine Divinity official web site","http://www.larian.com/divinedivinity.php" );
+                games.addURL("Top 10 HTML5 Games", "http://www.netmagazine.com/features/top-10-html5-games-2012");
+            var videos = fun.addFolder("videos");
+                videos.addURL("Youtube", "http://www.youtube.com/");
+                videos.addURL("VBox", "http://vbox7.com/");
+        var news = topFolder.addFolder("news");
+            var fromBulgaria = news.addFolder("FromBulgaria");
+                fromBulgaria.addURL("dir.bg", "http://www.dir.bg/");
+            var foreignNews = news.addFolder("Foreign News");
+                foreignNews.addURL("BBC", "http://www.bbc.com/news/");
+        var search = topFolder.addFolder("search");
+            search.addURL("Google", "https://www.google.com/");
+
+        topFolder.render();
+
+    </script>
+
+</body>
+</html>

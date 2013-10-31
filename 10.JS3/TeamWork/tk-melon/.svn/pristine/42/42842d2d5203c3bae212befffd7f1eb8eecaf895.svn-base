@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mellon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+    <div class="container">
+        <a role="button" class="btn btn-large btn-primary" href="#projForm" data-toggle="modal">New Project</a>
+
+        <div id="projForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="New Project" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 id="projectAddLabel">New Project</h3>
+            </div>
+            <div class="modal-body">
+                <div class="span5">
+                    <form method="post" action="ss/controller.php">
+                        <label for="owner">Owner</label>
+                        <input type="text" name="owner" id="owner" class="span5"> 
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="span5"> 
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description" class="span5">  
+                        <div class="alert hide" id="alert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong id="message"></strong>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" id="close">Close</button>
+                <button class="btn btn-primary" id="add" data-loading-text="Loading...">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+(function () {
+    //
+    // ADD PROJECT FORM
+    //
+    var delay = 500,
+        $owner = $('#owner'),
+        $title = $('#title'),
+        $description = $('#description'),
+        $alert = $('#alert'),
+        $message = $('#message'),
+        // $loader = $('#loader'),
+        $add = $('#add'),
+        $close = $('#close');
+
+    $add.on('click', function (ev) {
+        ev.preventDefault();
+        // $loader.show();
+
+        $.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'addProject',
+                owner : $owner.val(),
+                title : $title.val(),
+                description : $description.val()
+             }
+        }).done(function (response) {
+            // $loader.hide();
+            $message.text(response.message);
+
+            if (response.error) {
+                $alert.addClass('alert-error');
+                $alert.fadeIn(delay);
+                $title.focus();
+            } else if (response.success) {
+                $alert.removeClass('alert-error');
+                $alert.addClass('alert-success');
+                $alert.fadeIn(delay);
+                $add.hide(); 
+            }
+        });
+    });
+
+    $close.on('click', function () {
+        setTimeout(function () {
+            $alert.removeClass('alert-error');
+            $alert.removeClass('alert-success');
+            $alert.hide();
+            $add.show()
+        }, delay);
+    });
+}());
+    </script>
+</body>
+</html>

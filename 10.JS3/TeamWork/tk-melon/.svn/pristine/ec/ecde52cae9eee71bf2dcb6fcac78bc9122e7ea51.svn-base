@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mellon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.popover {
+    width: 200px;
+}
+
+.jumbotron {
+    margin: 80px 0;
+    text-align: center;
+}
+.jumbotron h1 {
+    font-size: 100px;
+    line-height: 1;
+}
+.jumbotron .lead {
+    font-size: 24px;
+    line-height: 1.25;
+}
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Lorem</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <form method="post" action="ss/controller.php" class="navbar-form pull-right" id="loginForm">
+                        <input class="span2" type="text" placeholder="Email" id="loginMail">
+                        <input class="span2" type="password" placeholder="Password" id="loginPass">
+                        <button type="submit" class="btn" id="loginSubmit" title="">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>Lorem Ipsum!</h1>
+            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <a role="button" class="btn btn-large btn-primary" href="#registerForm" data-toggle="modal">Sign up</a>
+        </div>
+
+        <div id="registerForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 id="myModalLabel">Sign up</h3>
+            </div>
+            <div class="modal-body">
+                <div class="span5">
+                    <form method="post" action="ss/controller.php">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="regName" class="span5"> 
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="regEmail" class="span5">  
+                        <label for="password">Password</label> 
+                        <input type="password" name="password" id="regPassword" class="span5">
+                        <div class="alert hide" id="regAlert">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong id="regMessage"></strong>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" id="regClose">Close</button>
+                <button class="btn btn-primary" id="regSubmit" data-loading-text="Loading...">Register</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span4">
+                <h2>Lorem</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+            </div>
+            <div class="span4">
+                <h2>Ipsum</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+            </div>
+            <div class="span4">
+                <h2>Dolor</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <!-- <p><a class="btn" href="#">View details &raquo;</a></p> -->
+            </div>
+        </div>
+
+        <hr>
+
+        <footer>
+        <p>&copy; Lorem Ipsum 2013</p>
+        </footer>
+
+    </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+(function () {
+
+    //
+    // REGISTRATION FORM
+    //
+    var delay = 500,
+        $regName = $('#regName'),
+        $regMail = $('#regEmail'),
+        $regPass = $('#regPassword'),
+        $regAlert = $('#regAlert'),
+        $regMsg = $('#regMessage'),
+        // $loader = $('#loader'),
+        $regSubmit = $('#regSubmit'),
+        $regClose = $('#regClose');
+
+    $regSubmit.on('click', function (ev) {
+        ev.preventDefault();
+        // $loader.show();
+
+        $.ajax({
+            type: 'POST',
+            url: 'ss/controller.php',
+            data: {
+                action: 'register',
+                name : $regName.val(),
+                email : $regMail.val(),
+                password : $regPass.val()
+             }
+        }).done(function (response) {
+            // $loader.hide();
+            $regMsg.text(response.message);
+
+            if (response.error) {
+                $regAlert.addClass('alert-error');
+                $regAlert.fadeIn(delay);
+                $regName.focus();
+            } else if (response.success) {
+                $regAlert.removeClass('alert-error');
+                $regAlert.addClass('alert-success');
+                $regAlert.fadeIn(delay);
+                $regSubmit.hide(); 
+            }
+        });
+    });
+
+    $regClose.on('click', function () {
+        setTimeout(function () {
+            $regAlert.removeClass('alert-error');
+            $regAlert.removeClass('alert-success');
+            $regAlert.hide();
+            $regSubmit.show()
+        }, delay);
+    });
+
+
+    //
+    // LOGIN FORM
+    //
+    var $logForm = $('#loginForm'),
+        $logMail = $('#loginMail'),
+        $logPass = $('#loginPass'),
+        $logSubmit = $('#loginSubmit');
+
+    $logSubmit.popover({
+        animation : true,
+        placement : 'bottom',
+        trigger : 'manual',
+        content : 'Invalid Email or Password..'
+    });
+
+    $logForm.on('click', function (ev) {
+        ev.preventDefault();
+        switch (ev.target.id) {
+            case 'loginSubmit':
+                $.ajax({
+                    type: 'POST',
+                    url: 'ss/controller.php',
+                    data: {
+                        action: 'login',
+                        email : $logMail.val(),
+                        password : $logPass.val()
+                    }
+                }).done(function (response) {
+                    if (response.error) {
+                        $logSubmit.popover('show');
+                    }
+                    else
+                    {
+                        window.location.replace("home.html");
+                    }
+                });
+                break;
+
+            default :
+                $logSubmit.popover('hide');
+                break;
+        }
+    })
+
+}());
+    </script>
+</body>
+</html>

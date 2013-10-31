@@ -1,0 +1,51 @@
+<div id="projectInfo" class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="page-header clearfix text-center">
+				<a href="#profile">
+					<img class="clearfix img-rounded" width="200" height="200" data-bind="attr: { src: owner.avatar }">
+				</a>
+				<hr>
+				<h4>
+					<a href="#profile" data-bind="text: owner.name"></a>
+				</h4>
+				<p>
+					<strong data-bind="text: owner.email"></strong>
+				</p>
+			</div>
+			<p data-bind="text: owner.description"></p>
+			<button data-bind="visible: own() || participate()" class="btn btn-primary">Add New Task</button>
+			<button data-bind="visible: own" class="btn btn-primary">Add New Participant</button>
+		</div>
+
+		<div class="span9">
+			<div class="page-header">
+				<h2 data-bind="text: project.title()"></h2>
+				<p data-bind="text: project.description"></p>
+			</div>
+			<div id="participants">
+				<div class="page-header">
+					<h4>Participants
+						<small>(<span data-bind="text: participants().length"></span>)</small>
+					</h4>
+				</div>
+				<ul data-bind="foreach: participants">
+					<a data-bind="attr: { href: '#users/' + id }">
+						<img width="96" height="96" data-bind="attr: { src: avatar }, bootstrapPopover: { html: true, title: name, content: email + (description ? '<br><hr>' + description : '') }" class="img-circle">
+					</a>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/models.js"></script>
+<script src="js/customBindingHandlers.js"></script>
+<script src="js/projectInfoViewModel.js"></script>
+<script>
+	var slash = location.hash.indexOf('/');
+		pid = location.hash.substring(slash + 1);
+
+	ko.applyBindings(
+		new ProjectInfoViewModel(pid),
+		document.getElementById('projectInfo'));
+</script>

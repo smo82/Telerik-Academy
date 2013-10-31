@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mellon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style type="text/css">
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+#participants img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: url(grayscale.svg); /* Firefox 4+ */
+    filter: gray; /* IE 6-9 */
+}
+
+#participants img:hover {
+    box-shadow: 0 0 10px 0;
+    -webkit-filter: grayscale(0);
+    -moz-filter: grayscale(0);
+    -ms-filter: grayscale(0);
+    -o-filter: grayscale(0);
+    filter: grayscale(0);
+    filter: url(); /* Firefox 4+ */
+    filter: gray; /* IE 6-9 */
+}
+
+#userInfo img {
+    box-shadow: 0 2px 15px 0;
+}
+
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Hello, Pesho!</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Me</a></li>
+                        <li><a href="#about">My Projects</a></li>
+                        <li><a href="#contact">Control Panel</a></li>
+                    </ul>
+                        <button type="submit" class="btn pull-right" id="logout" title="">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+          <!--Sidebar content-->
+<!--             <div class="page-header">
+                <p class="pull-right"><a href="#">hide</a></p>
+                <h4>Hello, Pesho!</h4>
+            </div> -->
+            <div id="userInfo">
+                <div class="page-header">
+                    <img src="http://lorempixel.com/200/200/people/" alt="" class="img-rounded">
+                </div>
+                <h4>Pesho</h4>
+                <p><strong>Sofia, Bulgaria</strong></p>
+                <p><strong>pesho@gmail.com</strong></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, placeat, asperiores, facilis, error aperiam quidem delectus laborum molestias impedit maiores maxime ipsam ab nihil animi quia natus est eum fugit!</p>
+            </div>
+        </div>
+
+        <div class="span8">
+            <!--Body content-->
+
+            <div class="row" id="participants">
+                <div class="span10">
+                    <div class="page-header">
+                        <p class="pull-right"><a href="#">Hide</a></p>
+                        <h4>Participants <small>(7)</small></h4>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/9" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/7" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/5" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/4" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/8" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/1" class="img-circle">
+                        </a>
+                        <a href="#">
+                            <img src="http://lorempixel.com/128/128/people/10" class="img-circle">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+(function () {
+
+    $('#participants img').each(function () {
+        $(this).popover({
+            html : true,
+            animation : true,
+            trigger : 'hover',
+            placement : 'bottom',
+            title : '<h4>Pesho</h4><p>Sofia, Bulgaria<br>pesho@gmail.com</p>',
+            content : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, itaque, doloribus, molestiae, rem aliquam dicta natus odio nulla voluptatibus fuga maiores id culpa ea dolor optio tempora labore dolorem est!'
+        });
+    })
+
+    $('#participants').on('click', function (ev) {
+
+    });
+
+}());
+    </script>
+</body>
+</html>

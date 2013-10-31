@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="js/knockout-2.2.1.js"></script>
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/oop.js"></script>
+  <script type="text/javascript" src="js/data.js"></script>
+  <script type="text/javascript" src="js/classes.js"></script>
+  <script type="text/javascript" src="js/homeVM.js"></script>
+</head>
+<body>
+
+  <div data-bind="with: user">
+    <h1 data-bind="text: name()"></h1>
+    <p>
+      <span>E-mail:</span>
+      <span data-bind="text: email()"></span>
+    </p>
+  </div>
+
+  <table data-bind="foreach: tasks">
+    <tr>
+      <th>Title</th>
+      <th>Start Date</th>
+      <th>Dead Line</th>
+      <th>Status</th>
+    </tr>
+    <tr>
+      <td data-bind="text: title()"></td>
+      <td data-bind="text: startDate()"></td>
+      <td data-bind="text: deadLine()"></td>
+      <td data-bind="text: status()"></td>
+    </tr>
+  </table>
+</body>
+</html>

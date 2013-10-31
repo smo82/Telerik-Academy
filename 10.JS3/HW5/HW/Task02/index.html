@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Google+ Sign In</title>
+    <style>
+        #playerControlHolder{
+            position: relative;
+            display:none;
+        }
+        #player{
+            display: block;
+        }
+        #share-button-holder{
+            position: absolute;
+            left: 670px;
+            top: 0px;
+        }
+        #main-controls, #volume-controls, #playback-quality-controls,
+        #single-video-controls, #play-list-controls
+        {
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+    <script type="text/javascript">
+        (function () {
+            var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;
+            po.src = 'https://apis.google.com/js/client:plusone.js';
+            var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <span id="signinButton">
+        <span
+            class="g-signin"
+            data-callback="signinCallback"
+            data-clientid="572388492229.apps.googleusercontent.com"
+            data-cookiepolicy="single_host_origin"
+            data-requestvisibleactions="http://schemas.google.com/AddActivity"
+            data-scope="https://www.googleapis.com/auth/plus.login">
+        </span>
+    </span>
+
+    <div id="playerControlHolder">
+        <div id="player"></div>
+        <div id="share-button-holder">
+            <g:plus action="share" href="" id="share-tag"></g:plus>
+        </div>
+        <div id="main-controls">
+            <button id="play">Play video</button>
+            <button id="pause">Pause video</button>
+            <button id="stop">Stop video</button>
+            <button id="mute">Mute video</button>
+            <button id="unmute">Unmute video</button>
+        </div>
+        <div id="volume-controls">
+            Set a value between 0 and 100 <br />
+            <span>Volume: </span><input type="text" id="volume-video" value="50"/>
+            <button id="set-volume-video">Set volume</button>            
+        </div>
+        <div id="playback-quality-controls">
+            <span>Quality: </span>
+            <select id="playbeck-quality">
+              <option value="default">Default</option>
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+              <option value="hd720">HD720</option>
+              <option value="hd1080">HD1080</option>
+              <option value="highres">Highres</option>
+            </select>
+            <span>*Please keep in mind that not all videos support all quality levels. Please try with the lowest and the highest to be sure.</span>
+        </div>
+        <div id="single-video-controls">
+            <span>ID: </span><input type="text" id="load-video" value="XnXZzx9pAmQ"/>
+            <button id="single-video">Load video</button>
+        </div>
+        <div id="play-list-controls">
+            <span>Playlist: </span><textarea id="playlist">XnXZzx9pAmQ,JTEHUbfP7OA,EXd66gP53fk,iIwyMif5EOg,k1KsFDLZ3B4</textarea>
+            <button id="load-playlist">Load playlist</button>
+            <button id="previous">Previous</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+    <script>
+        function signinCallback(authResult) {
+            if (authResult['access_token']) {
+                document.getElementById('signinButton').setAttribute('style', 'display: none');
+                //console.log("Google+ sign in succesful!");
+                document.getElementById('playerControlHolder').setAttribute('style', 'display: block');
+            } else if (authResult['error']) {
+                console.log('Google+ access denied!');
+            }
+        }
+    </script>
+    <script src="scripts/youtube-player.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+var data = (function (){
+    var projects = [];
+    var tasks = [];
+    var users = [];
+    var taskParticipations = [];
+    var loggedUser;
+
+    function add(obj){
+        if (obj instanceof classes.Project){
+            projects.push(obj);
+        }
+
+        if (obj instanceof classes.Task){
+            tasks.push(obj);
+        }
+
+        if (obj instanceof classes.User){
+            users.push(obj);
+        }
+
+        if (obj instanceof classes.TaskParticipation){
+            taskParticipations.push(obj);
+        }
+    }
+
+    function get(typeObject){
+        if (typeObject === "projects"){
+            return projects;
+        }
+
+        if (typeObject === "tasks"){
+            return tasks;
+        }
+        
+        if (typeObject === "users"){
+            return users;
+        }
+        
+        if (typeObject === "taskParticipations"){
+            return taskParticipations;
+        }
+    }
+
+    function addUser(user){
+        loggedUser = user;
+    }
+
+    function getUser(){
+        // Here we will get the logged user object from the session storage
+        return loggedUser;
+    }
+
+    return{
+        add : add,
+        get : get,
+        addUser : addUser,
+        getUser : getUser
+    }
+})()

@@ -1,0 +1,79 @@
+<div id="overviewPage" class="page">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <!-- SIDEBAR -->
+            <div id="userInfo" class="span3">
+                <div class="page-header clearfix text-center">
+                    <a href="#profile">
+                        <img class="clearfix img-rounded" width="200" height="200" data-bind="attr: { src: userInfo.avatar }">
+                    </a>
+                    <hr>
+                    <h4>
+                        <a href="#profile" data-bind="text: userInfo.name"></a>
+                    </h4>
+                    <p>
+                        <strong data-bind="text: userInfo.email"></strong>
+                    </p>
+                </div>
+                <p data-bind="text: userInfo.description"></p>
+            </div>
+            <!-- MAIN CONTAINER -->
+            <div id="sections" class="span9">
+                <!-- TASKS -->
+
+                <p>ALL TASKS</p>
+                <p>TWITEER FEED</p>
+
+                <div id="userTasks" class="section" data-bind="with: tasks">
+                    <div class="page-header">
+                        <h4>
+                            <a href="#users">Tasks</a>
+                            <small>(<span data-bind="text: $data.length"></span>)</small>
+                        </h4>
+                    </div>
+                    <ul data-bind="foreach: $data">
+                        <li>
+                            <span>Title : </span>
+                            <span data-bind="text: $data.title"></span>
+                        </li>
+                        <li>
+                            <span>Project : </span>
+                            <span data-bind="text: $data.project"></span>
+                        </li>
+                        <li>
+                            <span>Description : </span>
+                            <span data-bind="text: $data.description"></span>
+                        </li>
+                        <li>
+                            <span>Status : </span>
+                            <span data-bind="text: $data.status"></span>
+                        </li>
+                        <li>
+                            <span>Start Date : </span>
+                            <span data-bind="text: $data.startDate"></span>
+                        </li>
+                        <li>
+                            <span>End Date : </span>
+                            <span data-bind="text: $data.endDate"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/models.js"></script>
+<script src="js/customBindingHandlers.js"></script>
+<script src="js/userInfoViewModel.js"></script>
+<script src="js/userTasksViewModel.js"></script>
+<script>
+
+ko.applyBindings(
+    new UserInfoViewModel(),
+    document.getElementById('userInfo'));
+
+ko.applyBindings(
+    new UserTasksViewModel(),
+    document.getElementById('userTasks'));
+
+</script>

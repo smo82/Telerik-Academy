@@ -1,0 +1,128 @@
+$(function() {
+  var loginCorrectUser = "svetlin@nakov.com";
+  var loginCorrectPass = "password";
+
+  var loginCorrectUserWithSideProject = "ipradev@gmail.com";
+  var loginCorrectPassWithSideProject = "password";
+
+  module("Project View Model tests");
+
+  asyncTest("Test Projects View Model initial state", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val(loginCorrectUser);
+      $loginPass = $('#loginPass');
+      $loginPass.val(loginCorrectPass);
+      navigationViewModel.login().done(function(){
+
+        $fixture.load('projects.html', function(){
+          var projectsViewModel = new ProjectsViewModel("../ss/controller.php");
+          equal(projectsViewModel.serverUrl,"../ss/controller.php");
+          equal(projectsViewModel.myProjects().length,0);
+          equal(projectsViewModel.sideProjects().length,0);
+          start();            
+        });
+
+      })
+    });
+  });
+
+  asyncTest("Test Projects View Model current user myProjects array", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val(loginCorrectUser);
+      $loginPass = $('#loginPass');
+      $loginPass.val(loginCorrectPass);
+      navigationViewModel.login().done(function(){
+
+        $fixture.load('projects.html', function(){
+          var projectsViewModel = new ProjectsViewModel("../ss/controller.php");
+          projectsViewModel.getMyProjects().done(function(){
+            equal(projectsViewModel.myProjects().length, 1, "We test for user with one project");
+            start();            
+          });
+        });
+
+      })
+    });
+  });
+
+  asyncTest("Test Projects View Model current user sideProjects array", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val(loginCorrectUserWithSideProject);
+      $loginPass = $('#loginPass');
+      $loginPass.val(loginCorrectPassWithSideProject);
+      navigationViewModel.login().done(function(){
+
+        $fixture.load('projects.html', function(){
+          var projectsViewModel = new ProjectsViewModel("../ss/controller.php");
+          projectsViewModel.getSideProjects().done(function(){
+            equal(projectsViewModel.sideProjects().length, 1, "We test for user with one side project");
+            start();            
+          });
+        });
+
+      })
+    });
+  });
+
+  asyncTest("Test Projects View Model other user myProjects array", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val(loginCorrectUser);
+      $loginPass = $('#loginPass');
+      $loginPass.val(loginCorrectPass);
+      navigationViewModel.login().done(function(){
+        var otherUserId = navigationViewModel.currentUserID();
+        navigationViewModel.logout().done(function(){
+
+          $fixture.load('projects.html', function(){
+            var projectsViewModel = new ProjectsViewModel("../ss/controller.php", otherUserId);
+            projectsViewModel.getMyProjects().done(function(){
+              equal(projectsViewModel.myProjects().length, 1, "We test for user with one project");
+              start();            
+            });
+          });
+
+        })
+
+      })
+    });
+  });
+
+  asyncTest("Test Projects View Model other user sideProjects array", function(){
+    $fixture = $("#qunit-fixture");
+    $fixture.load('navigation.html', function(){
+      var navigationViewModel = new NavigationViewModel("../ss/controller.php");
+      $loginMail = $('#loginMail');
+      $loginMail.val(loginCorrectUserWithSideProject);
+      $loginPass = $('#loginPass');
+      $loginPass.val(loginCorrectPassWithSideProject);
+      navigationViewModel.login().done(function(){
+        var otherUserId = navigationViewModel.currentUserID();
+        navigationViewModel.logout().done(function(){
+
+          $fixture.load('projects.html', function(){
+            var projectsViewModel = new ProjectsViewModel("../ss/controller.php", otherUserId);
+            projectsViewModel.getSideProjects().done(function(){
+              equal(projectsViewModel.sideProjects().length, 1, "We test for user with one project");
+              start();            
+            });
+          });
+
+        })
+
+      })
+    });
+  });
+  
+});

@@ -1,0 +1,35 @@
+var projectsVm = {
+  projects: ko.observableArray([])
+};
+
+projectsVm.addProject = function (project){
+  projectsVm.projects.push(project);
+}
+
+jQuery(document).ready(function() {
+debugger;
+  // We wait to take the current user data
+  data.getSessionField('projectLeader').
+    then(function (projectLeader){
+      var projectLeaderId;
+      if (projectLeader instanceof classes.User){
+        projectLeaderId = projectLeader.id(); 
+      }
+
+      // We wait to take the data for all the tasks
+      data.get("projects").
+        then(function (allProjects){
+          if (allProjects == undefined){
+            return;
+          }
+
+          for (var i = 0; i < allProjects.length; i++) {
+            if ((!projectLeaderId) || (allProjects[i].projectLeaderId() == projectLeaderId)){
+              projectsVm.addProject(allProjects[i]);
+            }
+          };
+
+          ko.applyBindings(projectsVm);
+        }, function(){})
+    });
+});

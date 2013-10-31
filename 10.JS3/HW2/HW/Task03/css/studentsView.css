@@ -1,0 +1,11 @@
+body{
+	text-align: center;
+}
+
+#studentsTable{
+	border: 1px solid black;
+}
+
+#studentsTable th, #studentsTable td{
+	border: 1px solid black;
+}
