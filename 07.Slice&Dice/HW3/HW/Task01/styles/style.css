@@ -1,0 +1,192 @@
+header, section, aside, article, ul, li, p, h1, span, label {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-size: 12px;
+  font-family: verdana; }
+
+#wrapper {
+  zoom: 1;
+  width: 776px;
+  height: 384px;
+  border: 1px solid #e1ebf7; }
+  #wrapper:after {
+    display: block;
+    content: "";
+    height: 0;
+    clear: both; }
+  #wrapper header {
+    zoom: 1; }
+    #wrapper header:after {
+      display: block;
+      content: "";
+      height: 0;
+      clear: both; }
+    #wrapper header aside {
+      height: 47px;
+      width: 121px;
+      background: url("../images/header_aside_bkgnd.jpg");
+      float: left; }
+    #wrapper header section {
+      width: 655px;
+      height: 47px;
+      background: url("../images/header_main_bkgnd.jpg") right no-repeat;
+      float: right; }
+  #wrapper > section {
+    zoom: 1; }
+    #wrapper > section:after {
+      display: block;
+      content: "";
+      height: 0;
+      clear: both; }
+    #wrapper > section > aside {
+      height: 305px;
+      width: 118px;
+      float: left;
+      background-color: #f2f3f7; }
+      #wrapper > section > aside ul {
+        padding-left: 8px;
+        list-style-type: none; }
+        #wrapper > section > aside ul li p {
+          font-size: 1.2em;
+          font-weight: bold;
+          padding-top: 18px;
+          color: #424284; }
+        #wrapper > section > aside ul li ul {
+          line-height: 12px;
+          font-size: 0.8em; }
+          #wrapper > section > aside ul li ul li {
+            color: #006699;
+            background: url("../images/square_bullet.png");
+            background-repeat: no-repeat;
+            background-position: 0px 6px;
+            padding-left: 6px;
+            margin-left: -6px; }
+    #wrapper > section > section {
+      height: 303px;
+      width: 656px;
+      float: right;
+      border: 1px solid #e6def5;
+      background-color: #f9f4fd; }
+      #wrapper > section > section > section {
+        float: left;
+        height: 303px;
+        width: 448px;
+        border: none;
+        border-right: 1px solid #e6def5; }
+        #wrapper > section > section > section header {
+          height: 24px;
+          width: 448px;
+          background: url("../images/article-header-bkgnd.png") left no-repeat;
+          background-color: #e6def5; }
+          #wrapper > section > section > section header label {
+            color: #6d64a3;
+            font-weight: bold;
+            font-size: 0.9em;
+            padding-left: 25px; }
+          #wrapper > section > section > section header ul {
+            display: inline-block;
+            color: #0000cc; }
+            #wrapper > section > section > section header ul li {
+              margin-top: 8px;
+              padding: 0 6px;
+              line-height: 10px;
+              font-size: 0.8em;
+              height: 10px;
+              display: inline-block;
+              border-right: 1px solid #0000cc; }
+            #wrapper > section > section > section header ul li:last-child {
+              border: none; }
+        #wrapper > section > section > section > article {
+          color: #4b3e82;
+          font-size: 0.9em;
+          padding: 10px; }
+          #wrapper > section > section > section > article > section {
+            zoom: 1;
+            border: none;
+            margin-bottom: 10px; }
+            #wrapper > section > section > section > article > section:after {
+              display: block;
+              content: "";
+              height: 0;
+              clear: both; }
+            #wrapper > section > section > section > article > section #article-image {
+              float: left;
+              height: 128px;
+              width: 130px;
+              border: 1px solid black;
+              background: url("../images/article-image.jpg") no-repeat; }
+            #wrapper > section > section > section > article > section > article {
+              width: 280px;
+              float: left;
+              padding-left: 10px; }
+              #wrapper > section > section > section > article > section > article h1 {
+                padding-top: 10px;
+                font-size: 1.3em;
+                color: #c41e89; }
+              #wrapper > section > section > section > article > section > article .bolded {
+                font-weight: bold; }
+      #wrapper > section > section aside {
+        height: 303px;
+        width: 206px;
+        float: right;
+        border-left: 1px solid #e6def5; }
+        #wrapper > section > section aside ul {
+          list-style-type: none; }
+          #wrapper > section > section aside ul li {
+            zoom: 1; }
+            #wrapper > section > section aside ul li:after {
+              display: block;
+              content: "";
+              height: 0;
+              clear: both; }
+            #wrapper > section > section aside ul li img {
+              margin: 10px;
+              margin-bottom: 0;
+              border: 1px solid black;
+              float: left; }
+            #wrapper > section > section aside ul li p {
+              margin-top: 10px;
+              color: #4b3e82;
+              font-size: 0.8em;
+              width: 124px;
+              float: left; }
+        #wrapper > section > section aside section {
+          zoom: 1; }
+          #wrapper > section > section aside section:after {
+            display: block;
+            content: "";
+            height: 0;
+            clear: both; }
+          #wrapper > section > section aside section ul {
+            padding: 10px; }
+          #wrapper > section > section aside section #left-list {
+            float: left; }
+          #wrapper > section > section aside section #right-list {
+            float: right; }
+  #wrapper footer {
+    width: 776px;
+    height: 32px;
+    background-color: #59518c;
+    color: white; }
+    #wrapper footer p {
+      padding-top: 13px;
+      line-height: 7px;
+      font-size: 0.8em;
+      text-align: center; }
+
+.link-list {
+  list-style-type: none;
+  padding-top: 10px; }
+  .link-list li {
+    background: url("../images/square_bullet_orange.png");
+    background-repeat: no-repeat;
+    background-position: 0px 6px;
+    padding-left: 6px;
+    font-size: 0.8em; }
+    .link-list li a {
+      color: #0000cc;
+      text-decoration: none; }
+      .link-list li a:hover {
+        text-decoration: underline; }

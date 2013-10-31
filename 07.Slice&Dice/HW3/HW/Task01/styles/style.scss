@@ -1,0 +1,243 @@
+@mixin clearFix{
+	zoom: 1;
+
+	&:after {
+	  display: block;
+	  content: "";
+	  height: 0;
+	  clear: both; 
+	}
+}
+
+header, section, aside, article, ul, li, p, h1, span, label{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-size: 12px;
+	font-family: verdana;
+}
+
+#wrapper{
+	@include clearFix;
+	width: 776px;
+	height: 384px;
+	border: 1px solid #e1ebf7;
+
+	header{
+		@include clearFix;
+		aside{
+			height: 47px;
+			width: 121px;
+			background: url("../images/header_aside_bkgnd.jpg");
+			float: left;
+		}
+		section{
+			width: 655px;
+			height: 47px;
+			background: url("../images/header_main_bkgnd.jpg") right no-repeat;
+			float: right;			
+		}
+	}
+
+	> section{
+		@include clearFix;
+		> aside{
+			height: 305px;
+			width: 118px;
+			float:left;
+			background-color: #f2f3f7;
+			ul{
+				padding-left: 8px;
+				list-style-type: none;
+
+				li{
+					p{
+						font-size: 1.2em;
+						font-weight: bold;
+						padding-top: 18px;
+						color: #424284;
+					}
+
+					ul{
+						line-height: 12px;
+						font-size: 0.8em;
+						li{
+							color: #006699;
+							background: url("../images/square_bullet.png");
+							background-repeat: no-repeat;
+							background-position: 0px 6px; 
+							padding-left: 6px; 
+							margin-left: -6px;
+						}
+					}
+				}
+			}
+		}
+
+		> section{
+			height: 303px;
+			width: 656px;
+			float: right;
+			border: 1px solid #e6def5;
+			background-color: #f9f4fd;
+
+			> section{
+				float: left;
+				height: 303px;
+				width: 448px;
+				border: none;
+				border-right: 1px solid #e6def5;
+
+				header{
+					height: 24px;
+					width: 448px;
+					background: url("../images/article-header-bkgnd.png") left no-repeat;
+					background-color: #e6def5;
+
+					label{
+						color: #6d64a3;
+						font-weight: bold;
+						font-size: 0.9em;
+						padding-left: 25px;
+					}
+
+					ul{
+						display: inline-block;
+						color: #0000cc;
+
+						li{
+							margin-top: 8px;
+							padding: 0 6px;
+							line-height: 10px;
+							font-size: 0.8em;
+							height: 10px;
+							display: inline-block;
+							border-right: 1px solid #0000cc;
+						}
+
+						li:last-child{
+							border:none;
+						}
+					}
+				}
+
+				> article{
+					color: #4b3e82;
+					font-size: 0.9em;
+					padding: 10px;
+
+					> section{
+						@include clearFix;
+						border:none;
+						margin-bottom: 10px;
+
+						#article-image{
+							float: left;
+							height: 128px;
+							width: 130px;
+							border: 1px solid black;
+							background: url("../images/article-image.jpg") no-repeat;
+						}
+
+						> article{
+							width: 280px;
+							float: left;
+							padding-left: 10px;
+
+							h1{
+								padding-top: 10px;
+								font-size: 1.3em;
+								color: #c41e89;
+							}
+
+							.bolded{
+								font-weight: bold;
+							}
+						}	
+					}
+				}
+			}
+
+			aside{
+				height: 303px;
+				width: 206px;
+				float: right;
+				border-left: 1px solid #e6def5;
+
+				ul{
+					list-style-type: none;
+					li{
+						@include clearFix;
+						img{
+							margin: 10px;
+							margin-bottom: 0;
+							border: 1px solid black;
+							float: left;
+						}
+
+						p{
+							margin-top: 10px;
+							color: #4b3e82;
+							font-size: 0.8em;
+							width: 124px;
+							float: left;
+						}
+					}
+				}
+
+				section{
+					@include clearFix;
+					ul{
+						padding: 10px;
+					}
+
+					#left-list{
+						float: left;
+					}
+
+					#right-list{
+						float: right;
+					}
+				}
+			}
+		}
+	}
+
+	footer{
+		width: 776px;
+		height: 32px;
+		background-color: #59518c;
+		color: white;
+
+		p{
+			padding-top: 13px;
+			line-height: 7px;
+			font-size: 0.8em;
+			text-align: center;
+		}
+	}
+}
+
+.link-list{
+	list-style-type: none;
+	padding-top:10px;
+
+	li{
+		background: url("../images/square_bullet_orange.png");
+		background-repeat: no-repeat;
+		background-position: 0px 6px; 
+		padding-left: 6px; 
+		font-size: 0.8em;
+
+		a{
+			color: #0000cc;
+			text-decoration: none;
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}

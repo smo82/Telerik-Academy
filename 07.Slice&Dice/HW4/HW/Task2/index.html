@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Geolocation</title>
+    <script src="scripts/modernizr/modernizr.custom.42257.js"></script>	
+</head>
+<body>
+	<p id="geo"></p>
+
+
+	<script>
+	var x=document.getElementById("geo");
+
+	if (Modernizr.geolocation){
+    	navigator.geolocation.getCurrentPosition(showPosition);
+    } else{
+		x.innerHTML="Sorry, not supported geolocation!";
+	}
+	
+	function showPosition(position)
+	{
+	  x.innerHTML="Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude; 
+	}
+	</script>
+</body>
+</html>

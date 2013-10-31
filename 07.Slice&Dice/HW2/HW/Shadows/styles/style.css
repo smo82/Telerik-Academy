@@ -1,0 +1,148 @@
+.image-wrapper {
+    zoom: 1;
+}
+.image-wrapper:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both; 
+}
+
+.picture_element {
+	float:left;
+}
+
+.image-wrapper{
+	position: relative;
+}
+
+/*----------*/
+/* Big Image*/
+/*----------*/
+#big-image > .center > #center-center{
+	position: absolute;
+	top:0;
+	left:0;
+
+	width: 1024px;
+	height: 768px;
+	background: url(../images/dog.jpg);
+}
+
+#big-image > .top >  #top-right{
+	position: absolute;
+	top:0;
+	left:1024px;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/top-right.png);	
+}
+
+#big-image > .center > #center-right{
+	position: absolute;
+	top:7px;
+	left:1024px;
+
+	width: 7px;
+	height: 761px;
+	background: url(../images/center-right.png);	
+}
+
+#big-image > .bottom >  #bottom-left{
+	position: absolute;
+	top:768px;
+	left:0;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/bottom-left.png);	
+}
+
+#big-image > .bottom >  #bottom-center{
+	position: absolute;
+	top:768px;
+	left:7px;
+
+	width: 1017px;
+	height: 7px;
+	background: url(../images/bottom-center.png);	
+}
+
+#big-image > .bottom > #bottom-right{
+	position: absolute;
+	top:768px;
+	left:1024px;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/bottom-right.png);	
+}
+
+
+/*------------*/
+/* Small Image*/
+/*------------*/
+#small-image{
+	left: 1035px;
+}
+
+#small-image > .center > #center-center{
+	position: absolute;
+	top:0;
+	left:0;
+
+	width: 259px;
+	height: 194px;
+	background: url(../images/lion.jpg);
+}
+
+#small-image > .top >  #top-right{
+	position: absolute;
+	top:0;
+	left:259px;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/top-right.png);	
+}
+
+#small-image > .center > #center-right{
+	position: absolute;
+	top:7px;
+	left:259px;
+
+	width: 7px;
+	height: 187px;
+	background: url(../images/center-right.png);	
+}
+
+#small-image > .bottom >  #bottom-left{
+	position: absolute;
+	top:194px;
+	left:0;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/bottom-left.png);	
+}
+
+#small-image > .bottom >  #bottom-center{
+	position: absolute;
+	top:194px;
+	left:7px;
+
+	width: 252px;
+	height: 7px;
+	background: url(../images/bottom-center.png);	
+}
+
+#small-image > .bottom > #bottom-right{
+	position: absolute;
+	top:194px;
+	left:259px;
+
+	width: 7px;
+	height: 7px;
+	background: url(../images/bottom-right.png);	
+}

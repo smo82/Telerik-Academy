@@ -1,0 +1,49 @@
+.button-wrapper {
+    zoom: 1;
+}
+.button-wrapper:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both; 
+}
+
+ul, li, a{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	font-family: arial;
+}
+
+ul{
+	list-style-type: none;
+}
+
+	li{
+		padding: 0 20px;
+		margin-left: -5px;
+		height: 48px;
+		display: inline-block;
+		background: url(../images/button-tail.png);
+		border: 1px solid rgb(207,207,207);
+	}
+		li:first-child{
+			border-bottom-left-radius: 7px;
+			border-top-left-radius: 7px;
+		}
+
+		li:last-child{
+			border-bottom-right-radius: 7px;
+			border-top-right-radius: 7px;
+		}
+
+a{
+	line-height: 48px;
+	font-size: 16px;
+	text-decoration: none;
+	color: #a7162e;
+	font-weight: bold;
+	text-transform: uppercase;
+}

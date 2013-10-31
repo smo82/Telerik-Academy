@@ -1,0 +1,56 @@
+.button-wrapper {
+    zoom: 1;
+}
+.button-wrapper:after {
+  display: block;
+  content: "";
+  height: 0;
+  clear: both; 
+}
+
+body{
+	font-family: sans-serif;
+}
+
+a, button{
+	padding: 0;
+	margin: 0;
+	line-height: 47px;
+	font-size: 20px;	
+}
+
+a{
+	height: 53px;
+	text-decoration: none;
+	display: block;
+	color: black;
+}
+
+button{
+	background: none;
+	border: none;
+}
+
+.button-left, .button-right{
+	height: 53px;
+	display: inline-block;
+}
+.button-left{
+	width: 22px;
+	background: url(../images/button-left-bkgnd.png);
+    background-repeat: no-repeat;
+    float:left;
+}
+.button-center{
+	display: inline-block;
+	height: 53px;
+	background: url(../images/button_tail.png);
+	float: left;
+}
+.button-right{
+	width: 26px;
+	background: url(../images/button-right-bkgnd.png);
+    background-repeat: no-repeat;
+    float:left;
+}
+
