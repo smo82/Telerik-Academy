@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assertions-Homework", "Assertions-Homework\Assertions-Homework.csproj", "{1803735B-6CF4-416D-A986-BD7BFDA90671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions-Homework", "Exceptions-Homework\Exceptions-Homework.csproj", "{8620140E-9534-49B5-B888-1B02EBED205E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1803735B-6CF4-416D-A986-BD7BFDA90671}.Debug|x86.ActiveCfg = Debug|x86
+		{1803735B-6CF4-416D-A986-BD7BFDA90671}.Debug|x86.Build.0 = Debug|x86
+		{1803735B-6CF4-416D-A986-BD7BFDA90671}.Release|x86.ActiveCfg = Release|x86
+		{1803735B-6CF4-416D-A986-BD7BFDA90671}.Release|x86.Build.0 = Release|x86
+		{8620140E-9534-49B5-B888-1B02EBED205E}.Debug|x86.ActiveCfg = Debug|x86
+		{8620140E-9534-49B5-B888-1B02EBED205E}.Debug|x86.Build.0 = Debug|x86
+		{8620140E-9534-49B5-B888-1B02EBED205E}.Release|x86.ActiveCfg = Release|x86
+		{8620140E-9534-49B5-B888-1B02EBED205E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareIntLongFloatDoubleDecimal", "CompareIntLongFloatDoubleDecimal\CompareIntLongFloatDoubleDecimal.csproj", "{5D3638DD-67EC-4E0D-AF88-EBA8103B2F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFloatDoubleDecimal", "CompareFloatDoubleDecimal\CompareFloatDoubleDecimal.csproj", "{A8578FA1-1C60-4BD9-8EBC-58C068A92015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareSort", "CompareSort\CompareSort.csproj", "{B61B9C2C-0AF9-4ABA-B35D-43F555914297}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D3638DD-67EC-4E0D-AF88-EBA8103B2F95}.Debug|x86.ActiveCfg = Debug|x86
+		{5D3638DD-67EC-4E0D-AF88-EBA8103B2F95}.Debug|x86.Build.0 = Debug|x86
+		{5D3638DD-67EC-4E0D-AF88-EBA8103B2F95}.Release|x86.ActiveCfg = Release|x86
+		{5D3638DD-67EC-4E0D-AF88-EBA8103B2F95}.Release|x86.Build.0 = Release|x86
+		{A8578FA1-1C60-4BD9-8EBC-58C068A92015}.Debug|x86.ActiveCfg = Debug|x86
+		{A8578FA1-1C60-4BD9-8EBC-58C068A92015}.Debug|x86.Build.0 = Debug|x86
+		{A8578FA1-1C60-4BD9-8EBC-58C068A92015}.Release|x86.ActiveCfg = Release|x86
+		{A8578FA1-1C60-4BD9-8EBC-58C068A92015}.Release|x86.Build.0 = Release|x86
+		{B61B9C2C-0AF9-4ABA-B35D-43F555914297}.Debug|x86.ActiveCfg = Debug|x86
+		{B61B9C2C-0AF9-4ABA-B35D-43F555914297}.Debug|x86.Build.0 = Debug|x86
+		{B61B9C2C-0AF9-4ABA-B35D-43F555914297}.Release|x86.ActiveCfg = Release|x86
+		{B61B9C2C-0AF9-4ABA-B35D-43F555914297}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

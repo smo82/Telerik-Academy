@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task01", "Task01\Task01.csproj", "{3B0A4392-4F2E-4AD3-96C8-E0F43A041ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02", "Task02\Task02.csproj", "{78C467C5-85AB-4400-B400-013C96FEE86A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task04Minesweeper", "Task04Minesweeper\Task04Minesweeper.csproj", "{FDC20B3D-2C41-4D08-AC31-3B57726BB5EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B0A4392-4F2E-4AD3-96C8-E0F43A041ACE}.Debug|x86.ActiveCfg = Debug|x86
+		{3B0A4392-4F2E-4AD3-96C8-E0F43A041ACE}.Debug|x86.Build.0 = Debug|x86
+		{3B0A4392-4F2E-4AD3-96C8-E0F43A041ACE}.Release|x86.ActiveCfg = Release|x86
+		{3B0A4392-4F2E-4AD3-96C8-E0F43A041ACE}.Release|x86.Build.0 = Release|x86
+		{78C467C5-85AB-4400-B400-013C96FEE86A}.Debug|x86.ActiveCfg = Debug|x86
+		{78C467C5-85AB-4400-B400-013C96FEE86A}.Debug|x86.Build.0 = Debug|x86
+		{78C467C5-85AB-4400-B400-013C96FEE86A}.Release|x86.ActiveCfg = Release|x86
+		{78C467C5-85AB-4400-B400-013C96FEE86A}.Release|x86.Build.0 = Release|x86
+		{FDC20B3D-2C41-4D08-AC31-3B57726BB5EC}.Debug|x86.ActiveCfg = Debug|x86
+		{FDC20B3D-2C41-4D08-AC31-3B57726BB5EC}.Debug|x86.Build.0 = Debug|x86
+		{FDC20B3D-2C41-4D08-AC31-3B57726BB5EC}.Release|x86.ActiveCfg = Release|x86
+		{FDC20B3D-2C41-4D08-AC31-3B57726BB5EC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Check if browser is Mozzila based</title>
+</head>
+<body>
+	<div id="wrapper">
+		<button onclick="CustomOnClick()">Check If Mozzila</button>
+	</div>
+	<script>
+		function CustomOnClick(ev, argumenti) {
+			var browser = window.navigator.appCodeName;
+			if (browser == "Mozilla") {
+				alert("Yes");
+			} else {
+				alert("No");
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using System;
+class HWTemplate
+{
+    static void Main(string[] args)
+    {
+		string[,] bigTestMatrix = {
+	<# for(int i = 0; i < 30; i++) { #>
+		{
+	<# for(int j = 0; j < 30; j++) { #>
+		"<#=i#>.<#=j#>",
+	<# } #>
+		},
+	<# } #>
+		};
+
+		for(int i = 0; i < 30; i++) {
+			Console.WriteLine();
+			for(int j = 0; j < 30; j++) {
+				Console.Write(bigTestMatrix[i,j] + ",");
+			}
+		}	
+	}
+}
