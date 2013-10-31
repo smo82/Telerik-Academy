@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Throw trash game</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #454545;
+		}
+		#drawCanvas{
+			border: 1px solid black;
+		}
+	</style>
+	<script>
+		/*
+		Task05
+
+		Draw a circle that flies inside a box
+		- When it reaches an edge, it should bounce that edge
+
+		*/
+
+		(function (){
+			var BALL_RADIUS = 5;
+			var BALL_BORDER = 3;
+			var BALL_WIDTH = BALL_RADIUS + BALL_BORDER;
+			var BALL_STEP = 2;
+
+			window.addEventListener('load', function () {
+				var canvas = document.getElementById("drawCanvas");
+				context = canvas.getContext("2d");
+
+				canvasHeight = canvas.height;
+				canvasWidth = canvas.width;
+
+				posTop = 8;
+				posLeft = 8;
+				directionTop = 1;
+				directionLeft = 1;
+
+				timer = setInterval(function (){moveBall(context);}, 2);
+		    }, false);
+
+		    function moveBall(context){
+				context.clearRect (0 ,0 ,canvasWidth ,canvasHeight );
+		    	posTop += directionTop * BALL_STEP;
+		    	posLeft += directionLeft * BALL_STEP;
+		    	manageDirection();
+				drawBall(context, posTop, posLeft);
+		    }
+
+		    function manageDirection(){
+		    	if (posTop == canvasHeight - BALL_WIDTH){
+		    		directionTop = -1;
+		    	}
+
+		    	if (posTop == BALL_WIDTH){
+		    		directionTop = 1;
+		    	}
+
+		    	if (posLeft == canvasWidth - BALL_WIDTH){
+		    		directionLeft = -1;
+		    	}
+
+		    	if (posLeft == BALL_WIDTH){
+		    		directionLeft = 1;
+		    	}
+		    }
+
+			function drawBall(context, top, left){
+				context.lineWidth = BALL_BORDER;
+				context.strokeStyle = "#337d8f";
+    			context.fillStyle = "#90cad7";
+
+				//Pedal wheel
+				context.beginPath();
+				context.arc(left, top, BALL_RADIUS, 0, 2 * Math.PI, false);
+				context.stroke();
+			}
+		})();
+	</script>
+<body>
+	<div id="wrapper">
+		<canvas id="drawCanvas" width="1000" height="700">
+			Canvas not supported
+		</canvas>
+	</div>
+</body>
+</html>

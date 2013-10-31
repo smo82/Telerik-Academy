@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+
+		.innerDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper" class="wrapClass">
+	</div>
+	<script>
+		(function (){
+			var tags = ["cms", "javascript", "js", "ASP.NET MVC", "ASP.NET MVC", ".net", ".net", "css", "wordpress", "xaml", "js", "http", "web", "asp.net", "asp.net MVC", "ASP.NET MVC", "wp", "javascript", "js", "cms", "html", "javascript", "http", "http", "CMS"];
+
+			var tagsCloud = generateTagCloud(tags,17,42);
+
+			var docFragment = document.createDocumentFragment();
+
+			var singleIntervalTextNode = document.createTextNode(" ");
+			for (var i = 0; i < tagsCloud.length; i++) {
+				docFragment.appendChild(tagsCloud[i].cloneNode(true));
+				docFragment.appendChild(singleIntervalTextNode.cloneNode(true));
+			};
+
+			document.getElementById("wrapper").appendChild(docFragment);
+
+			function generateTagCloud(tags,minFont,maxFont){
+				var tagsByOccurrences = [];
+				var maxOccurrences = 0;
+				for (var i = 0; i < tags.length; i++) {
+					tags[i] = tags[i].toLowerCase();
+					if (tagsByOccurrences[tags[i]]){
+						tagsByOccurrences[tags[i]]++;
+					}
+					else{
+						tagsByOccurrences[tags[i]] = 1;
+					}
+
+					if (maxOccurrences < tagsByOccurrences[tags[i]]){
+						maxOccurrences = tagsByOccurrences[tags[i]];
+					}
+				};
+
+				var fontRange = maxFont - minFont;
+				var resultTagCloud = [];
+
+				for(tagName in tagsByOccurrences){
+					var newSpan = document.createElement("span");
+					newSpan.innerHTML = tagName;
+					newSpan.style.fontSize = minFont + parseInt((tagsByOccurrences[tagName]/maxOccurrences) * fontRange) + "px";
+
+					resultTagCloud.push(newSpan);
+				}
+
+				return resultTagCloud;
+			}
+		})()
+	</script>
+</body>
+</html>

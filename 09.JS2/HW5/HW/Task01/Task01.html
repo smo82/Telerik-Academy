@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Carousel</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #454545;
+		}
+
+		.imageDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			border-radius: 5px;
+			position:absolute;
+		}
+	</style>
+	<script>
+		/*
+		Task01
+
+		Create a Simple JS Carousel with N images and two arrows for image control 
+
+		*/
+
+		(function (){
+			window.onload = function (){
+				var CIRCLE_CENTER_TOP = 300;
+				var CIRCLE_CENTER_LEFT = 700;
+				var CIRCLE_RADIUS_TOP = 200;
+				var CIRCLE_RADIUS_LEFT = 600;
+				var IMAGE_DIVS_CLASS_NAME = 'imageDiv';
+				var BIG_IMAGE_WIDTH = 500;
+				var BIG_IMAGE_HEIGHT = 313;
+				var SMALL_IMAGE_WIDTH = 200;
+				var SMALL_IMAGE_HEIGHT = 125;
+				
+				initialize();
+
+				function initialize(){
+					circleInnerDivCollection = document.getElementsByClassName(IMAGE_DIVS_CLASS_NAME);
+					circleCurrentRotationPosition = 0;
+					rotateCircleDivs(1);
+					var rotateLeftBtn = document.getElementById('rotateLeftBtn');
+					rotateLeftBtn.onclick = rotateLeft;
+					var rotateRightBtn = document.getElementById('rotateRightBtn');
+					rotateRightBtn.onclick = rotateRight;
+				}
+
+				function displaySmall(imageDiv){
+					imageDiv.style.width = SMALL_IMAGE_WIDTH + 'px';
+					imageDiv.style.height = SMALL_IMAGE_HEIGHT + 'px';
+					imageDiv.style.backgroundImage = "url('images\/" + imageDiv.id + "_small.jpg')";
+				}
+
+				function displayBig(imageDiv){
+					imageDiv.style.width = BIG_IMAGE_WIDTH + 'px';
+					imageDiv.style.height = BIG_IMAGE_HEIGHT + 'px';
+					imageDiv.style.backgroundImage = "url('images\/" + imageDiv.id + "_big.jpg')";
+				}
+
+				function rotateLeft(){
+					rotateCircleDivs(1);
+				}
+
+				function rotateRight(){
+					rotateCircleDivs(-1);
+				}
+
+				function rotateCircleDivs(direction){
+					var circleNumberOfSections = circleInnerDivCollection.length;
+					var circleSectionAngle = 360 / circleNumberOfSections;
+
+					//We decrement the current rotation position by one and thus we rotate the divs clockwise
+					circleCurrentRotationPosition = circleCurrentRotationPosition + direction;
+					if (circleCurrentRotationPosition < 0){
+						circleCurrentRotationPosition = circleNumberOfSections - 1;
+					}
+					if (circleCurrentRotationPosition == circleNumberOfSections){
+						circleCurrentRotationPosition = 0;
+					}	
+
+					for (var i = 0; i < circleInnerDivCollection.length; i++) {
+						var currentDivPosition = (circleCurrentRotationPosition + i) % circleNumberOfSections;
+						if (currentDivPosition === 0){
+							displayBig(circleInnerDivCollection[i]);
+						}
+						else{
+							displaySmall(circleInnerDivCollection[i]);
+						}
+						var currentDivAngle = (currentDivPosition * circleSectionAngle) % 360;
+						var currentDivRad = currentDivAngle * Math.PI / 180;
+						var currentDivPositionTop = parseInt(CIRCLE_CENTER_TOP + CIRCLE_RADIUS_TOP * Math.cos(currentDivRad));
+						var currentDivPositionLeft = parseInt(CIRCLE_CENTER_LEFT + CIRCLE_RADIUS_LEFT * Math.sin(currentDivRad));
+						changeDivPosition(currentDivPosition, circleInnerDivCollection[i], currentDivPositionTop, currentDivPositionLeft);
+					};
+				}
+
+				function changeDivPosition(currentDivPosition, div, divTop, divLeft){
+					var newDivTop = divTop;
+					var newDivLeft = divLeft;
+					if (currentDivPosition == 0){
+						newDivTop = divTop - BIG_IMAGE_HEIGHT / 2;
+						newDivLeft = divLeft - BIG_IMAGE_WIDTH / 2;
+					}
+					else{
+						newDivTop = divTop - SMALL_IMAGE_HEIGHT / 2;
+						newDivLeft = divLeft - SMALL_IMAGE_WIDTH / 2;
+					}
+					div.style.top = newDivTop + "px";
+					div.style.left = newDivLeft + "px";
+				}
+			}		
+		})();
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="cub_tiger" class="imageDiv"></div>
+		<div id="lion" class="imageDiv"></div>
+		<div id="lion2" class="imageDiv"></div>
+		<div id="lion3" class="imageDiv"></div>
+		<div id="tiger" class="imageDiv"></div>
+		<div id="tiger2" class="imageDiv"></div>
+		<button id="rotateLeftBtn">Left</button>
+		<button id="rotateRightBtn">Right</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Advance Functions - Special Console module</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+	</style>
+<body>
+	<div id="wrapper">
+	</div>
+	<script>
+		/*
+		Task01
+
+		Write a hierarchy of classes to simulate vehicles
+		- All vehicles should have speed and propulsion units (things which make them move) and a Accelerate method, which should update their speed by summing it with the acceleration of their propulsion units
+
+		- Each propulsion unit can produce acceleration (change in speed). There should be three types of propulsion units - wheels, propelling nozzles and propellers
+
+		-A wheel should have a radius and the acceleration it produces should be equal to its perimeter
+
+		- A propelling nozzle should have power and an afterburner switch. The acceleration the nozzle should produce as much acceleration as it has power, but if the afterburner is on it should produce double acceleration.
+
+		- A propeller should have a number of fins and a spin direction. The acceleration a propeller produces should by default be equal to the number of fins it has. The spin direction should be clockwise and counter-clockwise. If the spin direction is counter-clockwise, the acceleration the propeller produces should be negative, if the spin direction is clockwise, the acceleration should be positive.
+
+		- There should be land, air and water vehicles. Land vehicles should have 4 wheels, air vehicles should have 1 propelling nozzles and water vehicles should have a customizable number of propellers (passed in the constructor). 
+		
+		- Air vehicles should have the ability to switch on/off their afterburners.
+		
+		- Water vehicles should have the ability to change the spin direction of their propellers.
+
+		- Implement one additional amphibious vehicle. It should both have a propeller (so it can move on water) and wheels (so it can move on land). The amphibious vehicle should be able to switch between land and water mode and it's speed property and Accelerate method should respectively depend on its wheels in the first case and on its propeller in the second case
+		*/
+
+		(function(){
+			'use struct';
+
+			//Inheritance functions
+			Function.prototype.inherit = function(parent){
+			  this.prototype = new parent();
+			  this.prototype.constructor = parent;
+			}
+
+			Function.prototype.extend = function(parent) {
+			    for (var i = 1; i < arguments.length; i += 1) {
+			        var name = arguments[i];
+			        this.prototype[name] = parent.prototype[name];
+			    }
+			    return this;
+			}
+
+			//Vehicle clesses
+			function Vehicle(speed){
+				var self = this;
+				self.speed = speed;
+			}
+			Vehicle.prototype.accelerate = function (){
+				this.speed += this.getAcceleration();
+			};
+
+			function LandVehicle(speed, wheelRadius){
+				var self = this;
+				Vehicle.apply(self, arguments);
+
+				self.wheels = [];
+				for (var i = 0; i < 4; i++) {
+					self.wheels.push(new Wheel(wheelRadius));
+				};
+			}
+			LandVehicle.inherit(Vehicle);
+			LandVehicle.prototype.getAcceleration = function (){
+				var acceleration = 0;
+				var wheels = this.wheels;
+				for (var i = 0; i < wheels.length; i++) {
+					acceleration += wheels[i].getAcceleration();
+				};
+				return acceleration;
+			};	
+
+			function AirVehicle(speed, nozzlePower){
+				var self = this;
+				Vehicle.apply(self, arguments);
+
+				self.nozzle = new Nozzle(nozzlePower);
+			}
+			AirVehicle.inherit(Vehicle);
+			AirVehicle.prototype.switchAfterburner = function (afterburnerOn){
+				if (afterburnerOn === undefined){
+					afterburnerOn = !this.nozzle.afterburnerOn;
+				}
+
+				this.nozzle.afterburnerOn = afterburnerOn;
+			};
+			AirVehicle.prototype.getAcceleration = function (){
+				return this.nozzle.getAcceleration();
+			};	
+
+			function WaterVehicle(speed, numberOfPropellers, numberOfPropellerFins){
+				var self = this;
+				Vehicle.apply(self, arguments);
+
+				self.propellers = [];
+				for (var i = 0; i < numberOfPropellers; i++) {
+					self.propellers.push(new Propeller(numberOfPropellerFins));
+				};
+			}
+			WaterVehicle.inherit(Vehicle);
+			WaterVehicle.prototype.switchSpinDirection = function (){
+				var propellers = this.propellers;
+
+				for (var i = 0; i < propellers.length; i++) {
+					propellers[i].clockwiseSpin = !propellers[i].clockwiseSpin;
+				};
+			};	
+			WaterVehicle.prototype.getAcceleration = function (){
+				var acceleration = 0;
+				var propellers = this.propellers;
+
+				for (var i = 0; i < propellers.length; i++) {
+					acceleration += propellers[i].getAcceleration();
+				};
+				return acceleration;
+			};	
+
+			function AmphibiousVehicle(speed, wheelRadius, numberOfPropellers, numberOfPropellerFins, waterMode){
+				var self = this;
+				Vehicle.apply(self, arguments);
+
+				self.wheels = [];
+				for (var i = 0; i < 4; i++) {
+					self.wheels.push(new Wheel(wheelRadius));
+				};
+
+				self.propellers = [];
+				for (var i = 0; i < numberOfPropellers; i++) {
+					self.propellers.push(new Propeller(numberOfPropellerFins));
+				};
+
+				self.waterMode = waterMode | false;
+			}
+			AmphibiousVehicle.inherit(Vehicle);
+			AmphibiousVehicle.extend(WaterVehicle, 'switchSpinDirection');
+			AmphibiousVehicle.prototype.getAcceleration = function (){
+				if (this.waterMode){
+					return this.getAccelerationWater();
+				} else {
+					return this.getAccelerationLand();
+				}
+			};
+			AmphibiousVehicle.prototype.getAccelerationLand = function (){
+				var acceleration = 0;
+				var wheels = this.wheels;
+				for (var i = 0; i < wheels.length; i++) {
+					acceleration += wheels[i].getAcceleration();
+				};
+				return acceleration;
+			};	
+			AmphibiousVehicle.prototype.getAccelerationWater = function (){
+				var acceleration = 0;
+				var propellers = this.propellers;
+
+				for (var i = 0; i < propellers.length; i++) {
+					acceleration += propellers[i].getAcceleration();
+				};
+				return acceleration;
+			};	
+
+			//Propulsion Unit classes
+			function PropulsionUnit(){
+				var self = this;
+			}
+			PropulsionUnit.prototype.getAcceleration = function (){};
+
+			function Wheel(radius){
+				var self = this;
+				self.radius = radius;
+			}
+			Wheel.inherit(PropulsionUnit);			
+			Wheel.prototype.getAcceleration = function (){
+				var perimeter = 2 * Math.PI * this.radius;
+				return perimeter;
+			};
+
+			function Nozzle(power, afterburnerOn){
+				var self = this;
+				self.power = power;
+				self.afterburnerOn = afterburnerOn | false;
+			}
+			Nozzle.inherit(PropulsionUnit);			
+			Nozzle.prototype.getAcceleration = function (){
+				if (this.afterburnerOn){
+					return this.power * 2;
+				} else {
+					return this.power;
+				}
+			};
+
+			function Propeller(numberOfFins, clockwiseSpin){
+				var self = this;				
+				self.numberOfFins = numberOfFins;
+				self.clockwiseSpin = clockwiseSpin | true;
+			}
+			Propeller.inherit(PropulsionUnit);			
+			Propeller.prototype.getAcceleration = function (){
+				if (this.clockwiseSpin){
+					return this.numberOfFins;
+				} else {
+					return -this.numberOfFins;
+				}
+			};
+
+			//Tests
+			var car = new LandVehicle(10, 10);
+			console.log("Car inital speed:");
+			console.log(car.speed);
+			car.accelerate();
+			console.log("Car speed after acceleration:");
+			console.log(car.speed);
+
+			var jet = new AirVehicle(10, 100);
+			console.log("Jet inital speed:");
+			console.log(jet.speed);
+			jet.accelerate();			
+			console.log("Jet speed after acceleration:");
+			console.log(jet.speed);
+			jet.switchAfterburner();
+			jet.accelerate();
+			console.log("Jet speed after acceleration with afterburner:");
+			console.log(jet.speed);
+			
+			var boat = new WaterVehicle(10, 2, 10);
+			console.log("Boat inital speed:");
+			console.log(boat.speed);
+			boat.accelerate();			
+			console.log("Boat speed after acceleration:");
+			console.log(boat.speed);
+			boat.switchSpinDirection();
+			boat.accelerate();
+			console.log("Boat speed after acceleration with reversed fin spin:");
+			console.log(boat.speed);			
+			
+			var amphibiusVehicle = new AmphibiousVehicle(10, 10, 2, 10);
+			console.log("Amphibious Vehicle inital speed (land mode):");
+			console.log(amphibiusVehicle.speed);
+			amphibiusVehicle.accelerate();			
+			console.log("Amphibious Vehicle speed after acceleration:");
+			console.log(amphibiusVehicle.speed);
+			amphibiusVehicle.waterMode = true;
+			amphibiusVehicle.accelerate();			
+			console.log("Amphibious Vehicle speed after acceleration (water mode):");
+			console.log(amphibiusVehicle.speed);
+			amphibiusVehicle.switchSpinDirection();
+			amphibiusVehicle.accelerate();
+			console.log("Amphibious Vehicle speed after acceleration (water mode) with reversed fin spin:");
+			console.log(amphibiusVehicle.speed);			
+		})()
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Advance Functions - Special Console module</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+	</style>
+<body>
+	<div id="wrapper">
+	</div>
+	<script>
+		/*
+		Task03
+
+		Create a module to work with the console object. Implement functionality for:
+		Writing a line to the console 
+		Writing a line to the console using a format
+		Writing to the console should call toString() to each element
+		Writing errors and warnings to the console with and without format
+
+		var specialConsole = …
+		specialConsole.writeLine("Message: hello");
+		//logs to the console "Message: hello"
+		specialConsole.writeLine("Message: {0}", "hello");
+		//logs to the console "Message: hello"
+		specialConsole.writeError("Error: {0}", "Something happened");
+		specialConsole.writeWarning("Warning: {0}", "A warning");
+		*/
+
+		(function(){
+			'use struct';
+
+			var specialConsole = SpecialConsole();
+			specialConsole.writeLine("Message: hello");
+			specialConsole.writeLine("Message: {0}", "hello");
+			specialConsole.writeError("Error: {0}", "Something happened");
+			specialConsole.writeWarning("Warning: {0}", "A warning");
+			specialConsole.writeWarning("Warning: {0} {1} {2} {1}", "A warning", "Message1", "Message2");
+
+			function SpecialConsole(){
+
+				function writeLine (){
+					var message = formatMessage.apply(null, arguments);
+
+					console.log(message);
+				}
+
+				function writeError(){
+					var message = formatMessage.apply(null, arguments);
+
+					console.log(message);
+				}
+
+				function writeWarning(){
+					var message = formatMessage.apply(null, arguments);
+
+					console.log(message);					
+				}
+
+				function formatMessage (){
+					var message = arguments[0];
+
+					for (var i = 0; i < arguments.length - 1; i++) {
+						var pattern = "\\{" + i + "\\}",
+    					regExp = new RegExp(pattern, "g");
+						message = message.replace(regExp, arguments[i + 1].toString());
+					};
+
+					return message;
+				}
+
+				return {
+					writeLine : writeLine,
+					writeError : writeError,
+					writeWarning : writeWarning
+				}
+			}
+		})()
+	</script>
+</body>
+</html>

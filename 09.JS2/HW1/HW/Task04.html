@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+
+		.innerDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper" class="wrapClass">
+		<form>
+			<input type="color" id="textareaFontColor" onchange="TextareaFontColorChange(this)"/>
+			<input type="color" id="textareaBackgroundColor" onchange="TextareaBackgroundColorChange(this)"/>
+			<textarea id="targetTextarea"></textarea>
+		</form>
+	</div>
+	<script>
+		var textarea = document.getElementById("targetTextarea");
+
+		function TextareaFontColorChange(element){
+			textarea.style.color = element.value;
+		}
+
+		function TextareaBackgroundColorChange(element){
+			textarea.style.backgroundColor = element.value;
+		}
+	</script>
+</body>
+</html>

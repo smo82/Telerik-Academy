@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+
+		.innerDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper"></div>
+	<script>
+		var centerTop = 300;
+		var centerLeft = 300;
+		var radius = 100;
+		var numberDivs = 5;
+
+		//This variable is used to hold the starting position of the first element
+		//of the div set on the circle. This variable is incremented from 0 to 9.
+		//This way we devide the circle into 10 equal sectors (of 36 degrees) and
+		//we rotate the divs by putting each new div in a separate sector starting
+		//from the global position.
+		var globalPosition = 0; 
+
+		FillDivArray(5);
+		var innerDivCollection = document.getElementById("wrapper").getElementsByClassName("innerDiv");
+
+		timer = setInterval(function () {RotateDivs()}, 100);
+
+		function RotateDivs(){
+			for (var i = 0; i < numberDivs; i++) {
+				var currentPosition = globalPosition + i;
+				var currentAngle = (currentPosition * 36) % 360;
+				var rad = currentAngle * Math.PI / 180;
+				var positionTop = parseInt(centerTop + radius * Math.cos(rad));
+				var positionLeft = parseInt(centerLeft + radius * Math.sin(rad));
+				ChangeDivPosition(innerDivCollection[i], positionTop, positionLeft);
+			};	
+
+			//We increment the glonal position by one and thus we rotate the divs
+			globalPosition = (globalPosition - 1) % 10;
+		}
+
+		function ChangeDivPosition(newDiv, divTop, divLeft){
+			newDiv.style.top = divTop + "px";
+			newDiv.style.left = divLeft + "px";
+		}
+
+		function FillDivArray(numberDivs){
+			var divArray = [];
+
+			var docFragment = document.createDocumentFragment();
+			for (var i = 0; i < numberDivs; i++) {
+				var newDiv = GenerateDiv();
+				docFragment.appendChild(newDiv.cloneNode(true));
+			};	
+
+			document.getElementById("wrapper").appendChild(docFragment);
+		}
+
+		function GenerateDiv(){
+			var newDiv = document.createElement("div");
+			newDiv.classList.add("innerDiv");
+			newDiv.style.position = "absolute";
+			return newDiv;
+		}
+	</script>
+</body>
+</html>

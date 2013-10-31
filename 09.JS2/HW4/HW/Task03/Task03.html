@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>LocalStorage, SessionStorage shim</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+		#trashCan{
+			width: 135px;
+			height: 173px;
+			background: url("TrashCan.png");
+		}
+		.trash{
+			width: 77px;
+			height: 62px;
+			background: url("Trash.png");
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		/*
+		Task03
+
+		Create shiv/shim/polyfill to enable localStorage and sessionStorage in browsers that do not support them
+
+		*/
+
+		
+		(function(){
+			var cookies = (function() {
+			    if (!String.prototype.startsWith) {
+			        String.prototype.startsWith = function(str) {
+			            if (this.length < str.length) {
+			                return false;
+			            }
+			            for (var i = 0; i < str.length; i++) {
+			                if (this[i] !== str[i]) {
+			                    return false;
+			                }
+			            }
+			            return true;
+			        }
+			    }
+
+			    function readCookie(name) {
+			        var allCookies = document.cookie.split(";");
+			        for (var i = 0; i < allCookies.length; i++) {
+			            var cookie = allCookies[i];
+			            var trailingZeros = 0;
+			            for (var j = 0; j < cookie.length; j++) {
+			                if (cookie[j] !== " ") {
+			                    break;
+			                }
+			            }
+			            cookie = cookie.substring(j);
+			            if (cookie.startsWith(name + "=")) {
+			                return cookie;
+			            }
+			        }
+			    }
+
+			    function createCookie(name, value, days) {
+			        if (days) {
+			            var date = new Date();
+			            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+			            var expires = "; expires=" + date.toGMTString();
+			        } else var expires = "";
+			        document.cookie = name + "=" + value + expires + "; path=/";
+			    }
+
+			    function removeCookie(name) {
+			        createCookie(name, "", -1);
+			    }
+
+			    return {
+			        read:readCookie,
+			        create:createCookie,
+			        remove:removeCookie
+			    };
+			}());
+
+			if (!localStorage){
+				var localStorage = {
+					getStorage: function (){
+				    	var currentLocalStorageCookie = cookies.read('localStorage');
+
+				    	if (!currentLocalStorageCookie){
+				    		return {};
+				    	}
+				    	else{
+				    		var currentLocalStorage = JSON.parse(currentLocalStorageCookie);
+
+				    		return currentLocalStorage;
+				    	}
+					},
+					setStorage: function (localStorageArr){
+				    	cookies.create('localStorage', JSON.stringify(localStorageArr), 10000);
+					},
+				    getItem: function (key) {
+				    	var localStorageArr = this.getStorage();
+
+			    		return localStorageArr[key];
+				    },
+				    setItem: function (key, value) {
+				    	var localStorageArr = this.getStorage();
+
+				    	localStorageArr[key] = value;
+				    	this.setStorage(localStorageArr);
+				    },
+				    length: function (){
+				    	var localStorageArr = this.getStorage();
+
+				    	return localStorageArr.length;
+				    }, 
+				    removeItem: function (key) {
+				    	var localStorageArr = this.getStorage();
+
+				    	delete localStorageArr[key];
+				    	this.setStorage(localStorageArr);
+				    },
+				    hasOwnProperty: function (key) {
+				    	var localStorageArr = this.getStorage();
+
+				    	return key in localStorageArr;
+				    }
+				};
+			}
+
+			if (!sessionStorage){
+				if (typeof sessionStorageArr === undefined){
+					sessionStorageArr = [];	
+				}
+				sessionStorage = {
+				    getItem: function (key) {
+			    		return sessionStorageArr[key];
+				    },
+				    setItem: function (key, value) {
+				    	sessionStorageArr[key] = value;
+				    },
+				    length: function (){
+				    	return sessionStorageArr.length;
+				    },
+				    removeItem: function (key) {
+				    	delete sessionStorageArr[key];
+				    },
+				    hasOwnProperty: function (key) {
+				    	return key in sessionStorageArr;
+				    }
+				}
+			}
+		})();
+	</script>
+<body>
+	<div id="wrapper">
+	</div>
+</body>
+</html>

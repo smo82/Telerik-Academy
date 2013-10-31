@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Advance Functions - Moving divs module</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+
+		.innerDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			background-color: blue;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<button id="startRotation">Start Rotation</button>
+		<button id="stopRotation">Stop Rotation</button>
+		<button id="addNewCircleDiv">Add New Circle Div</button>
+		<button id="addNewRectangleDiv">Add New Rectangle Div</button>
+	</div>
+	<script>
+		/*
+		Task01
+
+		Create a Simple JS Carousel with N images and two arrows for image control 
+
+		*/
+
+		(function(){
+			'use struct';
+
+			var MovingDivsMod = MovingDivsModule();
+
+			var buttonStartRotation = document.getElementById("startRotation");
+			buttonStartRotation.onclick = MovingDivsMod.startRotation;
+			var buttonStopRotation = document.getElementById("stopRotation");
+			buttonStopRotation.onclick = MovingDivsMod.stopRotation;
+
+			var buttonaddNewCircleDiv = document.getElementById("addNewCircleDiv");
+			buttonaddNewCircleDiv.onclick = function AddNewCircleDivButtonOnClick(){
+				MovingDivsMod.addNewDiv("ellipse");
+			}
+
+			var buttonaddNewRectangleDiv = document.getElementById("addNewRectangleDiv");
+			buttonaddNewRectangleDiv.onclick = function AddNewRectangleDivButtonOnClick(){
+				MovingDivsMod.addNewDiv("rect");
+			}
+
+			function MovingDivsModule(){
+				var CIRCLE_CENTER_TOP = 300;
+				var CIRCLE_CENTER_LEFT = 300;
+				var CIRCLE_RADIUS = 100;
+				var CIRCLE_NUMBER_OF_SECTIONS = 30;
+				var CIRCLE_SECTION_ANGLE = 360 / CIRCLE_NUMBER_OF_SECTIONS;
+				var INITIAL_NUMBER_OF_CIRCLE_DIVS = 10;
+
+				var RECTANGLE_TOP = 200;
+				var RECTANGLE_LEFT = 700;
+				var RECTANGLE_WIDTH = 200;
+				var RECTANGLE_HEIGHT = 300;
+				var RECTANGLE_PERIMETER = (RECTANGLE_WIDTH * 2) + (RECTANGLE_HEIGHT * 2);
+				var RECTANGLE_NUMBER_OF_SECTIONS = 30;
+				var RECTANGLE_SECTION_LENGTH = RECTANGLE_PERIMETER / RECTANGLE_NUMBER_OF_SECTIONS;
+				var INITIAL_NUMBER_OF_RECTANGLE_DIVS = 10;
+
+				var DEFAULT_ROTATION_INTERVAL = 50;
+
+				var circleCurrentRotationPosition = 0;
+				var rectangleCurrentRotationPosition = 0;
+				var circleInnerDivCollection = [];
+				var rectangleInnerDivCollection = [];
+				var timer = null;
+
+				initializeModule();
+
+				// Public funcitons
+				function startRotation(interval){
+					if (timer !== null){
+						return false;
+					}
+
+					interval = interval | DEFAULT_ROTATION_INTERVAL;
+
+					timer = setInterval(function () {rotateDivs()}, interval);
+
+					return true;
+				}
+
+				function stopRotation(){
+					if (timer === null){
+						return false
+					}
+
+					clearInterval(timer);
+					timer = null;
+
+					return true;
+				}
+
+				function addNewDiv(type){
+					if (type === "ellipse"){
+						return addNewCircleDiv();
+					}
+
+					if (type === "rect"){
+						return addNewRectangleDiv();
+					}
+
+					return false;
+				}
+
+				function addNewCircleDiv(){
+					if (circleInnerDivCollection.length === CIRCLE_NUMBER_OF_SECTIONS){
+						return false;
+					}
+
+					var newDiv = generateDiv();
+					circleInnerDivCollection.push(newDiv);
+					document.getElementById("wrapper").appendChild(newDiv);
+
+					if (timer === null){
+						rotateCircleDivs();
+					}
+				}
+
+
+				function addNewRectangleDiv(){
+					if (rectangleInnerDivCollection.length === RECTANGLE_NUMBER_OF_SECTIONS){
+						return false;
+					}
+
+					var newDiv = generateDiv();
+					rectangleInnerDivCollection.push(newDiv);
+					document.getElementById("wrapper").appendChild(newDiv);
+
+					if (timer === null){
+						rotateRectangleDivs();
+					}
+				}
+
+				// Private punctions
+				function initializeModule(){
+					initialCircleFillWithDivs();
+					rotateCircleDivs();
+
+					initialRectangleFillWithDivs();
+					rotateRectangleDivs();
+				}
+
+				function initialCircleFillWithDivs(){
+					var divArray = [];
+
+					var docFragment = document.createDocumentFragment();
+					for (var i = 0; i < INITIAL_NUMBER_OF_CIRCLE_DIVS; i++) {
+						var newDiv = generateDiv();
+						docFragment.appendChild(newDiv);
+						circleInnerDivCollection.push(newDiv);
+					};	
+
+					document.getElementById("wrapper").appendChild(docFragment);
+				}
+
+				function initialRectangleFillWithDivs(){
+					var divArray = [];
+
+					var docFragment = document.createDocumentFragment();
+					for (var i = 0; i < INITIAL_NUMBER_OF_RECTANGLE_DIVS; i++) {
+						var newDiv = generateDiv();
+						docFragment.appendChild(newDiv);
+						rectangleInnerDivCollection.push(newDiv);
+					};	
+
+					document.getElementById("wrapper").appendChild(docFragment);
+				}
+
+				function generateDiv(){
+					var newDiv = document.createElement("div");
+					newDiv.classList.add("innerDiv");
+					newDiv.style.position = "absolute";
+					newDiv.style.backgroundColor = generateRandomColor();
+					newDiv.style.borderColor = generateRandomColor();
+					return newDiv;
+				}
+
+				function generateRandomColor() {
+					var red = (Math.random() * 256) | 0;
+					var green = (Math.random() * 256) | 0;
+					var blue = (Math.random() * 256) | 0;
+
+					return "rgb(" + red + "," + green + "," + blue + ")";
+				}
+
+				function rotateDivs(){
+					rotateCircleDivs();
+					rotateRectangleDivs();
+				}
+
+				function rotateCircleDivs(){
+					for (var i = 0; i < circleInnerDivCollection.length; i++) {
+						var currentDivPosition = circleCurrentRotationPosition + i;
+						var currentDivAngle = (currentDivPosition * CIRCLE_SECTION_ANGLE) % 360;
+						var currentDivRad = currentDivAngle * Math.PI / 180;
+						var currentDivPositionTop = parseInt(CIRCLE_CENTER_TOP + CIRCLE_RADIUS * Math.cos(currentDivRad));
+						var currentDivPositionLeft = parseInt(CIRCLE_CENTER_LEFT + CIRCLE_RADIUS * Math.sin(currentDivRad));
+						changeDivPosition(circleInnerDivCollection[i], currentDivPositionTop, currentDivPositionLeft);
+					};	
+
+					//We decrement the current rotation position by one and thus we rotate the divs clockwise
+					circleCurrentRotationPosition = (circleCurrentRotationPosition - 1) % CIRCLE_NUMBER_OF_SECTIONS;
+				}
+
+				function rotateRectangleDivs(){
+					for (var i = 0; i < rectangleInnerDivCollection.length; i++) {
+						var currentDivPosition = (rectangleCurrentRotationPosition + i) % RECTANGLE_NUMBER_OF_SECTIONS;
+
+						var currentDivPositionCoordinates = getRectanglePositionCoordinates(currentDivPosition);
+
+						changeDivPosition(rectangleInnerDivCollection[i], currentDivPositionCoordinates.top, currentDivPositionCoordinates.left);
+					};	
+
+					//We increment the current rotation position by one and thus we rotate the divs clockwise
+					rectangleCurrentRotationPosition = (rectangleCurrentRotationPosition + 1) % RECTANGLE_NUMBER_OF_SECTIONS;
+				}
+
+				function getRectanglePositionCoordinates(position){
+					var currentPositionLength = position * RECTANGLE_SECTION_LENGTH;
+					var top;
+					var left;
+					
+					if (currentPositionLength > ((RECTANGLE_WIDTH * 2) + RECTANGLE_HEIGHT)){
+					// The div is on the left wall of the rectangle
+						var currentPositionLengthRemainder = currentPositionLength - ((RECTANGLE_WIDTH * 2) + RECTANGLE_HEIGHT);
+						top = (RECTANGLE_TOP + RECTANGLE_HEIGHT) - currentPositionLengthRemainder;
+						left = RECTANGLE_LEFT;
+
+					} else if (currentPositionLength > (RECTANGLE_WIDTH + RECTANGLE_HEIGHT)){
+					// The div is on the bottom wall of the rectangle
+						var currentPositionLengthRemainder = currentPositionLength - (RECTANGLE_WIDTH + RECTANGLE_HEIGHT);
+						top = RECTANGLE_TOP + RECTANGLE_HEIGHT;
+						left = RECTANGLE_LEFT + RECTANGLE_WIDTH - currentPositionLengthRemainder;
+
+					} else if (currentPositionLength > RECTANGLE_WIDTH){
+					// The div is on the right wall of the rectangle
+						var currentPositionLengthRemainder = currentPositionLength - RECTANGLE_WIDTH;
+						top = RECTANGLE_TOP + currentPositionLengthRemainder;
+						left = RECTANGLE_LEFT + RECTANGLE_WIDTH;
+
+					} else {
+					// The div is on the top wall of the rectangle
+						var currentPositionLengthRemainder = currentPositionLength;
+						top = RECTANGLE_TOP;
+						left = RECTANGLE_LEFT + currentPositionLengthRemainder;
+					}
+
+					return {
+						top : top,
+						left : left
+					}
+				}
+
+				function changeDivPosition(div, divTop, divLeft){
+					div.style.top = divTop + "px";
+					div.style.left = divLeft + "px";
+				}
+
+				return {
+					startRotation : startRotation,
+					stopRotation : stopRotation,
+					addNewDiv : addNewDiv
+				}
+			}
+		})()
+	</script>
+</body>
+</html>

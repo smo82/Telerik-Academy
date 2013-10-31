@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Draw</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #454545;
+		}
+	</style>
+    <script src="scripts/canvasplus1-1.js"></script>
+	<script>
+		/*
+		Task04
+
+		Draw head, bycicle and head
+
+		*/
+
+		(function (){
+			window.addEventListener('load', function () {
+		    	context = canvasPlus("drawCanvas");
+				drawHead(context, 0, 0);
+				drawBycicle(context, 300, 0);
+				drawHouse(context, 0, 600);
+		    }, false);
+
+			function drawHouse(context, top, left){
+				context.lineWidth = 4;
+				context.strokeStyle = "#000000";
+    			context.fillStyle = "#975b5b";
+
+    			//Roof
+				context.beginPath();
+			    context.moveTo(left, top + 200);
+			    context.lineTo(left + 125, top + 50);
+			    context.lineTo(left + 250, top + 200);
+    			context.fill();
+			    context.stroke();
+
+				context.beginPath();
+			    context.moveTo(left + 180, top + 160);
+			    context.lineTo(left + 180, top + 80);
+			    context.lineTo(left + 200, top + 80);
+			    context.lineTo(left + 200, top + 160);
+    			context.fill();
+			    context.stroke();
+
+				context.beginPath();
+		        context.drawEllipse("fill", left + 190, top + 80, 10, 5);
+			    context.stroke();
+
+            	//Main frame
+            	context.fillRect(left, top + 200, 250, 200);
+            	context.strokeRect(left, top + 200, 250, 200);
+
+            	//Windows
+				context.lineWidth = 3;
+    			context.fillStyle = "#000000";
+            	drawWindow(context, top + 220, left + 15);
+            	drawWindow(context, top + 220, left + 145);
+            	drawWindow(context, top + 300, left + 145);
+
+    			//Door
+    			context.fillStyle = "#975b5b";
+				context.beginPath();
+		        context.drawEllipse("stroke", left + 58, top + 320, 40, 20);
+			    context.stroke();
+
+            	context.fillRect(left + 18, top + 320, 80, 80);
+            	context.strokeRect(left + 18, top + 320, 80, 80);
+
+				context.beginPath();
+				context.lineWidth = 4;
+				context.strokeStyle = "#975b5b";
+			    context.moveTo(left + 20, top + 320);
+			    context.lineTo(left + 96, top + 320);
+			    context.stroke();
+				context.strokeStyle = "#000000";
+				context.lineWidth = 3;
+
+				context.beginPath();
+			    context.moveTo(left + 58, top + 300);
+			    context.lineTo(left + 58, top + 400);
+			    context.stroke();
+
+				context.beginPath();
+		        context.drawEllipse("stroke", left + 48, top + 380, 5, 5);
+			    context.stroke();
+
+				context.beginPath();
+		        context.drawEllipse("stroke", left + 68, top + 380, 5, 5);
+			    context.stroke();
+			}
+
+			function drawWindow(context, top, left){
+            	context.fillRect(left, top, 40, 25);
+            	context.strokeRect(left, top, 40, 25);
+
+            	context.fillRect(left + 45, top, 40, 25);
+            	context.strokeRect(left + 45, top, 40, 25);
+
+            	context.fillRect(left, top + 30, 40, 25);
+            	context.strokeRect(left, top + 30, 40, 25);
+
+            	context.fillRect(left + 45, top + 30, 40, 25);
+            	context.strokeRect(left + 45, top + 30, 40, 25);
+			}
+
+			function drawHead(context, top, left){
+				drawFace(context, top, left);
+				drawHeat(context, top, left);
+			}
+
+
+		    function drawFace(context, top, left){
+				context.lineWidth = 3;
+				context.strokeStyle = "#22545f";
+    			context.fillStyle = "#90cad7";
+
+    			//Face
+				context.beginPath();
+		        context.drawEllipse("fill", left + 200, top + 210, 80, 70);
+		        context.drawEllipse("stroke", left + 200, top + 210, 80, 70);
+			    context.stroke();
+
+    			//Left eye
+				context.beginPath();
+		        context.drawEllipse("fill", left + 160, top + 195, 15, 10);
+		        context.drawEllipse("stroke", left + 160, top + 195, 15, 10);
+			    context.stroke();
+
+				context.beginPath();
+    			context.fillStyle = "#22545f";
+		        context.drawEllipse("fill", left + 155, top + 195, 3, 7);
+		        context.drawEllipse("stroke", left + 155, top + 195, 3, 7);
+			    context.stroke();
+    			context.fillStyle = "#90cad7";
+
+    			//Right eye
+				context.beginPath();
+		        context.drawEllipse("fill", left + 220, top + 195, 15, 10);
+		        context.drawEllipse("stroke", left + 220, top + 195, 15, 10);
+			    context.stroke();
+
+				context.beginPath();
+    			context.fillStyle = "#22545f";
+		        context.drawEllipse("fill", left + 215, top + 195, 3, 7);
+		        context.drawEllipse("stroke", left + 215, top + 195, 3, 7);
+			    context.stroke();
+    			context.fillStyle = "#90cad7";
+
+            	//Nose
+				context.beginPath();
+			    context.moveTo(left + 165, top + 230);
+			    context.lineTo(left + 185, top + 230);
+			    context.stroke();
+
+				context.beginPath();
+			    context.moveTo(left + 165, top + 230);
+			    context.lineTo(left + 185, top + 200);
+			    context.stroke();
+
+    			//Mouth
+				context.beginPath();
+		        context.drawEllipse("fill", left + 190, top + 250, 30, 10);
+		        context.drawEllipse("stroke", left + 190, top + 250, 30, 10);
+			    context.stroke();
+    			
+			}
+
+		    function drawHeat(context, top, left){
+				context.lineWidth = 3;
+				context.strokeStyle = "#262626";
+    			context.fillStyle = "#396693";
+
+    			//Heat periphery
+				context.beginPath();
+		        context.drawEllipse("fill", left + 200, top + 150, 80, 20);
+		        context.drawEllipse("stroke", left + 200, top + 150, 80, 20);
+			    context.stroke();
+    			
+    			//Heat periphery inner
+				context.beginPath();
+		        context.drawEllipse("fill", left + 200, top + 130, 40, 20);
+		        context.drawEllipse("stroke", left + 200, top + 130, 40, 20);
+			    context.stroke();
+
+            	//Heat cylinder
+            	context.fillRect(left + 160, top + 50, 80, 83);
+            	context.strokeRect(left + 160, top + 50, 80, 83);
+
+            	//Heat cylinder clear bottom line
+				context.beginPath();
+				context.lineWidth = 4;
+				context.strokeStyle = "#396693";
+			    context.moveTo(left + 162, top + 133);
+			    context.lineTo(left + 238, top + 133);
+			    context.stroke();
+				context.strokeStyle = "#262626";
+				context.lineWidth = 3;
+
+    			//Heat top
+				context.beginPath();
+		        context.drawEllipse("fill", left + 200, top + 50, 40, 20);
+		        context.drawEllipse("stroke", left + 200, top + 50, 40, 20);
+			    context.stroke();
+			}
+
+		    function drawBycicle(context, top, left){
+				context.strokeStyle = "#337d8f";
+    			context.fillStyle = "#90cad7";
+				context.lineWidth = 3;
+
+				//First wheel
+				context.beginPath();
+				context.arc(left + 100, top + 250, 85, 0, 2 * Math.PI, false);
+				context.stroke();
+
+			    //Line from first wheel top part of the frame
+			    context.moveTo(left + 100, top + 250);
+			    context.lineTo(left + 220, top + 140);
+    			context.fill();
+			    context.stroke();
+
+			    //Line from top part of the frame to the right top part of the frame
+			    context.moveTo(left + 220, top + 140);
+			    context.lineTo(left + 380, top + 140);
+			    context.stroke();
+
+			    //Line from first wheel to pedal wheel
+			    context.moveTo(left + 100, top + 250);
+			    context.lineTo(left + 230, top + 250);
+			    context.stroke();
+
+			    //Line from pedal wheel to the right top part of the frame
+			    context.moveTo(left + 230, top + 250);
+			    context.lineTo(left + 380, top + 140);
+			    context.stroke();
+
+				//Pedal wheel
+				context.beginPath();
+				context.arc(left + 230, top + 250, 25, 0, 2 * Math.PI, false);
+				context.stroke();
+
+			    //Line from pedal wheel to the seat support
+			    context.moveTo(left + 230, top + 250);
+			    context.lineTo(left + 215, top + 100);
+			    context.stroke();
+
+			    //Seat line
+			    context.moveTo(left + 175, top + 100);
+			    context.lineTo(left + 255, top + 100);
+			    context.stroke();
+
+				//Second wheel
+				context.beginPath();
+				context.arc(left + 400, top + 250, 85, 0, 2 * Math.PI, false);
+				context.stroke();
+
+			    //Line from second wheel to the steering bar
+			    context.moveTo(left + 400, top + 250);
+			    context.lineTo(left + 370, top + 80);
+			    context.stroke();
+
+			    //Left steering bar
+			    context.moveTo(left + 370, top + 80);
+			    context.lineTo(left + 320, top + 100);
+			    context.stroke();
+
+			    //Rigth steering bar
+			    context.moveTo(left + 370, top + 80);
+			    context.lineTo(left + 400, top + 40);
+    			context.fill();
+			    context.stroke();
+			}
+		})();
+	</script>
+<body>
+	<div id="wrapper">
+		<canvas id="drawCanvas" width="1000" height="700">
+			Canvas not supported
+		</canvas>
+	</div>
+</body>
+</html>

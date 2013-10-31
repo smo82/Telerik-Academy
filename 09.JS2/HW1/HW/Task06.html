@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="wrapper" class="wrapClass">
+		<ul>
+			<li>Item
+				<ul>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Item
+				<ul>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Item
+				<ul>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+					<li>Sub item
+						<ul>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+							<li>Sub item</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script>
+		//debugger;
+		processAllChilds();
+
+		function traverseAllChilds(obj, func){
+			var objChildNodes = obj.childNodes;
+			for (var i = 0; i < objChildNodes.length; i++) {
+				if(objChildNodes[i] && objChildNodes[i].nodeType != 3){
+					traverseAllChilds(objChildNodes[i], func);
+					func(objChildNodes[i]);
+				}
+			};
+		}
+
+		function hideElement(obj){
+			obj.style.display = "none";
+		}
+
+		function appendEvent(obj, funcName, funcBody){
+			obj.addEventListener(funcName, funcBody, false);
+		}
+
+		function appendCustomOnClick(obj){
+			appendEvent(obj, "onclick", expandChilds);
+		}
+
+		function expandChilds(ev){
+
+			var objChildNodes = ev.target.childNodes;
+
+			for (var i = 0; i < objChildNodes.length; i++) {
+				objChildNodes[i].style.display = "block";
+			};
+		}
+
+		function processAllChilds(){
+			var wrapper = document.getElementById("wrapper");
+			var mainUl = wrapper.firstChild;
+
+			//Get the main UL-element
+			while(mainUl && mainUl.nodeType == 3){
+				mainUl = mainUl.nextSibling;
+			}
+
+			var mainUlChilds = mainUl.childNodes;
+
+			for (var i = 0; i < mainUlChilds.length; i++) {
+				if(mainUlChilds[i] && mainUlChilds[i].nodeType != 3){
+					traverseAllChilds(mainUlChilds[i], hideElement);
+					traverseAllChilds(mainUlChilds[i], appendCustomOnClick);
+				}
+			};
+		}
+	</script>
+</body>
+</html>

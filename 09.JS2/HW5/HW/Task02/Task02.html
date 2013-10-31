@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>TODO list</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #454545;
+		}
+
+		.imageDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			border-radius: 5px;
+			position:absolute;
+		}
+	</style>
+	<script>
+		/*
+		Task02
+		
+		Create a TODO list with the following UI controls
+		- Form input for new Item
+		- Button for adding the new Item
+		- Button for deleting some item
+		- Show and Hide Button
+		*/
+
+		(function (){
+			window.onload = function (){				
+				var toDoList = document.getElementById('list');
+				var newItem = document.getElementById('newItem');
+				var addNewItemBtn = document.getElementById('addNewItem');
+				addNewItemBtn.onclick = addNewItem;
+
+				var deleteItemBtn = document.getElementById('deleteItem');
+				deleteItemBtn.onclick = deleteItemFromList;
+
+				var showHideBtn = document.getElementById('showHide');
+				showHideBtn.onclick = showHide;
+
+				function addNewItem(){
+					var newItemValue = newItem.value;
+
+					if (newItemValue !== ""){
+						addItemToList(newItemValue);
+					}
+				}
+
+				function addItemToList(newItemValue){
+					var newLi = document.createElement("li");
+					newLi.innerHTML = newItemValue;
+					toDoList.appendChild(newLi);
+				}
+
+				function deleteItemFromList(){
+					var toDoListItems = toDoList.childNodes;
+					if (toDoListItems.length > 0){
+						toDoList.removeChild(toDoListItems[toDoListItems.length - 1]);
+					}
+				}
+
+				function showHide(){
+					var buttonText = showHideBtn.innerHTML;
+					if (buttonText == "Hide"){
+						showHideBtn.innerHTML = "Show";
+						toDoList.style.display = 'none';
+					}
+					else{
+						showHideBtn.innerHTML = "Hide";
+						toDoList.style.display = '';
+					}
+				}
+			}		
+		})();
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<h1>TODO list:</h1>
+        <label for="newTask">
+            Left:
+        </label>
+        <input type="text" id="newItem" />
+		<button id="addNewItem">Add new item</button>
+		<button id="deleteItem">Delete item</button>
+		<button id="showHide">Hide</button>
+
+		<ul id="list"></ul>
+	</div>
+</body>
+</html>

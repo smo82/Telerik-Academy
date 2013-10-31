@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper"></div>
+	<script>
+		var maxWidth = screen.width - 100;
+		var maxHeight = screen.height - 300;
+		var numberDivs = 100;
+
+		var docFragment = document.createDocumentFragment();
+		for (var i = 0; i < numberDivs; i++) {
+			var newDiv = GenerateRandomDiv();
+			docFragment.appendChild(newDiv.cloneNode(true));
+		};
+
+		document.getElementById("wrapper").appendChild(docFragment);
+
+		function GenerateRandomDiv(){
+			var newDiv = document.createElement("div");
+			var divWidth = parseInt(Math.random() * 20);
+			newDiv.style.width = divWidth + "px";
+			var divHeight = parseInt(Math.random() * 100);
+			newDiv.style.height = divHeight + "px";
+
+			newDiv.style.position = "absolute";
+			var divTop = parseInt(Math.random() * (maxHeight - 100));
+			newDiv.style.top = divTop + "px";
+			var divLeft = parseInt(Math.random() * (maxWidth - 20));
+			newDiv.style.left = divLeft + "px";
+
+			newDiv.innerHTML = "<strong>div</strong>";
+
+			newDiv.style.borderStyle = "solid";
+			var divBorderWidth = 1 + parseInt(Math.random() * 19);
+			newDiv.style.borderWidth = divBorderWidth + "px";
+			var divBorderRadius = parseInt(Math.random() * 100);
+			newDiv.style.borderRadius = divBorderRadius + "px";
+			newDiv.style.borderColor = generateRandomColor();
+
+			return newDiv;
+		}
+
+		function generateRandomColor() {
+			var red = (Math.random() * 256) | 0;
+			var green = (Math.random() * 256) | 0;
+			var blue = (Math.random() * 256) | 0;
+
+			return "rgb(" + red + "," + green + "," + blue + ")";
+		}
+	</script>
+</body>
+</html>

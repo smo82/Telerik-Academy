@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Advance Functions - Dom modifier module</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper">
+		<ul>
+			<li>Item</li>
+			<li>Item</li>
+			<li>Item</li>
+			<li>Item</li>
+			<li>Item</li>
+		</ul>
+		<a href="" class="button">Link as a button</a>
+		<a href="" class="button">Link as a button</a>
+		<a href="" class="button">Link as a button</a>
+
+		<nav id="main-nav">
+			<ul>
+				<li>Main nav item</li>
+				<li>Main nav item</li>
+				<li>Main nav item</li>
+				<li>Main nav item</li>
+			</ul>
+		</nav>
+		<div id="container"></div>
+	</div>
+	<script>
+		/*
+		Task01
+
+		Create a module for working with DOM. The module should have the following functionality
+		Add DOM element to parent element given by selector
+		Remove element from the DOM  by given selector
+		Attach event to given selector by given event type and event hander
+		Add elements to buffer, which appends them to the DOM when their count for some selector becomes 100
+		The buffer contains elements for each selector it gets
+		Get elements by CSS selector
+		The module should reveal only the methods
+
+		Create a module for working with DOM. The module should have the following functionality
+
+		var domModule = …
+		var div = document.createElement("div");
+		//appends div to #wrapper
+		domModule.appendChild(div,"#wrapper"); 
+		//removes li:first-child from ul
+		domModule.removeChild("ul","li:first-child"); 
+		//add handler to each a element with class button
+		domModule.addHandler("a.button", 'click',        
+		                     function(){alert("Clicked")});
+		domModule.appendToBuffer("container", div.cloneNode(true));
+		domModule.appendToBuffer("#main-nav ul", navItem);
+		*/
+
+		(function(){
+			'use struct';
+			var domModule = DomModuleModifier();
+
+			var div = document.createElement("div");
+			div.innerHTML = "New div";
+			//appends div to #wrapper
+			domModule.appendChild(div, "#wrapper");
+			//removes li:first-child from ul
+			domModule.removeChild("ul", "li:first-child");
+			//add handler to each a element with class button
+			domModule.addHandler("a.button", 'click',
+
+			function() {
+				alert("Clicked")
+			});
+
+			var navItem = document.createElement("li");
+			navItem.innerHTML = "New main nav item";
+			domModule.appendToBuffer("#container", div.cloneNode(true));
+			domModule.appendToBuffer("#main-nav ul", navItem);
+			domModule.appendToBuffer("#main-nav ul", navItem);
+
+			function DomModuleModifier(){
+				var BUFFER_SELECTOR_CAPACITY = 100;
+				var buffer = [];
+
+				function appendChild(childNode, parentNodeSelector){
+					if (!(childNode instanceof HTMLElement)){
+						return false;
+					}
+
+					var parentNode = getElement(parentNodeSelector);
+					if (!parentNode){
+						return false;
+					}
+					
+					parentNode.appendChild(childNode);
+					return true;
+				}
+
+				function removeChild(parentNodeSelector, childNodeSelector){
+					var parentNode = getElement(parentNodeSelector);
+					if (!parentNode){
+						return false;
+					}
+
+					var childNode = getElement(childNodeSelector);
+					if (!childNode){
+						return false;
+					}
+
+					parentNode.removeChild(childNode);
+
+					return true;
+				}
+
+				function addHandler(nodeSelector, eventType, eventHandler){
+					var nodes = getElements(nodeSelector);
+					if (nodes.length === 0){
+						return false;
+					}
+
+					// We check if the browser supports addEventListener and
+					// depending on this we use a different function for the actual
+					// attachment of the event
+					var addEventFunction;		
+					if (nodes[0].addEventListener) {
+				        addEventFunction = addEventListenerHandler;
+				    } else {
+				        addEventFunction = attachEventHandler;
+				    }  
+
+				    for (var i = 0; i < nodes.length; i++) {
+				    	addEventFunction(nodes[i], eventType, eventHandler);
+				    };
+
+				    return true;
+				}	
+
+				function addEventListenerHandler(node, eventType, eventHandler){
+			        node.addEventListener(eventType, eventHandler, false);
+				}
+
+				function attachEventHandler(node, eventType, eventHandler){
+			        node.attachEvent('on' + eventType, eventHandler);
+				}
+
+				function appendToBuffer(parentNodeSelector, node){
+					var parentNode = getElement(parentNodeSelector);
+					if (!parentNode){
+						return false;
+					}
+
+					if (!(node instanceof HTMLElement)){
+						return false;
+					}
+
+					var currentBufferNodes = [];
+					if (parentNodeSelector in buffer){
+						currentBufferNodes = buffer[parentNodeSelector];
+						currentBufferNodes.push(node);					
+					}
+					else{
+						currentBufferNodes.push(node);
+					}
+					buffer[parentNodeSelector] = currentBufferNodes;
+
+					if (currentBufferNodes.length === BUFFER_SELECTOR_CAPACITY){
+						bufferPushToDom(parentNodeSelector);
+					}
+
+					return true;
+				}
+
+				function bufferPushToDom(parentNodeSelector){
+					var parentNode = getElement(parentNodeSelector);
+					var currentBufferNodes = buffer[parentNodeSelector];
+
+					for (var i = 0; i < currentBufferNodes.length; i++) {
+						parentNode.appendChild(currentBufferNodes[i]);
+					};
+
+					buffer[parentNodeSelector] = [];
+				}				
+
+			    function getElement(nodeSelector) {
+			        return document.querySelector(nodeSelector);
+			    }
+
+			    function getElements(nodesSelector) {
+			        return document.querySelectorAll(nodesSelector);
+			    }
+
+				return {
+					appendChild: appendChild,
+					removeChild: removeChild,
+					addHandler: addHandler,
+					appendToBuffer: appendToBuffer
+				}
+			}
+		})()
+	</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>DOM Manipulation - LiveNodeLists Performance</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+
+		.innerDiv{
+			width: 40px;
+			height: 40px;
+			border: 1px solid black;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper" class="wrapClass"></div>
+	<div id="wrapper2" class="wrapClass"></div>
+
+	<script>
+		(function(){
+			var wrapper = QuerySelectorShim(document, "#wrapper");
+			console.log("QuerySelector by id:", wrapper);
+			wrapper = QuerySelectorShim(document, ".wrapClass");
+			console.log("QuerySelector by class:", wrapper);
+			wrapper = QuerySelectorShim(document, "div");
+			console.log("QuerySelector by tag:", wrapper);
+
+
+			wrapper = QuerySelectorAllShim(document, ".wrapClass");
+			console.log("QuerySelectorAll by class:", wrapper);
+			wrapper = QuerySelectorAllShim(document, "div");
+			console.log("QuerySelectorAll by tag:", wrapper);
+
+			function QuerySelectorShim(node, query){
+				return QuerySelectorAllShim(node, query)[0];
+			}
+
+			function QuerySelectorAllShim(node, query){
+				switch (query[0]){
+					case '#':
+						query = query.substr(1);
+						return [node.getElementById(query)];
+						break;
+					case '.':
+						query = query.substr(1);
+						return node.getElementsByClassName(query);
+						break;
+					default :
+						return node.getElementsByTagName(query);
+						break;
+				}
+			}
+		})()
+	</script>
+</body>
+</html>

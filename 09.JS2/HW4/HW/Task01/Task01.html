@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Throw trash</title>
+	<style>
+		#wrapper, body, html {
+			min-height: 100%;
+			background: #ccc;
+		}
+		#trashCan{
+			width: 135px;
+			height: 173px;
+			background: url("TrashCan.png");
+		}
+		.trash{
+			width: 77px;
+			height: 62px;
+			background: url("Trash.png");
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		/*
+		Task01
+
+		Write a client-side based web application that consists of a trash bucket and lots of trash items in the browser window. Implement the following functionality:
+		- Drag trash items
+		- Open the bucket when a trash item is being dragged over it and close when the trash is dragged out of the bucket, or is dropped in the bucket
+		- To throw a trash item into the bucket, i.e. make it disappear from the browser window
+		*/
+		window.addEventListener('load', function () {
+	        wrapperDiv = document.getElementById("wrapper");
+			generateTrash(20);
+	    }, false);
+
+		function generateTrash(number){
+			var docFragment = document.createDocumentFragment();
+
+			for (var i = 0; i < number; i++) {
+				var newTrashDiv = generateTrashDiv();
+				newTrashDiv.id = i;
+				docFragment.appendChild(newTrashDiv);
+			};
+
+			wrapperDiv.appendChild(docFragment);
+		}
+
+		function generateTrashDiv(){
+			var newTrashDiv = document.createElement("div");
+			newTrashDiv.classList.add("trash");
+			newTrashDiv.style.position = "absolute";
+			newTrashDiv.style.top = ((Math.random() * 600) | 0) + "px";
+			newTrashDiv.style.left = 200 + ((Math.random() * 400) | 0) + "px";
+
+			newTrashDiv.draggable = "true";
+			newTrashDiv.addEventListener('dragstart', trashDrag, false);
+			return newTrashDiv;
+		}
+
+		function trashDrag(ev){
+    		ev.dataTransfer.setData("draggedTrash", ev.target.id);
+		}
+
+		function dropTrash(ev){
+        	ev.preventDefault();
+			ev.target.style.backgroundImage = "url(TrashCan.png)";
+
+        	var trashDivId = ev.dataTransfer.getData("draggedTrash");
+        	var trashDiv = document.getElementById(trashDivId);
+        	trashDiv.style.display = 'none';
+		}
+
+		function trashDragOver(ev){
+			ev.preventDefault();
+
+			ev.target.style.backgroundImage = "url(TrashCanOpen.png)";
+		}
+
+		function trashDragLeave(ev){
+			ev.preventDefault();
+
+			ev.target.style.backgroundImage = "url(TrashCan.png)";
+		}
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="trashCan" ondrop="dropTrash(event)" ondragover="trashDragOver(event)" ondragleave="trashDragLeave(event)"></div>
+	</div>
+</body>
+</html>
