@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.FindTreeRoot", "FindTreeRoot\01.FindTreeRoot.csproj", "{748EFE25-319E-4B38-BA29-039BF72EDEDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00.FunctionsCollection", "FunctionsCollection\00.FunctionsCollection.csproj", "{9EEC5B0F-72C8-4FB1-8514-AD1F7EBCBCF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.TraverseWinDir", "02.TraverseWinDir\02.TraverseWinDir.csproj", "{1AFBED9D-56E5-4D1F-BC0F-30277A4F52D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.GetDirSubtreeSize", "03.GetDirSubtreeSize\03.GetDirSubtreeSize.csproj", "{165E9A45-8640-40D0-BACA-D80A93B9F739}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{748EFE25-319E-4B38-BA29-039BF72EDEDF}.Debug|x86.ActiveCfg = Debug|x86
+		{748EFE25-319E-4B38-BA29-039BF72EDEDF}.Debug|x86.Build.0 = Debug|x86
+		{748EFE25-319E-4B38-BA29-039BF72EDEDF}.Release|x86.ActiveCfg = Release|x86
+		{748EFE25-319E-4B38-BA29-039BF72EDEDF}.Release|x86.Build.0 = Release|x86
+		{9EEC5B0F-72C8-4FB1-8514-AD1F7EBCBCF1}.Debug|x86.ActiveCfg = Debug|x86
+		{9EEC5B0F-72C8-4FB1-8514-AD1F7EBCBCF1}.Debug|x86.Build.0 = Debug|x86
+		{9EEC5B0F-72C8-4FB1-8514-AD1F7EBCBCF1}.Release|x86.ActiveCfg = Release|x86
+		{9EEC5B0F-72C8-4FB1-8514-AD1F7EBCBCF1}.Release|x86.Build.0 = Release|x86
+		{1AFBED9D-56E5-4D1F-BC0F-30277A4F52D9}.Debug|x86.ActiveCfg = Debug|x86
+		{1AFBED9D-56E5-4D1F-BC0F-30277A4F52D9}.Debug|x86.Build.0 = Debug|x86
+		{1AFBED9D-56E5-4D1F-BC0F-30277A4F52D9}.Release|x86.ActiveCfg = Release|x86
+		{1AFBED9D-56E5-4D1F-BC0F-30277A4F52D9}.Release|x86.Build.0 = Release|x86
+		{165E9A45-8640-40D0-BACA-D80A93B9F739}.Debug|x86.ActiveCfg = Debug|x86
+		{165E9A45-8640-40D0-BACA-D80A93B9F739}.Debug|x86.Build.0 = Debug|x86
+		{165E9A45-8640-40D0-BACA-D80A93B9F739}.Release|x86.ActiveCfg = Release|x86
+		{165E9A45-8640-40D0-BACA-D80A93B9F739}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

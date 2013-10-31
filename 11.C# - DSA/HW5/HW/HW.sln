@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.PriorityQueueImplement", "01.PriorityQueueImplement\01.PriorityQueueImplement.csproj", "{131BC5EC-AFB8-4CFC-85FE-8E28F88B7C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.PriceSubrange", "02.PriceSubrange\02.PriceSubrange.csproj", "{BADC2B7A-7DB0-4851-B9EC-79A8E8B58569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.CountWords", "03.CountWords\03.CountWords.csproj", "{F11A1510-2961-42DC-84C1-81C8D530F5D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{131BC5EC-AFB8-4CFC-85FE-8E28F88B7C41}.Debug|x86.ActiveCfg = Debug|x86
+		{131BC5EC-AFB8-4CFC-85FE-8E28F88B7C41}.Debug|x86.Build.0 = Debug|x86
+		{131BC5EC-AFB8-4CFC-85FE-8E28F88B7C41}.Release|x86.ActiveCfg = Release|x86
+		{131BC5EC-AFB8-4CFC-85FE-8E28F88B7C41}.Release|x86.Build.0 = Release|x86
+		{BADC2B7A-7DB0-4851-B9EC-79A8E8B58569}.Debug|x86.ActiveCfg = Debug|x86
+		{BADC2B7A-7DB0-4851-B9EC-79A8E8B58569}.Debug|x86.Build.0 = Debug|x86
+		{BADC2B7A-7DB0-4851-B9EC-79A8E8B58569}.Release|x86.ActiveCfg = Release|x86
+		{BADC2B7A-7DB0-4851-B9EC-79A8E8B58569}.Release|x86.Build.0 = Release|x86
+		{F11A1510-2961-42DC-84C1-81C8D530F5D8}.Debug|x86.ActiveCfg = Debug|x86
+		{F11A1510-2961-42DC-84C1-81C8D530F5D8}.Debug|x86.Build.0 = Debug|x86
+		{F11A1510-2961-42DC-84C1-81C8D530F5D8}.Release|x86.ActiveCfg = Release|x86
+		{F11A1510-2961-42DC-84C1-81C8D530F5D8}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

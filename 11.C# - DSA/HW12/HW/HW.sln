@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.CountCoins", "01.CountCoins\01.CountCoins.csproj", "{C40DD377-38C6-44EF-AA15-C39BE0F178D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.CheckIfPointInsideTriangle", "02.CheckIfPointInsideTriangle\02.CheckIfPointInsideTriangle.csproj", "{63312105-7FB1-42DB-9F89-9339241491CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C40DD377-38C6-44EF-AA15-C39BE0F178D6}.Debug|x86.ActiveCfg = Debug|x86
+		{C40DD377-38C6-44EF-AA15-C39BE0F178D6}.Debug|x86.Build.0 = Debug|x86
+		{C40DD377-38C6-44EF-AA15-C39BE0F178D6}.Release|x86.ActiveCfg = Release|x86
+		{C40DD377-38C6-44EF-AA15-C39BE0F178D6}.Release|x86.Build.0 = Release|x86
+		{63312105-7FB1-42DB-9F89-9339241491CC}.Debug|x86.ActiveCfg = Debug|x86
+		{63312105-7FB1-42DB-9F89-9339241491CC}.Debug|x86.Build.0 = Debug|x86
+		{63312105-7FB1-42DB-9F89-9339241491CC}.Release|x86.ActiveCfg = Release|x86
+		{63312105-7FB1-42DB-9F89-9339241491CC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
