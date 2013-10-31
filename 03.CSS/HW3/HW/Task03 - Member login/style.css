@@ -1,0 +1,90 @@
+body, h1, p, header, section, article{
+	padding: 0;
+	margin: 0;
+}
+
+fieldset{
+	border: none;
+}
+
+body{
+	margin: 5px;
+	background: black;
+}
+
+#MainSection{
+	background: #3b3b3b;
+	height: 320px;
+	width: 615px;
+	border: 2px solid #826951;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+
+	overflow: hidden;
+}
+
+	header{
+		margin: 0;
+		padding:5px;
+		height: 60px;
+		background: #343434;
+	}
+
+		header img{
+			float: left;
+			margin-right: 15px;
+		}
+
+		#user_name_lbl{
+			margin-right: 15px;
+			margin-top: 10px;
+			color: white;
+			font-size: 1.5em;
+			font-weight: bolder;
+			float:left;
+		}
+
+		header input[type=input]{
+			margin-right: 15px;
+			margin-top: 10px;
+			width:120px;
+		}
+
+		header button{
+			margin-top: 10px;	
+			width: 56px;
+			height: 28px;
+			background: url(_image/button.png);
+			border: none;
+			color: white;
+			font-weight: bold;
+			float: right;
+		}
+
+	header:after{
+		content: ""; 
+		display: block; 
+		clear: both; 
+		height: 0; 
+	}
+
+	article{
+		margin: 10px;
+		margin-right: 73px;
+	}
+
+		article h1{
+			margin: 15px 0;
+			color: #fedf17;
+			font-weight: normal;
+			font-size: 2em;
+		}
+
+		article p{
+			color: #808080;
+		}
+
+.WhiterText{
+	color: #cecece;
+}

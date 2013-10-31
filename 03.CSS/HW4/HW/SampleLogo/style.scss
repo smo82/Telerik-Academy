@@ -1,0 +1,332 @@
+@mixin clearFix{
+	zoom:1;
+	clear: both;
+	&:after{
+		display: block;
+		content: "";
+		height: 0;
+		clear: both;
+	}
+}
+
+@mixin backgroundGradient ($color1, $position1, $color2, $position2, $color3, $position3, $color4, $position4){
+	background: $color1; /* Old browsers */
+	background: -moz-linear-gradient(top, $color1 $position1, $color2 $position2, $color3 $position3, $color4 $position4); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop($position1,$color1), color-stop($position2,$color2), color-stop($position3,$color3), color-stop($position4,$color4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $color1 $position1,$color2 $position2,$color3 $position3,$color4 $position4); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $color1 $position1,$color2 $position2,$color3 $position3,$color4 $position4); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $color1 $position1,$color2 $position2,$color3 $position3,$color4 $position4); /* IE10+ */
+	background: linear-gradient(to bottom, $color1 $position1,$color2 $position2,$color3 $position3,$color4 $position4); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='${color1}', endColorstr='${color4}',GradientType=0 ); /* IE6-9 */
+}
+
+$font: Arial;
+$fontSize: 14px normal Arial;
+$fontSizeEm: 1.7em normal Arial;
+$fontSizeh1: 1.4em;
+$fontWeight: bolder;
+
+$mainColor: white;
+
+$inputBackground: #b35ef3;
+$buttonHoverBackground:#8949b9;
+
+$borderRadius: 20px;
+$borderRadiusAside: 10px;
+
+$subNavListBackgroundColor : rgba(179, 94, 243, 0.9);
+$articleHeaderBachground :none;
+
+$asideLiLiBackground: url(images/li-dot.png) no-repeat;
+$asideLiLiBackgroundPosition: 0 50%;
+
+/*//////////////////////////////////////////////////////////////////////////////////*/
+
+body, header, section, footer, article, h1, h2, h3, h4, h5, h6, input, button, label, p, fieldset, nav, ul, li, a, span, strong, em {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////*/
+
+div, h1, h3, h4, h5, h6, header, footer, body, section, nav, article, aside {
+    display: block;
+}
+
+body{
+	/*SECTION - Added by me*/
+	@include backgroundGradient (#d493fe, 0%, #9117f1, 19%, #9117f1, 19%, #9215f2, 100%);
+	font-family: $font;
+	font-size: $fontSize;
+	color: $mainColor;
+	/*END SECTION - Added by me*/
+
+	header {
+        padding-top: 25px;
+        padding-bottom: 5px;
+        padding-right: 15px;
+        padding-left: 15px;
+
+        div#header-container div#logo-container {
+	        float: left;	
+	        position: relative;
+		}
+
+		div#header-container div#reg-form-container {
+	        float: right;
+	        position: relative;
+	        right: 5%;
+	        top: 50%;
+	    }
+
+	    div#header-container div#reg-form-container div {
+	        text-align: right;
+
+	        label {
+	            width: 50px;
+	            margin: 5px;
+	        }
+
+	        input {
+	            width: 130px;
+	            border: 1px solid #603382;
+	            padding: 2px 5px;
+	            margin: 5px;
+	            /*SECTION - Added by me*/
+	            border-radius: $borderRadius;
+	            background: $inputBackground;  
+	            /*END SECTION - Added by me*/                
+	        }
+		}
+
+		div#header-container div#reg-form-container button {
+	        margin-left: auto;
+	        margin-right: auto;
+	        font-weight: bold;
+	        border: 1px solid #603382;
+	        border-style: outset;
+	        padding: 5px 8px;
+	        /*SECTION - Added by me*/
+	        border-radius: $borderRadiusAside;
+	        color: $mainColor;
+	        background: $inputBackground;
+	        /*END SECTION - Added by me*/  
+
+	        &:hover {
+	            /*SECTION - Added by me*/
+	            background-color: $buttonHoverBackground;
+	            /*END SECTION - Added by me*/
+	            border-style: inset;
+	        }	        
+	    }
+
+	    nav {
+            display: inline-block;
+            width: 75%;
+            margin: 20px 20px 20px 20px;
+            padding: 12px;
+            /*SECTION - Added by me*/
+            border: 1px solid #000;
+            border-radius: $borderRadius;
+            /*END SECTION - Added by me*/
+
+            ul.nav-list {
+                list-style-type: none;
+            }
+
+            ul li {
+                float: left;
+                margin: 0;
+
+                a {
+                    text-decoration: none;
+                    padding: 0 10px 0 10px;
+                    color: white;
+                    /*SECTION - Added by me*/
+                    font: $fontSizeEm;
+		            /*END SECTION - Added by me*/
+
+		            .selected {
+	                    font-weight: bold;
+	                }
+                }
+
+                &:hover > a {
+                    text-decoration: underline;
+                    color: #a8a8a8;
+
+                    + ul {
+                        display: block;
+                    }
+                }
+
+                ul.sub-nav-list {
+                    position: absolute;
+                    display: none;
+                    /*SECTION - Added by me*/
+                    background-color: $subNavListBackgroundColor;
+		            border-radius: $borderRadius;
+		            /*END SECTION - Added by me*/
+                }
+
+                ul li {
+                    float: none;
+                    margin: 0 15px;
+                    padding: 10px 0;
+                    border-bottom: 1px solid black;
+
+                    &:last-of-type {
+                        border-bottom: none;
+                    }
+
+                    > a {
+                        font-size: 1.2em;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    section {
+        width: 75%;
+        float: left;
+        /*SECTION - Added by me*/
+        color: $mainColor;
+        /*END SECTION - Added by me*/ 
+
+        article {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid black;
+            /*SECTION - Added by me*/
+            border-radius: $borderRadius;
+            /*END SECTION - Added by me*/ 
+
+            header {
+            	/*SECTION - Added by me*/
+                background: $articleHeaderBachground;
+            	/*END SECTION - Added by me*/ 
+                padding: 5px;
+
+                h1 {
+                    padding: 0;
+                    /*SECTION - Added by me*/
+                    font-size: $fontSizeh1;
+                    font-weight: $fontWeight;
+            		/*END SECTION - Added by me*/
+                }
+            }
+
+            footer {
+                padding: 5px;
+
+                p {
+                    font-size: 16px;
+                    text-align: right;
+                    font-weight: normal;
+
+                    time {
+                        font-family: Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        /*SECTION - Added by me*/
+                        color: #d4a3f8;
+                        /*END SECTION - Added by me*/ 
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    aside {
+        float: left;
+        width: 20%;
+        margin: 20px;
+
+        > ul {
+            list-style-type: none;
+
+            > li {
+                margin: 15px 0;
+                padding: 15px;
+                border: 1px solid black;
+	            /*SECTION - Added by me*/
+	            border-radius: $borderRadiusAside;
+	            /*END SECTION - Added by me*/
+
+	            h2 {
+                    font-size: 1.1em;
+                    font-weight: bold;
+                }
+
+                p {
+                    margin-top: 10px;
+                    margin-right: 5px;
+                    margin-bottom: 10px;
+                    margin-left: 5px;
+                    font-size: 14px;
+
+                    a {
+                        color: #aaaaaa;
+                        text-decoration: none;
+                    }
+
+                    strong {
+                        color: #cccccc;
+                        font-weight: bold;
+                        font-style: normal;
+                    }
+
+                    em {
+                        color: #cccccc;
+                        font-weight: normal;
+                        font-style: italic;
+                    }
+                }
+                ul {
+                    list-style-type: none;
+                    margin-top: 10px;
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                    margin-left: 0px;
+
+                    li {
+                        margin-top: 5px;
+                        margin-left: 10px;
+                        margin-bottom: 0px;
+                        margin-right: 0px;
+            			/*SECTION - Added by me*/
+                        background: $asideLiLiBackground;
+                        background-position: $asideLiLiBackgroundPosition;
+            			/*END SECTION - Added by me*/
+                        padding-left: 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        @include clearFix;
+        padding-top: 15px;
+        padding-bottom: 25px;
+        padding-right: 0px;
+        padding-left: 0px;
+
+        p {
+            font-size: 1.2em;
+            font-weight: bold;
+            /*SECTION - Added by me*/
+            text-align: center;
+            /*END SECTION - Added by me*/ 
+        }
+    }
+}

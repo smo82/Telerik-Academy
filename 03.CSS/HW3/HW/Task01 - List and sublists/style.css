@@ -1,0 +1,22 @@
+dd{
+	display:none;
+	margin: 0;
+}
+
+dt:hover{
+	text-decoration: underline;
+}
+
+	dt:hover + dd{
+		display: block;	
+	}
+
+ul{
+	margin: 0;
+	padding: 0 20px;
+}
+li{
+	list-style-type: none;
+	color: #9b8d8b;
+	font-weight: bold;
+}

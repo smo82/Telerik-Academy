@@ -1,0 +1,107 @@
+/*//////////////////////////////////////////////////////////////////////////////////*/
+body, header, section, footer, article, h1, h2, h3, h4, h5, h6, input, button, label, p, fieldset, nav, ul, li, a, span, strong, em {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+div, h1, h3, h4, h5, h6, header, footer, body, section, nav, article, aside {
+  display: block; }
+
+/*//////////////////////////////////////////////////////////////////////////////////*/
+body {
+  margin: 20px;
+  overflow: hidden;
+  background: black;
+  position: relative; }
+  body header ul li {
+    display: none; }
+    body header ul li:nth-child(1) {
+      display: inline-block; }
+      body header ul li:nth-child(1) .small {
+        background: url(images/chita_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(1) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(1) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/chita_big.png);
+          height: 300px;
+          width: 300px; }
+    body header ul li:nth-child(2) {
+      display: inline-block; }
+      body header ul li:nth-child(2) .small {
+        background: url(images/horses_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(2) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(2) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/horses_big.png);
+          height: 300px;
+          width: 300px; }
+    body header ul li:nth-child(3) {
+      display: inline-block; }
+      body header ul li:nth-child(3) .small {
+        background: url(images/lion_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(3) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(3) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/lion_big.png);
+          height: 300px;
+          width: 300px; }
+    body header ul li:nth-child(4) {
+      display: inline-block; }
+      body header ul li:nth-child(4) .small {
+        background: url(images/squirrel_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(4) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(4) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/squirrel_big.png);
+          height: 300px;
+          width: 300px; }
+    body header ul li:nth-child(5) {
+      display: inline-block; }
+      body header ul li:nth-child(5) .small {
+        background: url(images/tigers_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(5) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(5) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/tigers_big.png);
+          height: 300px;
+          width: 300px; }
+    body header ul li:nth-child(6) {
+      display: inline-block; }
+      body header ul li:nth-child(6) .small {
+        background: url(images/bear_small.png);
+        height: 76px;
+        width: 76px; }
+        body header ul li:nth-child(6) .small:hover > .big {
+          display: block; }
+        body header ul li:nth-child(6) .small .big {
+          display: none;
+          position: absolute;
+          top: 100px;
+          background: url(images/bear_big.png);
+          height: 300px;
+          width: 300px; }

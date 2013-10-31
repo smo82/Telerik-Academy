@@ -1,0 +1,66 @@
+@mixin WidthHeight ($width:0, $height:$width){
+	height: $height;
+	width: $width;
+}
+
+@mixin AddIcons{
+	$iconList:(chita, horses, lion, squirrel, tigers, bear);
+
+	@for $i from 1 through length($iconList) {
+		$icon: nth($iconList, $i);
+
+		&:nth-child(#{$i}){
+			display: inline-block;
+
+			.small{
+				background: url(images/#{$icon}_small.png);	
+				@include WidthHeight (76px);
+
+				&:hover>.big{
+					display:block;
+				}
+
+				.big{
+					display: none;
+					position:absolute;
+					top: 100px;
+					background: url(images/#{$icon}_big.png);
+
+					//NO TIME TO MAKE THE BIGGER PICTURES 23:53 :)))
+
+					@include WidthHeight (300px);
+				}
+			}
+		}
+	}
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////*/
+
+body, header, section, footer, article, h1, h2, h3, h4, h5, h6, input, button, label, p, fieldset, nav, ul, li, a, span, strong, em {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+div, h1, h3, h4, h5, h6, header, footer, body, section, nav, article, aside {
+    display: block;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////*/
+
+body{
+	margin: 20px;
+	overflow:hidden;	
+	background:black;
+	position: relative;
+
+	header{
+		ul li{
+			display: none;
+
+			@include AddIcons;
+		}
+	}
+}
+

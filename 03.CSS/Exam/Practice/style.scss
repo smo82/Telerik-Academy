@@ -1,0 +1,56 @@
+@mixin Background($color){
+	background: $color;
+}
+
+@mixin Size($width:0, $heigth: $width){
+	width:$width;
+	height: $heigth;
+}
+
+@mixin IncludeImg{
+	$images : (lion, cub_tiger, lion2, tiger, lion3, tiger2);
+
+	@each $item in $images {
+    	$i: index($images, $item);
+
+		&:nth-child(#{$i}){
+			display: inline-block;
+
+			a{
+				background:url(images/#{$item}_small.jpg);
+			}
+
+			section{
+				background:url(images/#{$item}_big.jpg);
+			}
+		}
+	}
+}
+
+body{
+	@include Background(black);
+
+	header ul li{
+		display: none;
+
+		a{
+			display: block;
+			@include Size(200px, 125px);
+			@include Background(yellow);
+		}
+
+		section{
+			display: none;
+			@include Size(500px, 313px);
+			position: absolute;
+			top: 150px;
+			left: 48px;	
+		}
+
+		&:target section{
+			display: block;
+		}
+
+		@include IncludeImg;
+	}
+}

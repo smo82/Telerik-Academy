@@ -1,0 +1,54 @@
+body {
+  background: black; }
+  body header ul li {
+    display: none; }
+    body header ul li a {
+      display: block;
+      width: 200px;
+      height: 125px;
+      background: yellow; }
+    body header ul li section {
+      display: none;
+      width: 500px;
+      height: 313px;
+      position: absolute;
+      top: 150px;
+      left: 48px; }
+    body header ul li:target section {
+      display: block; }
+    body header ul li:nth-child(1) {
+      display: inline-block; }
+      body header ul li:nth-child(1) a {
+        background: url(images/lion_small.jpg); }
+      body header ul li:nth-child(1) section {
+        background: url(images/lion_big.jpg); }
+    body header ul li:nth-child(2) {
+      display: inline-block; }
+      body header ul li:nth-child(2) a {
+        background: url(images/cub_tiger_small.jpg); }
+      body header ul li:nth-child(2) section {
+        background: url(images/cub_tiger_big.jpg); }
+    body header ul li:nth-child(3) {
+      display: inline-block; }
+      body header ul li:nth-child(3) a {
+        background: url(images/lion2_small.jpg); }
+      body header ul li:nth-child(3) section {
+        background: url(images/lion2_big.jpg); }
+    body header ul li:nth-child(4) {
+      display: inline-block; }
+      body header ul li:nth-child(4) a {
+        background: url(images/tiger_small.jpg); }
+      body header ul li:nth-child(4) section {
+        background: url(images/tiger_big.jpg); }
+    body header ul li:nth-child(5) {
+      display: inline-block; }
+      body header ul li:nth-child(5) a {
+        background: url(images/lion3_small.jpg); }
+      body header ul li:nth-child(5) section {
+        background: url(images/lion3_big.jpg); }
+    body header ul li:nth-child(6) {
+      display: inline-block; }
+      body header ul li:nth-child(6) a {
+        background: url(images/tiger2_small.jpg); }
+      body header ul li:nth-child(6) section {
+        background: url(images/tiger2_big.jpg); }

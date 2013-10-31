@@ -1,0 +1,67 @@
+body, ul, li, a, div, h1, h2, h3, h4, h5, h6, p, table, thead, tr, td, th {
+  padding: 0;
+  margin: 0;
+  font-size: 16px; }
+
+body {
+  width: 960px; }
+  body #wrapper .notification-list {
+    width: 472px; }
+    body #wrapper .notification-list > li {
+      display: inline-block;
+      border: 1px solid black;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ababab), color-stop(100%, #dddddd)) no-repeat;
+      padding: 0 5px; }
+      body #wrapper .notification-list > li > a {
+        display: block;
+        text-decoration: none;
+        color: #927784;
+        margin: 5px;
+        font-family: "Courier New"; }
+        body #wrapper .notification-list > li > a img {
+          height: 15px;
+          width: 15px; }
+        body #wrapper .notification-list > li > a span {
+          font-size: 18px; }
+      body #wrapper .notification-list > li .content {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 32px; }
+        body #wrapper .notification-list > li .content ul {
+          border: 1px solid black;
+          border-top: none;
+          width: 470px;
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #cccccc)) no-repeat; }
+          body #wrapper .notification-list > li .content ul li {
+            padding: 5px; }
+            body #wrapper .notification-list > li .content ul li > a {
+              text-decoration: none;
+              color: #5e5e5e;
+              padding: 5px;
+              font-family: "Courier New"; }
+              body #wrapper .notification-list > li .content ul li > a img {
+                height: 15px;
+                width: 15px;
+                padding-right: 5px; }
+              body #wrapper .notification-list > li .content ul li > a span {
+                color: #777777; }
+              body #wrapper .notification-list > li .content ul li > a:hover {
+                text-decoration: underline; }
+      body #wrapper .notification-list > li:first-child {
+        -webkit-border-top-left-radius: 10px;
+        width: 134px;
+        /*.content{
+        	display: block;
+        }*/ }
+      body #wrapper .notification-list > li:nth-child(2) {
+        border-left: none;
+        border-right: none;
+        width: 189px; }
+      body #wrapper .notification-list > li:last-child {
+        -webkit-border-top-right-radius: 10px;
+        width: 115px; }
+      body #wrapper .notification-list > li:hover {
+        border-bottom: 1px solid #dddddd; }
+        body #wrapper .notification-list > li:hover .content {
+          display: block; }

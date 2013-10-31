@@ -1,0 +1,119 @@
+body, h1, p, header, section, article, ul, li, a, input, fieldset{
+	padding: 0;
+	margin: 0;
+}
+
+fieldset{
+	border: none;
+}
+
+body{
+	background: black;
+	/*font-family: sans-serif;*/
+	font-family: tahoma;
+}
+
+#MainSection{
+	margin: 10px auto;
+	background: #fefefe;
+	width: 925px;
+	height: 650px;
+	-webkit-border-radius: 7px;
+	-webkit-border-top-right-radius: 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	-moz-border-radius: 7px;
+	-moz-border-radius-topright: 2px;
+	-moz-border-radius-bottomright: 2px;
+	border-radius: 7px;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	overflow: hidden;
+}
+
+	#MainSection header{
+		width:850px;
+		margin: 20px auto;
+		padding-bottom: 5px;
+		text-align: center;
+		border-bottom: 2px solid black;
+	}
+
+		#MainSection header a{
+			font-size: 2.1em;
+			color: #00acf0;
+		}
+
+
+
+		#MainSection article #TableDiv{
+			display: table;
+			margin: 10px;
+			width: 640px;
+			height: 450px;
+			float: left;
+		}
+
+			#MainSection article .TableRow{
+				display: table-row;			
+			}
+
+				#MainSection article .TableCell{
+					display: table-cell;	
+				}
+
+					#MainSection article .TableCell fieldset{
+						margin: 5px;
+						padding: 10px;
+						border: 2px solid black;
+					}
+
+							#InnerTableDiv{
+								display: table;
+							}
+
+								#InnerTableDiv .TableRow .TableCell:nth-child(1){
+									vertical-align: top;
+								}
+
+								#InnerTableDiv .Table{
+									display: table;
+									vertical-align: middle;
+								}
+
+									#InnerTableDiv .Table .TableCell{
+										display: inline-block;
+										width: 100%;
+										margin-bottom: 10px;
+									}
+
+									#InnerTableDiv .Table .TableCell:first-child{
+										margin-top:40px;
+									}
+
+
+		#MainSection article aside{
+			float: right;
+			font-size: 1.5em;
+			margin: 80px 25px 80px 5px;
+		}
+
+			#MainSection article aside ul{
+				list-style-type: none;
+			}
+
+			#MainSection article aside ul li{
+				margin: 30px 0;
+			}
+
+			#MainSection article aside ul li input[type=range]{
+				width: 200px;
+				margin: 0 10px;
+			}
+
+
+	#MainSection article:after{
+		content: ""; 
+		display: block; 
+		clear: both; 
+		height: 0; 
+	}

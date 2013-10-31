@@ -1,0 +1,200 @@
+﻿.clearfix {
+    zoom: 1;
+}
+
+body, header, section, footer, article, h1, h2, h3, h4, h5, h6, input, button, label, p, fieldset, nav, ul, li, a, span, strong, em, img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#MainBody
+{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 432px;
+    height: 403px;
+    background: linear-gradient(to bottom, #d0e4fa, #bbdbfb 25%, #d5e8fc 26%, #b0d0f2);
+}
+
+    #logo
+    {
+        padding: 10px 0 0 10px;
+        float: left;
+    }
+    
+    #MainBody header section p
+    {
+        height: 10px;
+        float: left;
+        padding-left: 10px;
+        padding-top: 8px;
+    }
+    
+    #MainBody header aside
+    {
+        float:right;
+        padding-right: 5px;
+    }
+    
+        #MainBody header aside img
+        {
+            border: 1px solid #525962;
+        }
+        #minimizeNav
+        {
+            -webkit-border-bottom-left-radius: 5px;
+            -moz-border-radius-bottomleft: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        #closeNav
+        {
+            -webkit-border-bottom-right-radius: 5px;
+            -moz-border-radius-bottomright: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    
+
+    #InnerBody
+    {
+        border: 1px solid #5c6a79;
+        border-radius: 2px;
+        width: 411px;
+        height: 354px;
+        
+        margin-top: 38px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+        
+        #InnerBody header
+        {
+            border-bottom: 2px solid #b6bccc;
+            height: 25px;
+        }
+        
+        #InnerBody header nav
+        {
+            background: linear-gradient(to bottom, #fcfdfe, #e5eaf5 35%, #d4dbee 36%, #e1e6f6);
+        }
+        
+        #InnerBody header nav li
+        {
+            list-style:none;
+            display:inline-block;
+            padding-top: 2px;
+            padding-left: 5px;
+        }
+        
+        #InnerBody header nav li:first-letter
+        {
+            text-decoration: underline;
+        }
+
+        #CalcBody
+        {
+            height : 328px;
+            background: linear-gradient(to bottom, #edf4fc, #dbe6f2 35%, #dbe6f2 36%, #d9e4f1);
+        }
+        
+            #CalcBody input[type=text]
+            {
+                height : 50px;
+                width : 385px;
+                margin : 5px 12px 0 12px;
+                border: 1px solid #8e9cad;
+                border-radius: 5px;
+                font-size: 2em;
+                text-align: right;
+            }
+            
+            #BitViewTable
+            {
+                height : 50px;
+                width : 385px;
+                margin : 5px 12px 0 12px;
+                border: 1px solid #8e9cad;
+                border-radius: 5px;
+                display:table;
+                font-size: 0.8em;
+                padding: 0;
+            }
+                .BynaryRow, .DecimalRow
+                {
+                    display:table-row;
+                }
+                
+                .BynaryRow
+                {
+                    color: #1e395b;
+                    font-weight:bold;
+                }
+                
+                .DecimalRow
+                {
+                    color: #7b6666;
+                }
+                    
+                    #BitViewTable .Cell
+                    {
+                        display:table-cell;
+                        padding: 0;
+                        margin: 0;
+                    }
+               
+            .NavRadio
+            {
+                height : 90px;
+                width : 72px;
+                margin : 5px 12px 0 12px;
+                border: 1px solid #8696aa;
+                border-radius: 5px;
+                padding : 0;
+            }
+               
+                .NavRadio li
+                {
+                    list-style:none;
+                    padding-top: 2px;
+                    padding-left: 5px;
+                }
+            
+            #CalcBody nav
+            {
+                float:left;
+            }
+            
+            .Controll
+            {
+                height : 187px;
+                width : 307px;
+                margin : 5px 12px 0 12px;
+                border: 1px solid #8e9cad;
+                border-radius: 5px;
+                display:table;
+                font-size: 0.8em;
+                padding: 0;
+                float:right;
+            }
+            
+                .ControllRow
+                {
+                    display:table-row;
+                }
+                    
+                    .ControlCell
+                    {
+                        display:table-cell;
+                        border: 1px solid #8e9cad;
+                    }
+            
+            .Controll :after
+            {
+                content: "";
+                display: block;
+                clear: both;
+                height: 0;
+            }
+            
+                
+          

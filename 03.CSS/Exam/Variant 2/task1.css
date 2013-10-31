@@ -1,0 +1,80 @@
+body, ul, li, a, div, h1, h2, h3, h4, h5, h6, p, table, thead, tr, td, th {
+  padding: 0;
+  margin: 0; }
+
+body {
+  width: 960px;
+  font-size: 18px;
+  font-family: Helvetica, Arial, "DejaVu Sans", "Liberation Sans", Freesans, sans-serif; }
+  body .accordion li {
+    list-style-type: none;
+    display: block;
+    width: 400px;
+    border: 1px solid black;
+    background: #aaaaaa;
+    color: #444444; }
+    body .accordion li a {
+      display: block;
+      text-decoration: none;
+      height: 27px;
+      text-align: center;
+      font-size: 22px;
+      font-family: Arial;
+      font-weight: bold;
+      color: #444444;
+      padding: 2px;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(29%, #eeeeee), color-stop(100%, #aaaaaa));
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #eeeeee 0%, #eeeeee 29%, #aaaaaa 100%);
+      /* Chrome10+,Safari5.1+ */ }
+    body .accordion li .accordion-content {
+      display: none;
+      padding: 0 16px 5px 16px;
+      font-family: Arial; }
+      body .accordion li .accordion-content h1 {
+        text-align: center;
+        color: #5e5e5e;
+        font-size: 30px;
+        padding: 5px; }
+      body .accordion li .accordion-content p {
+        text-align: justify;
+        font-size: 18px;
+        padding: 5px;
+        padding-bottom: 0; }
+      body .accordion li .accordion-content table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        font-family: sans-serif;
+        margin: 20px 0; }
+        body .accordion li .accordion-content table thead tr th {
+          text-align: left;
+          border: 1px solid black;
+          color: #444444;
+          padding: 5px;
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ececec), color-stop(100%, #898989));
+          /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top, #ececec 0%, #898989 100%);
+          /* Chrome10+,Safari5.1+ */ }
+          body .accordion li .accordion-content table thead tr th:first-child {
+            -webkit-border-top-left-radius: 15px; }
+        body .accordion li .accordion-content table tbody tr td {
+          text-align: left;
+          border: 1px solid black;
+          color: #fff9e9;
+          padding: 5px; }
+        body .accordion li .accordion-content table tbody tr:nth-child(odd) {
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cbcbcb), color-stop(100%, #898989));
+          /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top, #cbcbcb 0%, #898989 100%);
+          /* Chrome10+,Safari5.1+ */ }
+        body .accordion li .accordion-content table tbody tr:nth-child(even) {
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #898989), color-stop(100%, #cbcbcb));
+          /* Chrome,Safari4+ */
+          background: -webkit-linear-gradient(top, #898989 0%, #cbcbcb 100%);
+          /* Chrome10+,Safari5.1+ */ }
+    body .accordion li:hover {
+      background: #aaaaaa; }
+      body .accordion li:hover a {
+        background: #aaaaaa; }
+  body .accordion li.current .accordion-content {
+    display: block; }

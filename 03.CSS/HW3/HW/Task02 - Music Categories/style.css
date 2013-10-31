@@ -1,0 +1,84 @@
+p{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #000;
+}
+
+#MainSection{
+	background: #eeeeee;
+	height: 500px;
+	width: 375px;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+
+	overflow: hidden;
+}
+	
+	header{
+		margin:10px;
+	}
+
+		h1{
+			font: sans-serif;
+			font-weight: normal;
+			font-size: 20px;
+		}
+
+	article{
+		width: 355px;
+		border: 1px solid #b0b0b0;
+		margin: 20px 9px 20px 9px;
+		background: white;
+	}	
+
+		article img{
+			margin: 15px;
+			border: 1px solid #b0b0b0;
+			float:left;
+		}
+
+		article section{
+			font-size: 0.80pxem;
+			width: 185px;
+			/*height: 80px;*/
+			float:right;
+			margin: 15px;
+			margin-bottom: 0;
+			margin-left: 0;
+		}
+
+			article section nav a{
+				padding: 2px;
+				margin: 8px 2px;
+				height:18px;
+				display: inline-block;
+				float: right;
+				text-align: center;
+				color: white;	
+			}
+
+			article section nav a.ListenLink{
+				width: 65px;
+				background: url(_image/ListenLinkBackground.PNG);
+			}
+
+			article section nav a.AddLink{
+				width: 52px;
+				background: url(_image/AddLinkBackground.PNG);
+			}
+
+	article:after{
+		content: ""; 
+		display: block; 
+		clear: both; 
+		height: 0; 
+	}
+
+.BoldSpan{
+	font-weight: bold;
+}
+

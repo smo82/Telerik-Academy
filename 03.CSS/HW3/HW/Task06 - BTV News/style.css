@@ -1,0 +1,98 @@
+body, h1, p, header, section, article, ul, li, a, input, fieldset{
+	padding: 0;
+	margin: 0;
+}
+
+fieldset{
+	border: none;
+}
+
+body{
+	background: black;
+	/*font-family: tahoma;*/
+}
+
+#MainSection{
+	margin: 10px auto;
+	background: #1e3741;
+	width: 1080px;
+	height: 575px;
+	border: 2px solid #337d8f;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	overflow: hidden;
+}
+
+				#MainSection header ul li{
+					display: inline-block;
+					height: 50px;
+					background: #4b5f67;
+					color: #799ca2;
+					font-size: 1.5em;
+					margin-top:15px;
+				}
+
+					#MainSection header ul .SelectedTab{
+						background: none;
+						color: white;
+						font-weight: bold;
+						padding: 10px 20px;
+					}
+
+					#MainSection header ul li a{
+						display: block;
+						text-decoration: none;
+						color: #799ca2;
+						font-weight: bold;
+						padding: 10px 20px;
+					}
+					#MainSection header ul li a:hover{
+						text-decoration: underline;
+					}
+
+
+		#InnerSection aside{
+			float: left;
+			width: 410px;
+		}
+
+			#InnerSection aside ul li{
+				display: inline-block;
+				padding: 15px 10px;
+				width: 100%;
+				font-size: 1.5em;
+				border-bottom: 2px solid #334952;
+			}
+
+			#InnerSection aside ul .SelectedArticle{
+				background: #00968c;
+				color:white;
+				font-weight: bold;
+				border: none;
+			}
+
+				#InnerSection aside ul li a{
+					display: block;
+					margin-right: 13px;
+					color: #8da2af;
+					font-weight: bold;
+					text-decoration: none;
+				}
+
+				#InnerSection aside ul li:last-child{
+					border: none;
+				}
+
+		#InnerSection section{
+			float: right;
+			padding-bottom: 30px;
+			padding-right: 50px;
+		}
+
+	#InnerSection:after{
+		content: ""; 
+		display: block; 
+		clear: both; 
+		height: 0; 
+	}

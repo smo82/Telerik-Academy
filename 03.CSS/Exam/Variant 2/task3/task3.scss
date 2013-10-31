@@ -1,0 +1,72 @@
+body, ul, li, a, div, h1, h2, h3, h4, h5, h6, p, table, thead, tr, td, th, input, button{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+	width: 960px;
+	font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+  	font-size: 16px; 
+  	color: #473333;
+
+	#wrapper{
+		width: 412px;
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#68d1ff), color-stop(100%,#8cfffb)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #68d1ff 0%,#8cfffb 100%); /* Chrome10+,Safari5.1+ */
+		border: 1px solid black;
+		-webkit-border-radius: 14px;
+		padding: 15px;
+
+		form{
+			text-align: right;
+			fieldset{
+				margin-bottom: 5px;
+				padding: 2px 15px;
+				text-align: right;
+				border: 3px solid black;
+
+				legend{
+					font-size: 22px;
+					padding: 0 10px;
+					font-style: italic;
+					color: #333333;
+				}
+
+				label{
+					font-weight: normal;
+				}
+
+				input{
+					border: 1px solid #008fce;
+					-webkit-border-radius: 5px;
+					margin: 1px;
+					padding:5px;
+					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#69d2ff), color-stop(100%,#8bfefb)); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(top, #69d2ff 0%,#8bfefb 100%); /* Chrome10+,Safari5.1+ */
+				}
+				input[type=number]{
+					-webkit-outer-spin-button,
+					-webkit-inner-spin-button {
+				    }
+				}
+			}
+
+			button, input[type=reset]{
+				margin: 15px 0;
+				padding: 5px 16px;
+				border: none;
+				border-bottom: 1px solid black;
+				-webkit-border-radius: 5px;
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#36c2ff), color-stop(100%,#8bfefb)); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top, #36c2ff 0%,#8bfefb 100%); /* Chrome10+,Safari5.1+ */
+				font-size: 19px;
+				color: #333333;
+
+				&:hover{
+					background: #9be1ff;
+				}
+			}
+		}
+
+	}
+}
