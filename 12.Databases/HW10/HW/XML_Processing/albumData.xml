@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<albums-data>
+	<album>
+		<name>Heaven And Hell</name>
+		<artist>Black Sabbath</artist>
+	</album>
+	<album>
+		<name>Painkiller</name>
+		<artist>Judas Priest</artist>
+	</album>
+	<album>
+		<name>Jugulator</name>
+		<artist>Judas Priest</artist>
+	</album>
+</albums-data>

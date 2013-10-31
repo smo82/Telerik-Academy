@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<!-- Task02
+Create XML document students.xml, which contains structured description of students. 
+For each student you should enter information for his name, sex, birth date, phone, email, course, specialty, faculty number and a list of taken exams (exam name, tutor, score).
+-->
+<students
+    xmlns="urn:student">
+  <student>
+    <name>Student1</name>
+    <sex>Male</sex>
+    <birth-data>01-01-1980</birth-data>
+    <phone>0888-888-888</phone>
+    <course>Database</course>
+    <speciality>.Net developer</speciality>
+    <faculty-number>9000000</faculty-number>
+    <exams>
+      <exam>
+        <name>Databases 1</name>
+        <tutor>Svetlin Nakov</tutor>
+        <score>96</score>
+      </exam>
+    </exams>
+  </student>
+</students>

@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SupermarketManagement" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ZipReportsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//ExternalData//Sales-Reports.zip</Value>
+    </Setting>
+    <Setting Name="ZipReportsExtractPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//ExternalData//TempExtract</Value>
+    </Setting>
+    <Setting Name="PdfExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//PdfExports</Value>
+    </Setting>
+    <Setting Name="XmlReportExtractPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//XmlExports//Report.xml</Value>
+    </Setting>
+    <Setting Name="JsonExportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//Product-Reports</Value>
+    </Setting>
+    <Setting Name="MongoDbConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mongodb://localhost</Value>
+    </Setting>
+    <Setting Name="ExcelExportTotalProductReportPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..//..//ExcelExports//Products-Total-Report.xlsx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

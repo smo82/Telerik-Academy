@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupermarketsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SupermarketsModelStoreContainer">
+    <EntitySet Name="Measures" EntityType="SupermarketsModel.Store.Measures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="SupermarketsModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReportDetails" EntityType="SupermarketsModel.Store.ReportDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reports" EntityType="SupermarketsModel.Store.Reports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Supermarkets" EntityType="SupermarketsModel.Store.Supermarkets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="SupermarketsModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vendors" EntityType="SupermarketsModel.Store.Vendors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VendorSales" EntityType="SupermarketsModel.Store.VendorSales" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Products_Measures" Association="SupermarketsModel.Store.FK_Products_Measures">
+      <End Role="Measures" EntitySet="Measures" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Vendors" Association="SupermarketsModel.Store.FK_Products_Vendors">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportDetails_Products" Association="SupermarketsModel.Store.FK_ReportDetails_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ReportDetails" EntitySet="ReportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportDetails_Reports" Association="SupermarketsModel.Store.FK_ReportDetails_Reports">
+      <End Role="Reports" EntitySet="Reports" />
+      <End Role="ReportDetails" EntitySet="ReportDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Supermarkets" Association="SupermarketsModel.Store.FK_Reports_Supermarkets">
+      <End Role="Supermarkets" EntitySet="Supermarkets" />
+      <End Role="Reports" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VendorSales_Vendors" Association="SupermarketsModel.Store.FK_VendorSales_Vendors">
+      <End Role="Vendors" EntitySet="Vendors" />
+      <End Role="VendorSales" EntitySet="VendorSales" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Measures">
+    <Key>
+      <PropertyRef Name="MeasureId" />
+    </Key>
+    <Property Name="MeasureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MeasureName" Type="nchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductsId" />
+    </Key>
+    <Property Name="ProductsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="nchar" Nullable="false" MaxLength="45" />
+    <Property Name="ProductPrice" Type="money" Nullable="false" />
+    <Property Name="VendorId" Type="int" Nullable="false" />
+    <Property Name="MeasureId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportDetails">
+    <Key>
+      <PropertyRef Name="ReportDetailId" />
+    </Key>
+    <Property Name="ReportDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" Nullable="false" />
+    <Property Name="ReportId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="ReportId" />
+    </Key>
+    <Property Name="ReportId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ReportDate" Type="datetime" Nullable="false" />
+    <Property Name="SupermarketId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supermarkets">
+    <Key>
+      <PropertyRef Name="SupermarketId" />
+    </Key>
+    <Property Name="SupermarketId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SupermarketName" Type="nchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Vendors">
+    <Key>
+      <PropertyRef Name="VendorId" />
+    </Key>
+    <Property Name="VendorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="VendorName" Type="nchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="VendorSales">
+    <Key>
+      <PropertyRef Name="VendorSalesId" />
+    </Key>
+    <Property Name="VendorSalesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="Expenses" Type="money" Nullable="false" />
+    <Property Name="VendorId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Products_Measures">
+    <End Role="Measures" Type="SupermarketsModel.Store.Measures" Multiplicity="1" />
+    <End Role="Products" Type="SupermarketsModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Measures">
+        <PropertyRef Name="MeasureId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="MeasureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Vendors">
+    <End Role="Vendors" Type="SupermarketsModel.Store.Vendors" Multiplicity="1" />
+    <End Role="Products" Type="SupermarketsModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportDetails_Products">
+    <End Role="Products" Type="SupermarketsModel.Store.Products" Multiplicity="1" />
+    <End Role="ReportDetails" Type="SupermarketsModel.Store.ReportDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductsId" />
+      </Principal>
+      <Dependent Role="ReportDetails">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportDetails_Reports">
+    <End Role="Reports" Type="SupermarketsModel.Store.Reports" Multiplicity="1" />
+    <End Role="ReportDetails" Type="SupermarketsModel.Store.ReportDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reports">
+        <PropertyRef Name="ReportId" />
+      </Principal>
+      <Dependent Role="ReportDetails">
+        <PropertyRef Name="ReportId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Supermarkets">
+    <End Role="Supermarkets" Type="SupermarketsModel.Store.Supermarkets" Multiplicity="1" />
+    <End Role="Reports" Type="SupermarketsModel.Store.Reports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supermarkets">
+        <PropertyRef Name="SupermarketId" />
+      </Principal>
+      <Dependent Role="Reports">
+        <PropertyRef Name="SupermarketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VendorSales_Vendors">
+    <End Role="Vendors" Type="SupermarketsModel.Store.Vendors" Multiplicity="1" />
+    <End Role="VendorSales" Type="SupermarketsModel.Store.VendorSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendors">
+        <PropertyRef Name="VendorId" />
+      </Principal>
+      <Dependent Role="VendorSales">
+        <PropertyRef Name="VendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sales>
+  <sale vendor="Kamenitsa Corp.">
+    <summary total-sum="34.46" date="24-Jul-2013" />
+  </sale>
+  <sale vendor="Neste Sofia Corp.">
+    <summary total-sum="349.75" date="20-Jul-2013" />
+    <summary total-sum="1091.24" date="21-Jul-2013" />
+    <summary total-sum="722.80" date="22-Jul-2013" />
+  </sale>
+  <sale vendor="Zagorka Corp.">
+    <summary total-sum="255.20" date="24-Jul-2013" />
+  </sale>
+</sales>

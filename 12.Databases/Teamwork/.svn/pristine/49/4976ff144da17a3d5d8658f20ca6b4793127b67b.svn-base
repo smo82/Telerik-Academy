@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SqLiteEntitiesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SupermarketsSqLiteEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ProductSalesReports" EntityType="SqLiteEntitiesModel.ProductSalesReport" />
+    <EntitySet Name="ProductTaxes" EntityType="SqLiteEntitiesModel.ProductTax" />
+  </EntityContainer>
+  <EntityType Name="ProductSalesReport">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int64" Nullable="false" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="45" Unicode="true" FixedLength="false" />
+    <Property Name="VendorName" Type="String" Nullable="false" MaxLength="45" Unicode="true" FixedLength="false" />
+    <Property Name="TotalQuantitySold" Type="Int64" Nullable="false" />
+    <Property Name="TotalIncomes" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="ProductTax">
+    <Key>
+      <PropertyRef Name="ProductTaxId" />
+    </Key>
+    <Property Name="ProductTaxId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="45" Unicode="true" FixedLength="false" />
+    <Property Name="Tax" Type="Decimal" Precision="5" Scale="4" />
+  </EntityType>
+</Schema>

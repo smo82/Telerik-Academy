@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="_01.CategiesCount" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DbConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Server=.\SQLEXPRESS; Database=NORTHWND; Integrated Security=true</Value>
+    </Setting>
+    <Setting Name="ExcelConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\ExcelFiles\ExcelDb.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES";</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

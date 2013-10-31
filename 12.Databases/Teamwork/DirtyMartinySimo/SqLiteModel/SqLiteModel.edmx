@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SqLiteEntitiesModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SqLiteEntitiesModelStoreContainer">
+          <EntitySet Name="ProductSalesReports" EntityType="SqLiteEntitiesModel.Store.ProductSalesReports" store:Type="Tables" />
+          <EntitySet Name="ProductTaxes" EntityType="SqLiteEntitiesModel.Store.ProductTaxes" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="ProductSalesReports">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="integer" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="45" />
+          <Property Name="VendorName" Type="nvarchar" Nullable="false" MaxLength="45" />
+          <Property Name="TotalQuantitySold" Type="integer" Nullable="false" />
+          <Property Name="TotalIncomes" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProductTaxes">
+          <Key>
+            <PropertyRef Name="ProductTaxId" />
+          </Key>
+          <Property Name="ProductTaxId" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="45" />
+          <Property Name="Tax" Type="decimal" Precision="5" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SqLiteEntitiesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SupermarketsSqLiteEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ProductSalesReports" EntityType="SqLiteEntitiesModel.ProductSalesReport" />
+          <EntitySet Name="ProductTaxes" EntityType="SqLiteEntitiesModel.ProductTax" />
+        </EntityContainer>
+        <EntityType Name="ProductSalesReport">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int64" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="45" Unicode="true" FixedLength="false" />
+          <Property Name="VendorName" Type="String" Nullable="false" MaxLength="45" Unicode="true" FixedLength="false" />
+          <Property Name="TotalQuantitySold" Type="Int64" Nullable="false" />
+          <Property Name="TotalIncomes" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProductTax">
+          <Key>
+            <PropertyRef Name="ProductTaxId" />
+          </Key>
+          <Property Name="ProductTaxId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="45" Unicode="true" FixedLength="false" />
+          <Property Name="Tax" Type="Decimal" Precision="5" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SqLiteEntitiesModelStoreContainer" CdmEntityContainer="SupermarketsSqLiteEntities">
+          <EntitySetMapping Name="ProductSalesReports">
+            <EntityTypeMapping TypeName="SqLiteEntitiesModel.ProductSalesReport">
+              <MappingFragment StoreEntitySet="ProductSalesReports">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="TotalQuantitySold" ColumnName="TotalQuantitySold" />
+                <ScalarProperty Name="TotalIncomes" ColumnName="TotalIncomes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTaxes">
+            <EntityTypeMapping TypeName="SqLiteEntitiesModel.ProductTax">
+              <MappingFragment StoreEntitySet="ProductTaxes">
+                <ScalarProperty Name="ProductTaxId" ColumnName="ProductTaxId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

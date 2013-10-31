@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<catalog>
+	<albums>
+		<album>
+			<name>Heaven And Hell</name>
+			<artist>Black Sabbath</artist>
+			<year>1982</year>
+			<producer>Unknown</producer>
+			<price>100</price>
+			<songs>
+				<song>
+					<title>Heaven And Hell</title>
+					<duration>320</duration>
+				</song>
+				<song>
+					<title>Neon Knights</title>
+					<duration>315</duration>
+				</song>
+				<song>
+					<title>Children Of The Sea</title>
+					<duration>295</duration>
+				</song>
+				<song>
+					<title>Lady Evil</title>
+					<duration>290</duration>
+				</song>
+			</songs>
+		</album>
+		<album>
+			<name>Painkiller</name>
+			<artist>Judas Priest</artist>
+			<year>1990</year>
+			<producer>Unknown</producer>
+			<price>21</price>
+			<songs>
+				<song>
+					<title>Painkiller</title>
+					<duration>270</duration>
+				</song>
+				<song>
+					<title>Hell Patrol</title>
+					<duration>300</duration>
+				</song>
+				<song>
+					<title>All Guns Blazing</title>
+					<duration>340</duration>
+				</song>
+				<song>
+					<title>Leather Rebel</title>
+					<duration>297</duration>
+				</song>
+			</songs>
+		</album>
+		<album>
+			<name>Jugulator</name>
+			<artist>Judas Priest</artist>
+			<year>1997</year>
+			<producer>Unknown</producer>
+			<price>18</price>
+			<songs>
+				<song>
+					<title>Jugulator</title>
+					<duration>273</duration>
+				</song>
+				<song>
+					<title>Blood Stained</title>
+					<duration>305</duration>
+				</song>
+				<song>
+					<title>Dead Meat</title>
+					<duration>291</duration>
+				</song>
+			</songs>
+		</album>
+	</albums>
+</catalog>

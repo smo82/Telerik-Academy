@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SqLiteEntitiesModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SqLiteEntitiesModelStoreContainer">
+    <EntitySet Name="ProductSalesReports" EntityType="SqLiteEntitiesModel.Store.ProductSalesReports" store:Type="Tables" />
+    <EntitySet Name="ProductTaxes" EntityType="SqLiteEntitiesModel.Store.ProductTaxes" store:Type="Tables" />
+  </EntityContainer>
+  <EntityType Name="ProductSalesReports">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="integer" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="VendorName" Type="nvarchar" Nullable="false" MaxLength="45" />
+    <Property Name="TotalQuantitySold" Type="integer" Nullable="false" />
+    <Property Name="TotalIncomes" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="ProductTaxes">
+    <Key>
+      <PropertyRef Name="ProductTaxId" />
+    </Key>
+    <Property Name="ProductTaxId" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="45" />
+    <Property Name="Tax" Type="decimal" Precision="5" Scale="4" />
+  </EntityType>
+</Schema>

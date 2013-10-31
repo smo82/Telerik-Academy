@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SqLiteEntitiesModelStoreContainer" CdmEntityContainer="SupermarketsSqLiteEntities">
+    <EntitySetMapping Name="ProductSalesReports">
+      <EntityTypeMapping TypeName="SqLiteEntitiesModel.ProductSalesReport">
+        <MappingFragment StoreEntitySet="ProductSalesReports">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+          <ScalarProperty Name="TotalQuantitySold" ColumnName="TotalQuantitySold" />
+          <ScalarProperty Name="TotalIncomes" ColumnName="TotalIncomes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTaxes">
+      <EntityTypeMapping TypeName="SqLiteEntitiesModel.ProductTax">
+        <MappingFragment StoreEntitySet="ProductTaxes">
+          <ScalarProperty Name="ProductTaxId" ColumnName="ProductTaxId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

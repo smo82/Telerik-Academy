@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<catalog>
+  <albums>
+    <album>
+      <name>Heaven And Hell</name>
+      <artist>Black Sabbath</artist>
+      <year>1982</year>
+      <producer>Unknow</producer>
+      <price>100</price>
+      <songs>
+        <song>
+          <title>Heaven And Hell</title>
+          <dutation>320</dutation>
+        </song>
+        <song>
+          <title>Neon Knights</title>
+          <dutation>315</dutation>
+        </song>
+        <song>
+          <title>Children Of The Sea</title>
+          <dutation>295</dutation>
+        </song>
+        <song>
+          <title>Lady Evil</title>
+          <dutation>290</dutation>
+        </song>
+      </songs>
+    </album>
+    <album>
+      <name>Painkiller</name>
+      <artist>Judas Priest</artist>
+      <year>1990</year>
+      <producer>Unknow</producer>
+      <price>20</price>
+      <songs>
+        <song>
+          <title>Painkiller</title>
+          <dutation>325</dutation>
+        </song>
+        <song>
+          <title>Hell Patrol</title>
+          <dutation>315</dutation>
+        </song>
+        <song>
+          <title>All Guns Blazing</title>
+          <dutation>295</dutation>
+        </song>
+        <song>
+          <title>Leather Rebel</title>
+          <dutation>290</dutation>
+        </song>
+      </songs>
+    </album>
+  </albums>
+</catalog>

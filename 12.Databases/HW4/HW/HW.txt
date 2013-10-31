@@ -1,0 +1,23 @@
+-- Task01
+
+USE [Accounts]
+
+SELECT FirstName + ' ' + LastName AS [Full Names]
+FROM Persons
+
+--------------
+-- Task02
+
+USE [Accounts]
+
+CREATE PROC usp_SelectPersonsWithBiggerBalance(
+  @minBalance int = 0)
+AS
+  SELECT * 
+   FROM Persons p
+    JOIN Accounts a
+      ON p.Id = a.PersonId
+   WHERE a.Balance >= @minBalance
+GO
+
+
