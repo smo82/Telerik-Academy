@@ -1,0 +1,80 @@
+#fieldset_registration_form{
+	border : none;
+}
+
+#fieldset_table{
+	width : 410px;
+}
+
+#fieldset_table, td{
+	border : 1px groove;
+}
+
+#col_1{
+	width : 100px;
+}
+
+#col_2{
+	width : 160px;
+}
+
+#col_3{
+	width : 70px;
+}
+
+#col_4{
+	width : 70px;
+}
+
+.td_label{
+	text-align : right;
+}
+
+.label_text{
+	font-weight : bold;
+}
+
+.text_fld_95_prsnt{
+	width : 95%;
+}
+
+#address{
+	width : 95%;
+	resize: none;
+}
+
+#postal_code, #gender{
+	width : 30%;
+}
+
+#country{
+	width : 60%;
+}
+
+#phone_cntry, #phone_area_code{
+		width : 20%;
+}
+
+#phone_number{
+	width : 40%;
+}
+
+#birth_date_month, #birth_date_day{
+	width : 20px;
+}
+
+#birth_date_year{
+	width : 40px;
+}
+
+tfoot{
+	background-color : #d1ede1;
+}
+
+tfoot td{
+	text-align : center;
+}
+
+.form_btn{
+	display : inline;
+}

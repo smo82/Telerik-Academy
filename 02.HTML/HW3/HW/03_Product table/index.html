@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Product Table</title>
+	<link rel="stylesheet" type="text/css" href="product_table.css" /> 
+  </head>
+  <body>
+	<form method="post" action="apply-now.php">
+		<fieldset id="fieldset_product_form">
+			<table id = "product_table" cellspacing="0" cellpadding="3">
+				<colgroup>
+					<col id = "col_1"/>
+					<col id = "col_2"/>
+					<col id = "col_3"/>
+					<col id = "col_4"/>
+					<col id = "col_5"/>
+					<col id = "col_6"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th colspan = "6">Drag a column header and drop it hereto group by that column</th>
+					</tr>
+					<tr>
+						<th>ProductID</th>
+						<th>Product name</th>
+						<th>Unit price</th>
+						<th>Quantity per unit</th>
+						<th>Units in stock</th>
+						<th>Discontinued</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan = "2">
+							<!--<table id = "navigation_table">-->
+							<table>
+								<tbody>
+									<tr>
+										<td><input type="image" src="First.jpg" name="first" alt="Button first" /></td>
+										<td><input type="image" src="Previous.jpg" name="previous" alt="Button previous" /></td>
+										<!-- There is a problem with reaching the td by id in Chrome and for that reason we add an additional div -->
+										<td class = "current_page"><div id = "crrnt_page">1<div></td> 
+										<td class = "not_selected_page">2</td>
+										<td class = "not_selected_page">3</td>
+										<td class = "not_selected_page">4</td>
+										<td class = "not_selected_page">5</td>
+										<td class = "not_selected_page">6</td>
+										<td class = "not_selected_page">7</td>
+										<td class = "not_selected_page">8</td>
+										<td class = "not_selected_page">9</td>
+										<td class = "not_selected_page">10</td>
+										<td class = "not_selected_page">..</td>
+										<td><input type="image" src="Next.jpg" name="next" alt="Button next" /></td>
+										<td><input type="image" src="Last.jpg" name="last" alt="Button last" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+						<td colspan = "2">
+							Page size: 
+							<select id="page_size">
+								<option value="10" selected="selected">10</option>
+								<option value="20">20</option>
+								<option value="30">30</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+							</select>
+						</td>
+						<td colspan = "3" id = "navigator_bar_page_count">
+							335104 items in 33511 pages
+						</td
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td><input type="text" name="product_id_search" id="product_id_search" pattern="[0-9]{1,9}" /></td>
+						<td><input type="text" name="product_name_search" id="product_name_search" pattern="[a-zA_Z0-9 ]{1,40}" /></td>
+						<td>
+							<input type="text" name="unit_price_search" id="unit_price_search" pattern="[0-9.]{1,10}" />
+							<input type="image" src="Filter.jpg" name="filter" class = "filter_btn" alt="Filter unit price" />
+						</td>
+						<td><input type="text" name="quantity_search" id="quantity_search" pattern="[0-9]{1,10}" /></td>
+						<td>
+							<input type="text" name="unit_in_stock_search" id="unit_in_stock_search" pattern="[0-9]{1,10}" />
+							<input type="image" src="Filter.jpg" name="filter" class = "filter_btn" alt="Filter unit in stock" />
+						</td>
+						<td>
+							<input type="checkbox" name="discontinued_search" value="discontinued_checked"/>
+							<input type="image" src="Filter.jpg" name="filter" class = "filter_btn" alt="Filter unit in stock" />
+						</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>Chai</td>
+						<td>$18.00</td>
+						<td>10 boxes x 20 bags</td>
+						<td>39</td>
+						<td><input type="checkbox" name="discontinued" value="1" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Chang</td>
+						<td>$19.00</td>
+						<td>24 - 12 oz bottles</td>
+						<td>17</td>
+						<td><input type="checkbox" name="discontinued" value="2" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Aniseed Syrup</td>
+						<td>$10.00</td>
+						<td>12 - 550 ml bottles</td>
+						<td>13</td>
+						<td><input type="checkbox" name="discontinued" value="3" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Chef Anton's Cajun Seasoning</td>
+						<td>$22.00</td>
+						<td>48 - 6 oz jars</td>
+						<td>53</td>
+						<td><input type="checkbox" name="discontinued" value="4" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Chef Anton's Gumbo Mix</td>
+						<td>$21.35</td>
+						<td>36 boxes</td>
+						<td>0</td>
+						<td><input type="checkbox" name="discontinued" value="5" disabled = "true" checked/></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Grandma's Boysendberry Spread</td>
+						<td>$25.00</td>
+						<td>12 - 8 oz jars</td>
+						<td>120</td>
+						<td><input type="checkbox" name="discontinued" value="6" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Uncle's Bob Organic Dried Piers</td>
+						<td>$30.00</td>
+						<td>12 - 1 lb pkgs.</td>
+						<td>15</td>
+						<td><input type="checkbox" name="discontinued" value="7" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Northwoods Cranberry Sauce</td>
+						<td>$40.00</td>
+						<td>12 - 12 oz jars</td>
+						<td>6</td>
+						<td><input type="checkbox" name="discontinued" value="8" disabled = "true"/></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Mishi Kobe Niku</td>
+						<td>$97.00</td>
+						<td>18 - 500 g pkgs.</td>
+						<td>29</td>
+						<td><input type="checkbox" name="discontinued" value="9" disabled = "true" checked/></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Ikura</td>
+						<td>$31.00</td>
+						<td>12 - 200 ml jars</td>
+						<td>31</td>
+						<td><input type="checkbox" name="discontinued" value="10" disabled = "true"/></td>
+					</tr>
+					<tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+  </body>
+</html>

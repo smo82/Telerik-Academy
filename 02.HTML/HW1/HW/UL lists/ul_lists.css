@@ -1,0 +1,15 @@
+.list_upper_roman{
+	list-style-type:upper-roman;
+}
+.list_lower_latin{
+	list-style-type:lower-latin;
+}
+.list_decimal{
+	list-style-type:decimal;
+}
+.list_circle{
+	list-style-type:circle;
+}
+.list_disc{
+	list-style-type:disc;
+}

@@ -1,0 +1,15 @@
+#main_header img, #main_header h1
+{
+    display : inline;
+}
+
+#table_scores, #table_scores td, #table_scores th
+{
+    border : 1px solid;
+}
+
+
+
+
+
+

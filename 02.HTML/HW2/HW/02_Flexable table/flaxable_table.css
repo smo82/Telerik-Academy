@@ -1,0 +1,27 @@
+#flexable_table{
+	border : 1px inset;
+}
+
+#flexable_table td{
+	border : 1px inset;
+}
+
+col {
+	width : 40px;
+}
+
+.cell_left_text_align{
+	text-align : left;
+}
+
+.cell_center_text_align{
+	text-align : center;
+}
+
+.cell_right_text_align{
+	text-align : right;
+}
+
+
+
+

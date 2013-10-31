@@ -1,0 +1,63 @@
+#fieldset_product_form{
+	border : none;
+}
+
+#product_table{
+	border : 1px solid #bdc3c9;
+	width : 980px;
+}
+
+#product_table tfoot td{
+	border : none;
+	background-color : #cacfd3;
+}
+
+#product_table thead th{
+	background-color : #cacfd3;
+}
+
+#product_table th, td{
+	border : 1px solid #bdc3c9;
+}
+
+#product_id_search, #product_name_search, #unit_price_search, #quantity_search, #unit_in_stock_search, #discontinued_search{
+	width : 70%;
+	display : inline;
+	float : left;
+}
+
+#filter_btn {
+	display : inline;
+	float : left;
+}
+
+#col_1 {
+	width : 5%;
+}
+
+#col_2 {
+	width : 30%;
+}
+
+#col_3, #col_4, #col5 {
+	width : 18%;
+}
+
+#col_6{
+	width : 8%;
+}
+
+#crrnt_page{
+	border : 1px groove red;
+}
+
+#navigator_bar_page_count{
+	text-align : right;
+}
+
+
+
+
+
+
+

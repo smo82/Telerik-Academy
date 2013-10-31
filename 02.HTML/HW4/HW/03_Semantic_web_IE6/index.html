@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <title>Semantic web page IE6</title>
+        <link rel="stylesheet" type="text/css" href="semantic_web_ie6.css" /> 
+		<script src="js/modernizr.custom.59036.js"></script>
+    </head>
+    <body>
+        <header id="header_main">
+            <a href="http://www.linkedin.com/" title = "LinkedIn">
+                <h1>LinkedIn</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="http://www.linkedin.com/" title = "LinkedIn Home page">Home</a>
+                    </li>
+                    <li>
+                        <a href="http://www.linkedin.com/static?key=what_is_linkedin&trk=hb_what" title = "What is LinkedIn">What is LinkedIn</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/reg/join?trk=hb_join" title = "Join Today">Join Today</a>
+                    </li>
+                    <li>
+                        <form method="post" action="apply-now.php">
+		                    <fieldset id="login_form">
+                                <legend>Sign In</legend>
+                                <ul id="sign_in_list">
+                                    <li>
+                                        <label for="email">Email:</label>
+                                        <input type="text" 
+								               name="email" 
+								               id="email"
+								               pattern="[a-zA-Z0-9_]{3,}@[a-zA-Z0-9_]{3,}.[a-zA-Z0-9_]{2,4}"/>
+                                    </li>
+                                    <li>
+                                        <label for="pass">Password:</label>
+                                        <input type="password" 
+								               name="pass" 
+								               id="pass"
+								               pattern="[a-zA-Z0-9_]{3,20}"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" name="sign_in" value="Sign In"/>
+                                    </li>
+                                </ul>
+                            </fieldset>
+	                    </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <hr /> <!-- Thematic break in the content -->
+        <section>
+            <h1>
+                Over 175 million professionals use LinkedIn to exchange information, ideas and opportunities
+            </h1>
+            <ul>
+                <li>Stay informed about your contacts and industry</li>
+                <li>Find the people & knowledge you need to achieve your goals</li>
+                <li>Control your professional identity online</li>
+            </ul>
+        </section>
+        <aside>
+            <section>
+                <h1>Join LinkedIn Today</h1>
+                <form method="post" action="apply-now.php">
+		            <fieldset id="fieldset_aside_sign_in">
+                        <legend>Sign Up</legend>
+                        <ul>
+                            <li>
+                                <label for="first_name_aside" class="label_aside">First Name:</label>
+                                <input type="text" 
+								        name="first_name_aside" 
+								        id="first_name_aside"
+								        pattern="[a-zA-Z0-9_]{3,20}"/>
+                            </li>
+                            <li>
+                                <label for="last_name_aside" class="label_aside">Last Name:</label>
+                                <input type="text" 
+								        name="last_name_aside" 
+								        id="last_name_aside"
+								        pattern="[a-zA-Z0-9_]{3,20}"/>
+                            </li>
+                            <li>
+                                <label for="email_aside" class="label_aside">Email:</label>
+                                <input type="text" 
+								        name="email_aside" 
+								        id="email_aside"
+								        pattern="[a-zA-Z0-9_]{3,}@[a-zA-Z0-9_]{3,}.[a-zA-Z0-9_]{2,4}"/>
+                            </li>
+                            <li>
+                                <label for="pass_aside" class="label_aside">Password:</label>
+                                <input type="password" 
+								        name="pass_aside" 
+								        id="pass_aside"
+								        pattern="[a-zA-Z0-9_]{3,20}"/>
+                                <p>
+                                    6 or more characters
+                                </p>
+                            </li>
+                        </ul>
+                        <input type="submit" name="join" value="Join Now"/> *
+                        <p>Already on LinkedIn?  <a href="Index.html" title = "Sign in">Sign in.</a></p>
+                    </fieldset>
+	            </form>
+            </section>
+        </aside>
+        <footer>
+            <section>
+                <form method="post" action="apply-now.php">
+		            <fieldset id="fieldset_footer_search">
+                        <h1>Search for someone by name:</h1>
+                        <ul>
+                            <li>
+                                <label for="first_name_footer">First Name:</label>
+                                <input type="text" 
+								        name="first_name_footer" 
+								        id="first_name_footer"
+								        pattern="[a-zA-Z0-9_]{3,20}"/>
+                            </li>
+                            <li>
+                                <label for="last_name_footer">Last Name:</label>
+                                <input type="text" 
+								        name="last_name_footer" 
+								        id="last_name_footer"
+								        pattern="[a-zA-Z0-9_]{3,20}"/>
+                            </li>
+                        </ul>
+                        <input type="submit" name="go" value="Go"/>
+                    </fieldset>
+	            </form>
+            </section>
+        </footer>
+    </body>
+</html>

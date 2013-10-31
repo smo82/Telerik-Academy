@@ -1,0 +1,18 @@
+#field_set_calculator{
+	border : none;
+}
+
+#result_fld{
+	width : 182px;
+	height : 30px;
+	text-align:right; 
+}
+
+.calculator_key{
+	width : 40px;
+	height : 40px;
+}
+
+#zero_key{
+	width : 89px;
+}

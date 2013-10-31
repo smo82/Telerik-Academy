@@ -1,0 +1,37 @@
+#fieldset_marks_form{
+	border : none;
+}
+
+#marks_table{
+	border : 1px inset;
+}
+
+#marks_table th, td{
+	border : 1px inset;
+}
+
+#col_1, #col_9 {
+	width : 40px;
+}
+
+#col_2, #col_3 {
+	width : 90px;
+}
+
+#col_4 {
+	width : 120px;
+}
+
+#col_5, #col_6, #col_7, #col_8 {
+	width : 70px;
+}
+
+.cell_total{
+	text-align : center;
+	font-weight : bold;
+}
+
+
+
+
+

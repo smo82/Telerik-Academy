@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+	<link rel="stylesheet" type="text/css" href="calculator.css" /> 
+  </head>
+  <body>
+	<form method="post" action="apply-now.php">
+		<fieldset id = "field_set_calculator">
+			<table  cellspacing="3" cellpadding="3">
+				<tbody>
+					<tr>
+						<td colspan = "4">
+							<input type="text" 
+								   name="result_fld" 
+								   id="result_fld" 
+								   tabindex="1"
+								   autofocus="autofocus"
+								   pattern="[0-9]{1,}"
+								   required="true"
+								   placeholder="0"/>
+						</td>
+					</tr>				
+					<tr>
+						<td><input type="submit" name="key" class = "calculator_key" value="1" tabindex="2" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="2" tabindex="3" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="3" tabindex="4" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="+" tabindex="5" /></td>
+					</tr>
+					<tr>
+						<td><input type="submit" name="key" class = "calculator_key" value="4" tabindex="6" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="5" tabindex="7" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="6" tabindex="8" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="-" tabindex="9" /></td>
+					</tr>
+					<tr>
+						<td><input type="submit" name="key" class = "calculator_key" value="7" tabindex="10" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="8" tabindex="11" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="9" tabindex="12" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="*" tabindex="13" /></td>
+					</tr>
+					<tr>
+						<td colspan = "2"><input type="submit" name="key" id = "zero_key" class = "calculator_key" value="0" /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="." /></td>
+						<td><input type="submit" name="key" class = "calculator_key" value="/" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+	</form>
+  </body>
+</html>
