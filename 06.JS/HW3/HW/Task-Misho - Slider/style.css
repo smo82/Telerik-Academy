@@ -1,0 +1,13 @@
+body ul{
+	list-style-type: none;
+	display : inline-block;
+	padding: 30px;
+	width: 960px;
+	height: 450px;
+	overflow: hidden;
+}
+
+	body ul li{
+		position: absolute;
+		display: none;
+	}

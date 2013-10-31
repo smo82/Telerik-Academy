@@ -1,0 +1,14 @@
+body ul{
+	list-style-type: none;
+}
+
+	body ul li{
+		padding: 5px;
+		width: 300px;
+		border: 1px solid black;		
+		text-align: center;
+	}
+
+		body ul li section{
+			display : none;	
+		}
