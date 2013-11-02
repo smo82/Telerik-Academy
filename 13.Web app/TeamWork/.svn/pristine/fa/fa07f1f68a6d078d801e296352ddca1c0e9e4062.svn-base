@@ -1,0 +1,92 @@
+﻿namespace Chess.Server.Repos
+{
+    using System.Data.Entity;
+    using Chess.Model;
+    using System;
+    using System.Linq;
+    using System.Collections.Generic;
+    using Chess.Server.Models;
+
+    public class GameRepository : EfRepository<Game>
+    {
+        public GameRepository(DbContext context)
+            : base(context)
+        {
+        }
+
+        public Game CreateJoinGame(int userId, string name)
+        {
+            Game game = this.DbSet.FirstOrDefault(x => x.GameStatus.StatusName == "Penging");
+            if (game != null && game.WhitePlayerId != userId)
+            {
+                game.StatusId = this.Context.Set<GameStatus>().First(x => x.StatusName == "Active").Id;
+                game.BlackPlayerId = userId; 
+            }
+            else
+            {
+                game = new Game()
+                {
+                    StatusId = this.Context.Set<GameStatus>().First(x => x.StatusName == "Penging").Id,
+                    WhitePlayerId = userId
+                };
+                this.Add(game);
+            }
+
+            return game;
+        }
+
+        public IEnumerable<OpenGameModel> GetOpenGames(int userId)
+        {
+            var user = this.Context.Set<User>().FirstOrDefault(x => x.Id == userId);
+            var openStatus = this.Context.Set<GameStatus>().FirstOrDefault(st => st.StatusName == "Penging");
+            IEnumerable<OpenGameModel> openGames;
+            if (openStatus.Games.Any())
+            {
+                openGames =
+                           from game in openStatus.Games
+                           where game.WhitePlayerId == userId
+                           select new OpenGameModel()
+                           {
+                               Id = (int)game.Id,
+                               Name = game.Name,
+                               Creator = this.Context.Set<User>().FirstOrDefault(x => x.Id == game.WhitePlayerId).Name //TODO da se smeni s nickname
+                           };
+            }
+            else
+            {
+                openGames = new List<OpenGameModel>();
+            }
+            return openGames.ToList();
+        }
+
+        public IEnumerable<ActiveGameModel> GetActiveGames(int userId)
+        {
+            var user = this.Context.Set<User>().FirstOrDefault(x => x.Id == userId);
+            var openStatus = this.Context.Set<GameStatus>().FirstOrDefault(st => st.StatusName == "Active");
+            IEnumerable<ActiveGameModel> activeGames;
+            if (openStatus.Games.Any())
+            {
+                activeGames =
+                           from game in openStatus.Games
+                           where game.WhitePlayerId == userId
+                           select new ActiveGameModel()
+                           {
+                               Id = (int)game.Id,
+                               Name = game.Name,
+                               Creator = this.Context.Set<User>().FirstOrDefault(x => x.Id == game.WhitePlayerId).Name, //TODO da se smeni s nickname
+                               Status = game.GameStatus.StatusName
+                           };
+            }
+            else
+            {
+                activeGames = new List<ActiveGameModel>();
+            }
+            return activeGames.ToList();
+        }
+        
+        public Game StartGame(int gameId)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

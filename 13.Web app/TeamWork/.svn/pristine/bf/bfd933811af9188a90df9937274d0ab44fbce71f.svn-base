@@ -1,0 +1,55 @@
+﻿namespace Chess.Server.Controllers
+{
+    using Chess.Server.Models;
+    using Chess.Server.Repos;
+    using System;
+    using System.Linq;
+    using System.Web.Http;
+
+    public class GameController : ApiController
+    {
+        private AllRepositories data;
+
+        public GameController(AllRepositories data)
+        {
+            this.data = data;
+        }
+
+        // GET api/game/
+        public IQueryable<GameModel> Get()
+        {
+            return data.gameRepo.All().Select(GameModel.FromGame);
+        }
+
+        // GET api/game/5
+        public GameModel Get(int id)
+        {
+            return GameModel.ConvertToModel(data.gameRepo.Get(id));
+        }
+
+        // GET api/game/newGame
+        public GameModel GetNew()
+        {
+            return GameModel.ConvertToModel(this.data.gameRepo.FindNewGame());
+        }
+
+        // POST api/game
+        public void Post([FromBody]GameModel value)
+        {
+            throw new NotImplementedException();
+        }
+
+        // PUT api/game/5
+        public void Put(int id, [FromBody]GameModel value)
+        {
+            var game = this.data.gameRepo.Get(id);
+            value.UpdateGame(game);
+        }
+
+        // DELETE api/game/5
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

@@ -1,0 +1,50 @@
+﻿using Chess.Model;
+using Chess.Server.Controllers;
+using Chess.Server.Repos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http.Dependencies;
+
+namespace Chess.Server.Resolvers
+{
+    public class DbDependencyResolver : IDependencyResolver
+    {
+        private static AllRepositories allRepo = new AllRepositories(new ChessEntities());
+
+        public IDependencyScope BeginScope()
+        {
+            return this;
+        }
+
+        public object GetService(Type serviceType)
+        {
+            if (serviceType == typeof(GameController))
+            {
+                return new GameController(allRepo);
+            }
+            else if (serviceType == typeof(FigureController))
+            {
+                return new FigureController(allRepo);
+            }
+            else if (serviceType == typeof(UserController))
+            {
+                return new UserController(allRepo);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public IEnumerable<object> GetServices(Type serviceType)
+        {
+            return new List<object>();
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+}

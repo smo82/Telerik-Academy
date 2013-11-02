@@ -1,0 +1,177 @@
+﻿/* CSS Mini Reset */
+
+html, body, div, form, fieldset, legend, label, ul, ol, li, p, h1, h2, h3, h4, h5, h6, span {
+    margin: 0;
+    padding: 0; 
+}
+
+h1, h2, h3, h4, h5, h6, th, td, caption {
+    font-weight:normal;
+}
+
+img { 
+    border: 0;
+}
+
+/* CSS Mini Reset */
+
+.form-modal {
+    margin: 0 auto 20px;
+    margin-top: 40px;
+    padding: 19px 29px 29px;
+    max-width: 300px;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+.form-modal input[type = "text"],
+.form-modal input[type = "password"] {
+    padding: 7px 9px;
+    height: auto;
+    font-size: 16px;
+}
+
+.form-modal .text-error {
+    margin-top: 20px;
+}
+
+#accordion > div.well {
+    padding-top: -130px;
+}
+
+.error {
+    color: #f00;
+    font-weight: bold;
+}
+
+#game-field {
+    height: 510px;
+}
+
+#game-field-info span {
+    font-size: 15px;
+}
+
+#game-buttons {
+    margin-top: 20px;
+}
+
+#game-buttons button {
+    width: 100px;
+}
+
+#game-field > table {
+    margin: 10px auto;
+}
+
+#game-field > table, #game-field tr, #game-field td {
+    border: 1px solid #fff;
+    border-collapse: collapse;
+}
+
+#game-field td {
+    background-color: #000;
+    width: 40px;
+    height: 40px;
+}
+
+#game-field .red-warrior {
+    background-color: #bd0a0a;
+    background-image: url('warrior.png');
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+}
+
+#game-field .blue-warrior {
+    background-color: #081d6d;
+    background-image: url('warrior.png');
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+}
+
+#game-field .red-ranger {
+    background-color: #bd0a0a;
+    background-image: url(ranger.png);
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+}
+
+#game-field .blue-ranger {
+    background-color: #081d6d;
+    background-image: url(ranger.png);
+    background-repeat: no-repeat;
+    background-position: 1px 1px;
+}
+
+#game-field .selected {
+    opacity: 0.6;
+}
+
+#game-field .next {
+    background-image: url('next.png');
+    background-position: 1px 1px;
+}
+
+#accordion > div, #messages-list {
+    max-height: 205px;
+    overflow-y: scroll;
+}
+
+#accordion h4 {
+    color: #ff6a00;
+    cursor: pointer;
+}
+
+#accordion h4:hover {
+    -webkit-text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#accordion ul, #messages-list {
+    padding: 0;
+    margin: 0;
+}
+
+#accordion ul a {
+    margin-left: 5px;
+}
+
+#accordion li {
+    list-style: none;
+}
+
+#accordion li:hover {
+    background: #ddd;
+    cursor: pointer;
+}
+
+#accordion li a {
+    color: #000;
+    font-weight: bold;
+}
+
+#accordion li a:hover {
+    text-decoration: none;
+}
+
+#accordion li .label {
+    width: 35px;
+    text-align: center;
+}
+
+#messages-list li span:not(.label) {
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+#messages-list li .label {
+    width: 35px;
+    text-align: center;
+}
+
+#messages-list li:hover {
+    background: #ddd;
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="971f9c8f-5b4d-4ff6-81b0-106817667461" visible="True" isDefault="true" isExpanded="true" title="Main article">
+    <Topic id="9135fbb3-30f2-4d9a-b088-6797e9868572" visible="True" isSelected="true" title="Article one" />
+    <Topic id="2c7d0ced-a664-4af5-be22-fb6008e176e1" visible="True" />
+    <Topic id="d1a5a1ab-027a-4024-a04a-e48152f99dca" visible="True" />
+  </Topic>
+</Topics>

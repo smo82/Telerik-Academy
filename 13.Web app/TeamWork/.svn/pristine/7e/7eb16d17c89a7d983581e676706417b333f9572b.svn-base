@@ -1,0 +1,83 @@
+﻿namespace Chess.Server.Controllers
+{
+    using System.Net.Http;
+    using Chess.Model;
+    using Chess.Server.Models;
+    using Chess.Server.Repos;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Http;
+    using Chess.Server.Resolvers;
+    using Chess.Server.Controllers;
+    using System.Net;
+
+    public class UserController : BaseApiController
+    {
+        private AllRepositories data;
+
+        public UserController(AllRepositories data)
+        {
+            this.data = data;
+        }
+
+        [HttpPost]
+        [ActionName("register")]
+        public HttpResponseMessage RegisterUser(UserRegisterModel user)
+        {
+            try
+            {
+                this.data.userRepo.CreateUser(user.Username, user.AuthCode);
+                var sessionKey = UserDataResolver.LoginUser(user.Username, user.AuthCode);
+                UserLoggedModel result = new UserLoggedModel()
+                {
+                    Username = user.Username,
+                    SessionKey = sessionKey
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (InvalidOperationException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+            }
+        }
+
+        [HttpPost]
+        [ActionName("login")]
+        public HttpResponseMessage LoginUser(UserLoginModel user)
+        {
+            try
+            {
+                var sessionKey = this.data.userRepo.LoginUser(user.Username, user.AuthCode);
+                UserLoggedModel result = new UserLoggedModel()
+                {
+                    Username = user.Username,
+                    SessionKey = sessionKey
+                };
+
+                return Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (InvalidOperationException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+            }
+        }
+
+        [HttpGet]
+        [ActionName("logout")]
+        public HttpResponseMessage LogoutUser(string sessionKey)
+        {
+            try
+            {
+                UserDataResolver.LogoutUser(sessionKey);
+
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (InvalidOperationException e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e.Message);
+            }
+        }
+    }    
+}

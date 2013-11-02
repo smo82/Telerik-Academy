@@ -1,0 +1,144 @@
+﻿namespace Chess.Server.Controllers
+{
+    using Chess.Server.Models;
+    using Chess.Server.Repositories;
+    using System;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
+
+    public class GameController : ApiController
+    {
+        private AllRepositories data;
+        
+        public GameController(AllRepositories data)
+        {
+            this.data = data;
+        }
+
+        [HttpPost]
+        [ActionName("create")]
+        public HttpResponseMessage CreateGame(string sessionKey, [FromBody]
+                                              GameModel gameModel)
+        {
+            var userId = this.data.userRepository.LoginUser(sessionKey);
+
+            var game = this.data.gameRepository.CreateJoinGame(userId, gameModel.Name);
+
+            if (game == null)
+            {
+                //FAIL
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "No such game.");
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, "Game success");
+        }
+
+        
+
+        [HttpGet]
+        [ActionName("start")]
+        public HttpResponseMessage StartGame(string sessionKey, int gameId)
+        {
+            var userId = this.data.userRepository.LoginUser(sessionKey);//Todo tova trqbva li ni
+            var game = this.data.gameRepository.StartGame(gameId);
+
+            if (game == null)
+            {
+                //FAIL
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "No such game.");
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, "Game started successfully");
+        }
+
+        [HttpGet]
+        [ActionName("open")]
+        public HttpResponseMessage GetOpenGames(string sessionKey)
+        {
+            var userId = this.data.userRepository.LoginUser(sessionKey);
+            var games = this.data.gameRepository.GetOpenGames(userId);
+
+            if (games == null)
+            {
+                //FAIL
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "No such games.");
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, "Open games returned successfully");
+        }
+
+        [HttpGet]
+        [ActionName("my-active")]
+        public HttpResponseMessage GetActiveGames(string sessionKey)
+        {
+            var userId = this.data.userRepository.LoginUser(sessionKey);
+            var games = this.data.gameRepository.GetActiveGames(userId);
+
+            if (games == null)
+            {
+                //FAIL
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "No such games.");
+            }
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, "Active games returned successfully");
+        }
+
+        /*[HttpGet]
+        [ActionName("field")]
+        public HttpResponseMessage GetBattleField(string sessionKey, int gameId)
+        {
+            var responseMsg = this.PerformOperation(() =>
+            {
+                UserDataPersister.LoginUser(sessionKey);
+
+                BattleFieldModel gameField = GameDataPersister.GetBattleField(gameId);
+
+                return gameField;
+            });
+            return responseMsg;
+        }*/
+
+
+
+        /*
+        // GET api/game/
+        public IQueryable<GameModel> Get()
+        {
+            return data.gameRepo.All().Select(GameModel.FromGame);
+        }
+
+        // GET api/game/5
+        public GameModel Get(int id)
+        {
+            return GameModel.ConvertToModel(data.gameRepo.Get(id));
+        }
+
+        
+        // GET api/game/create
+        public GameModel GetCreate()
+        {
+            return GameModel.ConvertToModel(this.data.gameRepo.FindNewGame());
+        }
+
+        // POST api/game
+        public void Post([FromBody]GameModel value)
+        {
+            throw new NotImplementedException();
+        }
+
+        // PUT api/game/5
+        public void Put(int id, [FromBody]GameModel value)
+        {
+            var game = this.data.gameRepo.Get(id);
+            value.UpdateGame(game);
+        }
+
+        // DELETE api/game/5
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }*/
+    }
+}

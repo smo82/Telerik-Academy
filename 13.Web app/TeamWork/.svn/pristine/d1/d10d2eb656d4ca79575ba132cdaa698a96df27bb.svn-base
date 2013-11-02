@@ -1,0 +1,21 @@
+﻿namespace Chess.Server.Repositories
+{
+    using Chess.Model;
+    using System;
+    using System.Data.Entity;
+    using System.Linq;
+
+    public class AllRepositories
+    {
+        public GameRepository gameRepository;
+        public FigureRepository figureRepository;
+        public UserRepository userRepository;
+
+        public AllRepositories(DbContext context)
+        {
+            this.gameRepository = new GameRepository(context);
+            this.figureRepository = new FigureRepository(context);
+            this.userRepository = new UserRepository(context);
+        }
+    }
+}
