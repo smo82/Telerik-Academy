@@ -1,0 +1,61 @@
+﻿<!--
+    Task
+Create a Single Page Application using Kendo UI Web for online banking management. 
+The application should have home page, about page, register and login. After 
+login the user can deposit money, withdraw money and see a log of all transactions.
+
+1. Create EverLive cloud-based database or WebAPI/SQL database
+2. Create DataSource for the database tables
+3. Create routes for each module
+4. Create templates and view models where necessary
+5. Use KendoGrid for the log. Use at least two other widgets from the framework
+6. Use Kendo Validator for all the inputs
+    
+    -->
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Online Banking Management</title>
+    <link href="styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="styles/kendo.default.min.css" rel="stylesheet" />
+    <script src="scripts/libs/jquery-2.0.3.js"></script>
+    <script src="scripts/libs/jquery-2.0.3.min.js"></script>
+    <script src="scripts/libs/jquery.min.js"></script>
+    <script src="scripts/libs/kendo.web.min.js"></script>
+    <script src="scripts/libs/class.js"></script>
+    <script src="scripts/libs/rsvp.min.js"></script>
+    <script src="scripts/app/data.js"></script>
+    <script src="scripts/app/view-models.js"></script>
+    <script src="scripts/app/views.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+    <style>
+        body{
+            background-color: #dedede;
+        }
+        #logo-header{
+            padding: 20px;
+            background-color: #c31e1e;
+            text-align: center;
+            border-radius: 5px;
+        }
+        #login-register-fieldset{
+            margin: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="logo-header">
+        <header>
+            <h1>Telerik Bank</h1>
+        </header>
+    </div>
+    <div id="app"></div>
+</body>
+</html>

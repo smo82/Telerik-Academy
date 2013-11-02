@@ -1,0 +1,21 @@
+﻿<fieldset>
+    <legend>Create Todo list</legend>
+    <label for="tb-title">Title</label>
+    <input data-bind="value: title" type="text" id="tb-title" />
+    <button data-bind="click: create">Create</button>
+</fieldset>
+
+<h1>Todo lists</h1>
+<ul data-template="todo-list-template" data-bind="source: todoLists">
+</ul>
+
+<span data-bind="text: message" class="error"></span>
+
+<script type="text/x-kendo-template" id="todo-list-template">
+    <li>
+        # var linkHref = "\\#/todo-list/" + id; #
+        <a href = #= linkHref #>
+            <span data-bind="text: title"></span>
+        </a>
+    </li>
+</script>

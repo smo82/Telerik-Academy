@@ -1,0 +1,16 @@
+Some of the packages needed for this Solution are deleted due to oversize.
+
+You may restore missing NuGet Packages for the Solution by following the steps:
+
+1. Open the solution
+2. Right-click on Solution -> choose "Manage NuGet Packages for Solution"
+3. Click "Restore"
+4. Rebuild the solution when packages are restored
+
+Possible errors
+--------------------
+
+- If the following error message appears
+
+"An error occurred while trying to restore packages. Please try again" 
+- you have to reinstal the missing packages by hand 

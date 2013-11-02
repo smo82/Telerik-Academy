@@ -1,0 +1,22 @@
+﻿<div id="current-appointments-wrapper">
+    <strong>Current appointments</strong>
+    <button data-bind="text: toggleState, click: displayToggle"></button>
+    <div id="current-appointments">
+        <ul data-template="appointments-template" data-bind="source: appointments">
+        </ul>
+
+        <span data-bind="text: message" class="error"></span>
+
+        <script type="text/x-kendo-template" id="appointments-template">
+    <li>
+        <strong>Id</strong>: <span data-bind="text: id"></span><br/>
+        <strong>Subject</strong>: <span data-bind="text: subject"></span><br/>
+        <strong>State</strong>: <span data-bind="text: state"></span><br/>
+        <strong>Appointment At</strong>: <span data-bind="text: appointmentDate"></span><br/>
+        <strong>Description</strong>: <span data-bind="text: description"></span><br/>
+        <strong>Duration</strong>: <span data-bind="text: duration"></span><br/>
+        <strong>Created at</strong>: <span data-bind="text: createdAt"></span><br/>
+    </li>
+        </script>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿<!--
+    Task 2
+    Create a simple HTML5 application by choice that uses Canvas APIs. 
+    Using Modernizr.load() provide fallbacks for older browsers. 
+    Use polyfills by choice (e.g. https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills). 
+    Test in old browsers.
+
+    You can download FlashCanvas from http://flashcanvas.net/download
+    -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Canvas polyfills</title>
+    <script src="scripts/flash-canvas/canvas2png.js"></script>
+    <script src="scripts/flash-canvas/flashcanvas.js"></script>
+    <script src="scripts/modernizr.custom.56880.js"></script> 
+    
+    <script>
+        Modernizr.load({
+            test: Modernizr.canvas,
+            nope: ['scripts/flash-canvas/canvas2png.js', 'scripts/flash-canvas/flashcanvas.js', 'scripts/canvasFunc.js']
+        });
+    </script>   
+</head>
+<body>
+    <div>
+        <header>
+            <h3>Tested for IE 7+, Firefox, Chrome</h3>
+        </header>
+    </div>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+    </canvas>
+
+    <script>
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(0, 0, 150, 75);
+    </script>
+</body>
+</html>

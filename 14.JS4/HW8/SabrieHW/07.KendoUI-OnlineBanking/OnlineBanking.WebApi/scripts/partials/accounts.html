@@ -1,0 +1,16 @@
+﻿<button class="btn btn-info" id="tb-logout" onclick="location.href='\#/logout/'">Logout</button>
+<h3 class="btn" id="accounts-headline">My Accounts</h3>
+<ul id="menu" data-template="account-template" data-bind="source: accounts">
+</ul>
+
+<script type="text/x-kendo-template" id="account-template">
+    <li class="account">            
+            <strong>Owner: </strong>
+            <span data-bind="text: owner"></span><br />           
+            <strong>Balance: </strong> 
+            <span data-bind="text: balance"></span> euro<br />  
+            <button class="k-button" data-bind="attr: {id: id}" onclick="location.href='\#/account/' + this.id;">Account details</button>
+            <button class="k-button" data-bind="attr: {id: id}" onclick="location.href='\#/account/' + this.id + '/deposit';">Make deposit</button>
+            <button class="k-button" data-bind="attr: {id: id}" onclick="location.href='\#/account/' + this.id + '/withdraw';">Withdraw</button>
+        </li>
+</script>

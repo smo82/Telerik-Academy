@@ -1,0 +1,12 @@
+Possible accounts to test with:
+
+user: kenov1
+pass: pass
+
+user: joreto
+pass: pass
+
+
+Sometimes the application does not start correctly because Require js loads the other js libraries too slowly. 
+If this happens please refresh the page with Ctrl + F5.
+

@@ -1,0 +1,54 @@
+﻿<!-- 
+    Task02
+    
+    Write function that finds the first name and last name of all students with age between 18 and 24. Use Underscore.js
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Person = Class.create({
+            init: function (fname, lname, age) {
+                this.fname = fname;
+                this.lname = lname;
+                this.age = age;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+        
+        var people = [
+			new Person("Doncho", "Minkov", 18),
+			new Person("Joro", "Georgiev", 48),
+			new Person("Niki", "Kostov", 21),
+			new Person("Svetlin", "Nakov", 16),
+			new Person("Ivaylo", "Kenov", 87),
+			new Person("Atanas", "Petrov", 18)];
+
+
+        var getPeopleBySpecificSearch = function (people) {
+            var searchedPeople = _.filter(people, function (person) {
+                return (person.age >= 18 && person.age <=24);
+            });
+
+            searchedPeopleResult = _.map(searchedPeople, function (person) {
+                return {"fname" : person.fname, "lname" : person.lname}
+            });
+
+            return searchedPeopleResult;
+        }
+
+        console.log(getPeopleBySpecificSearch(people));
+
+    </script>
+
+</body>
+</html>

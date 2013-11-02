@@ -1,0 +1,112 @@
+﻿<!--
+    Task 1
+    
+    Create a HTML page to display the current Web browser and the supported 
+and not supported HTML5 and CSS3 features. Use ua-parser-js to detect the 
+browser type, version, OS and device. Use Modernizr.js to detect the features 
+(see an example here: http://fiddle.jshell.net/ncuesta/NHTyT/show/).
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="scripts/libs/modernizr-2.6.2.js"></script>
+    <script src="scripts/libs/ua-parser.js"></script>
+    <script src="scripts/libs/class.js"></script>
+    <script src="scripts/libs/jquery-2.0.3.js"></script>
+    <script src="scripts/libs/mustache.js"></script>
+
+    <style>
+        table, tbody, tr, th, td {
+            margin-top: 30px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: left;
+        }
+        thead tr th {
+            background-color: #dedede;
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Your browser type, version, OS and device</h2>
+        <div id="browser-info"></div>
+        <div id="os-info"></div>
+        <div id="device-info"></div>
+     </div>
+    <table id="features">
+        <thead>
+            <tr>
+                <th colspan="2" class="heading">
+                    Test your browser for HTML5 and CSS3 support!
+                </th>
+            </tr>
+            <tr>
+                <th>Feature</th>
+                <th>Supported?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Supported and not supported HTML5 and CSS3 features will be displayed here-->
+        </tbody>
+    </table>
+    
+    <script>
+        // Browser type detection using ua-parser.js
+        // more info at https://github.com/tobie/ua-parser
+
+        var parser = new UAParser();
+
+        var browserInfo = parser.getBrowser();
+        var browserTemplateString = "<strong>Browser: {{name}}, Version: {{version}}, Major: {{major}}</strong>";
+        var browserViewHtml = Mustache.render(browserTemplateString, browserInfo);
+        document.getElementById("browser-info").innerHTML = browserViewHtml;
+
+        var osInfo = parser.getOS();
+        var osTemplateString = "<strong>OS: {{name}}, Version: {{version}}</strong>";
+        var osViewHtml = Mustache.render(osTemplateString, osInfo);
+        document.getElementById("os-info").innerHTML = osViewHtml;
+
+        var deviceInfo = parser.getDevice();
+        var deviceTemplateString = "<strong>Device model: {{model}}, Vendor: {{vendor}}, Type: {{type}}</strong>";
+        var deviceViewHtml = Mustache.render(deviceTemplateString, deviceInfo);
+        document.getElementById("device-info").innerHTML = deviceViewHtml;
+
+        // Populate the #features table when the document is ready
+        // source http://fiddle.jshell.net/ncuesta/NHTyT/show/
+        jQuery(function ($) {
+            var target = $('#features > tbody');
+
+            var traverse = function (object, prefix) {
+                prefix = prefix ? prefix + '.' : '';
+
+                for (property in object) {
+                    if (typeof object[property] == 'object') {
+                        traverse(object[property], prefix + property);
+                    } else if (typeof object[property] == 'boolean') {
+                        var
+                            tr = $('<tr />'),
+                            name = $('<th />', {
+                                text: prefix + property
+                            }),
+                            value = $('<td />', {
+                                text: object[property] ? 'Yes' : 'Nope'
+                            });
+
+                        target.append(tr.append(name).append(value));
+                    }
+                }
+            };
+
+            traverse(Modernizr, 'Modernizr');
+        });
+    </script>
+</body>
+</html>

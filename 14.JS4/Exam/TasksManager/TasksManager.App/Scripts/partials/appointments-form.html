@@ -1,0 +1,38 @@
+﻿<fieldset>
+    <legend>Create appointment</legend>
+    <label for="tb-subject">Subject</label>
+    <input data-bind="value: subject" type="text" id="tb-subject" />
+    <label for="tb-description">Description</label>
+    <input data-bind="value: description" type="text" id="tb-description" />
+    <label for="tb-appointmentDate">Appointment At</label>
+
+    <input id="tb-appointmentDate" data-role="datepicker" data-bind="value: appointmentDate" />
+
+    <label for="tb-duration">Duration</label>
+    <input data-bind="value: duration" type="text" id="tb-duration" />
+    <button data-bind="click: create">Create</button>
+</fieldset>
+<fieldset>
+    <legend>Filter appointments:</legend>
+    <label for="tb-dateFilter">Date Filter</label>
+    <input id="tb-dateFilter" data-role="datepicker" data-bind="value: dateFilter" />
+    <button data-bind="click: getAllForDate">Filter</button>
+</fieldset>
+
+<span data-bind="text: message" class="error"></span>
+
+<h1>Appointments</h1>
+<ul data-template="appointments-template" data-bind="source: appointments">
+</ul>
+
+<script type="text/x-kendo-template" id="appointments-template">
+    <li>
+        <strong>Id</strong>: <span data-bind="text: id"></span><br/>
+        <strong>Subject</strong>: <span data-bind="text: subject"></span><br/>
+        <strong>State</strong>: <span data-bind="text: state"></span><br/>
+        <strong>Appointment At</strong>: <span data-bind="text: appointmentDate"></span><br/>
+        <strong>Description</strong>: <span data-bind="text: description"></span><br/>
+        <strong>Duration</strong>: <span data-bind="text: duration"></span><br/>
+        <strong>Created at</strong>: <span data-bind="text: createdAt"></span><br/>
+    </li>
+</script>

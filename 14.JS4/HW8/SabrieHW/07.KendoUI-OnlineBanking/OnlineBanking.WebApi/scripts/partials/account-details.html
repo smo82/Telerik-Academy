@@ -1,0 +1,29 @@
+﻿<div class="container">
+    <button class="btn btn-info" id="tb-logout" onclick="location.href='\#/logout/'">Logout</button>
+    <div data-template="account-full-template" data-bind="source: account"></div>
+
+    <script type="text/x-kendo-template" id="account-full-template">
+        <div id="current-account">
+            <h3>Account details</h3><br />
+            <span><strong>Owner: </strong></span>     
+            <span data-bind="text: owner.displayName"></span><br />   
+            <span><strong>Balance: </strong></span>     
+            <span data-bind="text: balance"></span> euro<br />
+            <span><strong>Created on: </strong></span>     
+            <span data-bind="text: createdOn"></span><br />
+            <span><strong>Expires on: </strong></span>
+            <span data-bind="text: expiredDate"></span><br /><br />
+            <strong>Transactions: </strong><ul data-template="transactions-template" data-bind="source: transactions"></ul>
+            <p id="post-text" data-bind="text: text"></p>
+        </div>
+    </script>
+
+    <script type="text/x-kendo-template" id="transactions-template">
+        <li class="transaction">
+            <span><strong>Date: </strong></span>
+            <span data-bind="text: LogDate"></span> <br />
+            <span><strong>Action: </strong></span>
+            <span data-bind="text: LogText"></span>        
+        </li>
+    </script>
+</div>

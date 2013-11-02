@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ShowSupportedHtmlCssFeatures", "01.ShowSupportedHtmlCssFeatures\01.ShowSupportedHtmlCssFeatures.csproj", "{277EE778-7117-4D0A-8406-DFC100DF65F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.DatePicker", "03.DatePicker\03.DatePicker.csproj", "{96B27306-33D3-4FEF-B343-2ED05920B162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.ModernizrPolyfills", "02.ModernizrPolyfills\02.ModernizrPolyfills.csproj", "{195CEE8C-0CD6-4678-881F-9662EA8A0B4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{277EE778-7117-4D0A-8406-DFC100DF65F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{277EE778-7117-4D0A-8406-DFC100DF65F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{277EE778-7117-4D0A-8406-DFC100DF65F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{277EE778-7117-4D0A-8406-DFC100DF65F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96B27306-33D3-4FEF-B343-2ED05920B162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96B27306-33D3-4FEF-B343-2ED05920B162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96B27306-33D3-4FEF-B343-2ED05920B162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96B27306-33D3-4FEF-B343-2ED05920B162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{195CEE8C-0CD6-4678-881F-9662EA8A0B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{195CEE8C-0CD6-4678-881F-9662EA8A0B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{195CEE8C-0CD6-4678-881F-9662EA8A0B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{195CEE8C-0CD6-4678-881F-9662EA8A0B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

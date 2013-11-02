@@ -1,0 +1,74 @@
+﻿<!--    Task 2
+    Create a simple HTML5 application by choice that uses Geolocation APIs. 
+    Using Modernizr.load() provide fallbacks for older browsers. 
+    Use polyfills by choice (e.g. https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills). 
+    Test in old browsers.
+
+    Help source - https://github.com/inexorabletash/polyfill#readme
+    -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Geolocation</title>
+    <script src="scripts/modernizr.custom.56880.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script>
+        Modernizr.load({
+            test: Modernizr.geolocation,
+            nope: ['scripts/polyfill.js', 'scripts/geo.js']
+        });
+
+        window.onload = function () {
+            function message(s) {
+                var div = $("#message");
+                while (div.firstChild) {
+                    div.removeChild(div.firstChild);
+                }
+                div.append(document.createTextNode(s));
+            }
+
+            var mapWidth = 800;
+            var mapHeight = 403;
+            function locate(lat, long) {
+                var map = $("#map");
+                var x = parseFloat(mapWidth * ((long + 180) % 360) / 360);
+                var y = mapHeight * (90 - lat) / 180;
+                var locator = $("#locator");
+                locator.css("display", "block");
+
+                locator.css("left", String(x) + 'px');
+                locator.css("top", String(y) + 'px');
+            }
+
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                  var lat = position.coords.latitude;
+                  var long = position.coords.longitude;
+                  locate(lat, long);
+                  message('Latitude: ' + lat + ' Longitude: ' + long);
+              },
+              function (error) {
+                  message('Error: ' + error.message);
+              }
+            );
+        };
+    </script>
+</head>
+<body>
+    <!-- Help source https://github.com/inexorabletash/polyfill#readme -->
+    <h1>Geolocation API Polyfill Demo</h1>
+
+    <h2>Tested for IE 7+, Firefox and Chrome</h2>
+
+    <div style="width: 800px; height: 403px; position: relative;">
+        <img id="map" src="images/geo.jpg" style="position: absolute; left: 0; top: 0; width: 800px; height: 403px;">
+        <div id="locator" style="display: none; position: absolute; left: 100px; top: 100px; height: 10px; width: 10px; margin-left: -5px; margin-top: -5px; background-color: red; z-index: 1; border-radius: 5px;"></div>
+    </div>
+    
+    <p id="message">Checking position...</p>
+
+    <script src="scripts/polyfill.js"></script>
+    <script src="scripts/geo.js"></script>
+</body>
+</html>

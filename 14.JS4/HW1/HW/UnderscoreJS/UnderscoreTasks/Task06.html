@@ -1,0 +1,64 @@
+﻿<!-- 
+    Task06
+    
+    By a given collection of books, find the most popular author (the author with the biggest number of books)
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Book = Class.create({
+            init: function (name, author) {
+                this.name = name;
+                this.author = author;
+            }
+        });
+        
+        var books = [
+			new Book("The Chronicles of Amber [series]", "Roger Zelazny"),
+			new Book("The Sword of Truth", "Terry Goodkind"),
+			new Book("Subterranean", "James Rollins"),
+			new Book("Excavation", "James Rollins"),
+			new Book("Deep Fathom", "James Rollins"),
+			new Book("Amazonia", "James Rollins"),
+			new Book("Guards! Guards!", "Terry Pratchett"),
+			new Book("Night watch", "Terry Pratchett"),
+			new Book("Morth", "Terry Pratchett"),
+			new Book("Foundation", "Isaac Asimov"),
+        ];
+
+        var getAuthorWithMostBooks = function (books) {
+            var authorNumberOfBooks = {};
+            _.each(books, function (book) {
+                if (authorNumberOfBooks[book.author] == undefined) {
+                    authorNumberOfBooks[book.author] = 1;
+                } else {
+                    authorNumberOfBooks[book.author] += 1;
+                }
+            });
+
+            var authorsAndNumberOfBooks = _.map(authorNumberOfBooks, function (numberOfBooks, author) {
+                return { "author": author, "numberOfBooks": numberOfBooks }
+            });
+
+            var authorsSortedByNumberOfBooks = _.sortBy(authorsAndNumberOfBooks, "numberOfBooks");
+
+            var authorWithMostBooksComposite = _.last(authorsSortedByNumberOfBooks, 1);
+
+            var authorWithMostBooks = authorWithMostBooksComposite[0];
+
+            return authorWithMostBooks;
+        }
+
+        console.log(getAuthorWithMostBooks(books));
+    </script>
+
+</body>
+</html>

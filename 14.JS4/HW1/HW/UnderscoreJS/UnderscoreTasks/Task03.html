@@ -1,0 +1,68 @@
+﻿<!-- 
+    Task03
+    
+    Write a function that by a given array of students finds the student with highest marks
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Person = Class.create({
+            init: function (fname, lname, age, marks) {
+                this.fname = fname;
+                this.lname = lname;
+                this.age = age;
+                this.marks = marks;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+        
+        var people = [
+			new Person("Doncho", "Minkov", 18, [3,4,3]),
+			new Person("Joro", "Georgiev", 48, [5,4,3]),
+			new Person("Niki", "Kostov", 21, [6,6,6]),
+			new Person("Svetlin", "Nakov", 16, [5,4,6]),
+			new Person("Ivaylo", "Kenov", 87, [2,3,6]),
+			new Person("Atanas", "Petrov", 18, [2,2,2])];
+
+
+        var getAverageMarks = function (marks) {
+            var averageMarks = 0;
+            _.each(marks, function (mark) {
+                averageMarks = averageMarks + mark;
+            });
+
+            averageMarks = averageMarks / marks.length;
+
+            return averageMarks;
+        }
+
+        var getPersonWithHighestMarks = function (people) {
+            var peopleAndAverageMarks = _.map(people, function (person) {
+                return ({ "person": person, "averageMarks": getAverageMarks(person.marks) });
+            });
+
+            var peopleSortedByMarks = _.sortBy(peopleAndAverageMarks, "averageMarks");
+
+            return _.last(peopleSortedByMarks, 1);
+        }
+
+        var personWithHighersMarksDetails = getPersonWithHighestMarks(people);
+        personWithHighersMarksDetails = personWithHighersMarksDetails[0];
+
+        console.log("Person: " + personWithHighersMarksDetails.person);
+        console.log("Average marks: " + personWithHighersMarksDetails.averageMarks);
+
+    </script>
+
+</body>
+</html>

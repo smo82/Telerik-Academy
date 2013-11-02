@@ -1,0 +1,60 @@
+﻿<!-- 
+    Task04
+    
+    Write a function that by a given array of animals, groups them by species and sorts them by number of legs
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Animal = Class.create({
+            init: function (name, species, numberOfLegs) {
+                this.name = name;
+                this.species = species;
+                this.numberOfLegs = numberOfLegs;
+            }
+        });
+        
+        var animals = [
+			new Animal("Cat", "Mammal", 4),
+			new Animal("Fly", "Insect", 6),
+			new Animal("Komodo dragon", "Lizzard", 4),
+			new Animal("Musquito", "Insect", 4),
+			new Animal("Dog", "Mammal", 4),
+			new Animal("Spider", "Insect", 8),
+			new Animal("Kangaroo", "Mammal", 2),
+			new Animal("Snake", "Lizzard", 0),
+			new Animal("Ant", "Insect", 6),
+        ];
+        
+        var getAnimalsBySpeciesSorted = function (animals) {
+            var speciesUniqueArray = {};
+            _.each(animals, function (animal) {
+                speciesUniqueArray[animal.species] = 0;
+            });
+
+            var animalsBySpeciesSorted = {};
+            _.each(speciesUniqueArray, function (value, species) {
+                var animalsBySpecies = [];
+                animalsBySpecies = _.filter(animals, function (animal) {
+                    return animal.species == species;
+                });
+
+                animalsBySpeciesSorted[species] = _.sortBy(animalsBySpecies, "numberOfLegs");
+            });
+
+            return animalsBySpeciesSorted;
+        }
+        console.log(getAnimalsBySpeciesSorted(animals));
+
+    </script>
+
+</body>
+</html>

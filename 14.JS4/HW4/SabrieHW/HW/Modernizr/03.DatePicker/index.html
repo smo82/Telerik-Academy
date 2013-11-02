@@ -1,0 +1,40 @@
+﻿<!--
+   Task 3
+
+    Using HTML5 and CSS3 create a page to display a date field 
+with a date picker. Use Modernizr to load the jQueryUI date 
+picker only if the browser does not provide a native date picker.
+
+Help info at - http://html5doctor.com/using-modernizr-to-detect-html5-features-and-provide-fallbacks/
+    -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Date Picker</title>
+    <script src="Scripts/modernizr.custom.56880.js"></script>
+
+    <script>
+        Modernizr.load({
+    test: Modernizr.inputtypes.date,
+    nope: ['http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js', 'styles/jquery-ui.css'],
+    complete: function () {
+        $('#datePicker').datepicker({
+            dateFormat: 'yy-mm-dd'
+        });
+    }
+});
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Tested for IE 7+, Firefox and Chrome</h1>
+        <p>For IE - click on the input field to open the DatePicker</p>
+    </div>
+
+    <p>Please, pick a date:</p>
+    <form>
+        <input id="datePicker" type="date">
+    </form>
+</body>
+</html>

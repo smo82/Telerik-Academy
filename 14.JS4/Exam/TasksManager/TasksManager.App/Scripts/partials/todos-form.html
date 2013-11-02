@@ -1,0 +1,27 @@
+﻿<fieldset>
+    <legend>Create Todo</legend>
+    <label for="tb-todoText">Text</label>
+    <input data-bind="value: todoText" type="text" id="tb-todoText" />
+    <button data-bind="click: create">Create</button>
+</fieldset>
+
+<h1>Todos</h1>
+<ul data-template="todo-list-template" data-bind="source: todos">
+</ul>
+
+<span data-bind="text: message" class="error"></span>
+
+<script type="text/x-kendo-template" id="todo-list-template">
+    <li>
+
+        <strong>Id</strong>:  <span data-bind="text: id"></span><br />
+        <strong>Text</strong>:  <span data-bind="text: text"></span><br />
+        #if(isDone){#
+            <strong>Done</strong>
+            <button data-bind="click: changeIsDone" data-parameter=#= id #>Change to Not Done</button>
+        #}else{#
+            <strong>Not Done</strong>
+            <button data-bind="click: changeIsDone" data-parameter=#= id #>Change to Done</button>
+        #}#
+    </li>
+</script>

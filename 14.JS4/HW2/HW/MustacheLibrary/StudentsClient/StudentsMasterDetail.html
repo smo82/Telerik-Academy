@@ -1,0 +1,65 @@
+﻿<!--
+
+    Task01
+    Change the ListView from the last demo to use TABLE instead of UL
+    - The TableView gets number of rows and columns in its constructor
+    - The TableView renders the elements in table cells
+        - Each element gets only a single cell
+
+    Create a web services that returns a list of students
+    - Students have first and last name, grade, age and list of marks
+    - Marks have subject and score
+
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/mustache.js"></script>
+	<script src="Lib/jquery-2.0.3.min.js"></script>
+	<script src="Lib/q.js"></script>
+	<script src="Scripts/http-requester.js"></script>
+	<script src="Scripts/master-detail-table-view.js"></script>
+</head>
+<body>
+    <script type="x-mustache-template" id="students-template">
+			<strong>{{FirstName}} {{LastName}}</strong><br />
+            {{#Grade}}Grade: {{Grade}}<br />{{/Grade}}
+            {{#Age}}Age: {{Age}};{{/Age}}
+    </script>
+    <script type="x-mustache-template" id="marks-template">	
+			<ul>
+				{{#Marks}} 
+					<li>
+						{{Subject}}: <strong>{{Score}}</strong>							
+					</li>
+				{{/Marks}}
+				{{^Marks}}	   
+					<li>
+						This student has no marks, yet	  						
+					</li>
+				{{/Marks}}
+			</ul>
+    </script>
+
+    <div id="content"></div>
+	<script>
+	    var NUMBER_OF_COLUMNS = 1;
+
+	    var serviceRoot = "http://localhost:3521/api/";
+	    var studentsService = serviceRoot + "students";
+	    var studentsDataPromis = httpRequester.getJson(studentsService);
+	    studentsDataPromis.then(function (studentsData) {
+	        var studentsTemplate = Mustache.compile(document.getElementById("students-template").innerHTML);
+	        var marksTemplate = Mustache.compile(document.getElementById("marks-template").innerHTML);
+	        var masterDetailTableView = controls.getMasterDetailTableView(studentsData, NUMBER_OF_COLUMNS);
+
+	        var tableViewObject = masterDetailTableView.render(studentsTemplate, marksTemplate);
+
+	        $("#content").append(tableViewObject);
+	    });
+	</script>
+</body>
+</html>

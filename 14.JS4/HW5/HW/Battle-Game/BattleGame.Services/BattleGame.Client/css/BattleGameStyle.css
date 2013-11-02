@@ -1,0 +1,24 @@
+﻿.battle-game-grid-element-container
+{
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+
+    text-align: center;
+}
+
+.owner_blue
+{
+    background: blue;
+}
+
+.owner_red
+{
+    background: red;
+}
+
+.selected
+{
+    border: 2px solid pink;
+    color: yellow;
+}

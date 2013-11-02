@@ -1,0 +1,68 @@
+﻿<!-- 
+    Task07
+    
+    By an array of people find the most common first and last name. Use underscore.
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Person = Class.create({
+            init: function (fname, lname, age) {
+                this.fname = fname;
+                this.lname = lname;
+                this.age = age;
+            },
+            toString: function () {
+                return this.fname + " " + this.lname;
+            }
+        });
+
+        var people = [
+			new Person("Doncho", "Minkov", 18),
+			new Person("Ivaylo", "Georgiev", 48),
+			new Person("Niki", "Kostov", 21),
+			new Person("Svetlin", "Nakov", 16),
+			new Person("Ivaylo", "Kenov", 87),
+			new Person("Svetlinka", "Nakov", 87),
+			new Person("Atanas", "Petrov", 18)
+        ];
+
+        var getPropertyNumberOfOccurances = function (objectArray, property) {
+            var propertyByNumberOfOccurances = {};
+            _.each(objectArray, function (singleObject) {
+                if (propertyByNumberOfOccurances[singleObject[property]] == undefined) {
+                    propertyByNumberOfOccurances[singleObject[property]] = 1;
+                } else {
+                    propertyByNumberOfOccurances[singleObject[property]] += 1;
+                }
+            });
+
+            var propertiesAndNumberOfOccurances = _.map(propertyByNumberOfOccurances, function (numberOfOccurances, property) {
+                return { "property": property, "numberOfOccurances": numberOfOccurances }
+            });
+
+            var propertiesSortedByNumberOfOccurances = _.sortBy(propertiesAndNumberOfOccurances, "numberOfOccurances");
+
+            var mostCommonPropertyArr = _.last(propertiesSortedByNumberOfOccurances, 1);
+
+            var mostCommonProperty = mostCommonPropertyArr[0];
+
+            return mostCommonProperty;
+        }
+
+        console.log("Most common first name:");
+        console.log(getPropertyNumberOfOccurances(people, "fname"));
+        console.log("Most common last name:");
+        console.log(getPropertyNumberOfOccurances(people, "lname"));
+    </script>
+
+</body>
+</html>

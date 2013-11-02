@@ -1,0 +1,54 @@
+﻿<!-- 
+    Task05
+    
+    By a given array of animals, find the total number of legs
+    Each animal can have 2, 4, 6, 8 or 100 legs
+
+    
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+	<script src="Lib/class.js"></script>
+	<script src="Lib/underscore.js"></script>
+</head>
+<body>
+    <script>
+        var Animal = Class.create({
+            init: function (name, species, numberOfLegs) {
+                this.name = name;
+                this.species = species;
+                this.numberOfLegs = numberOfLegs;
+            }
+        });
+        
+        var animals = [
+			new Animal("Cat", "Mammal", 4),
+			new Animal("Fly", "Insect", 6),
+			new Animal("Komodo dragon", "Lizzard", 4),
+			new Animal("Musquito", "Insect", 4),
+			new Animal("Dog", "Mammal", 4),
+			new Animal("Spider", "Insect", 8),
+			new Animal("Kangaroo", "Mammal", 2),
+			new Animal("Snake", "Lizzard", 0),
+			new Animal("Ant", "Insect", 6),
+			new Animal("Centipede", "Insect", 100),
+        ];
+        
+        var getTotalNumberOfLegs = function (animals) {
+            var animalsTotalNumberOfLegs = 0;
+            _.each(animals, function (animal) {
+                animalsTotalNumberOfLegs += animal.numberOfLegs;
+            });
+
+            return animalsTotalNumberOfLegs;
+        }
+
+        console.log(getTotalNumberOfLegs(animals));
+
+    </script>
+
+</body>
+</html>

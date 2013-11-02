@@ -1,0 +1,9 @@
+﻿<fieldset id="login-register-fieldset">
+    <legend id="fieldset-text">Login or register</legend>
+    <label for="tb-username" class="required">Username</label>
+    <input data-bind="value: displayName" type="text" id="tb-username" class="k-textbox" required validationMessage="Please enter username"/>
+    <label for="tb-password" class="required">Password</label>
+    <input data-bind="value: password" type="text" id="tb-password" class="k-textbox" required validationMessage="Please enter password"/>
+    <button data-bind="click: login">Login</button>
+    <button data-bind="click: register">Register</button>
+</fieldset>

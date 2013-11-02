@@ -1,0 +1,34 @@
+﻿<!--    Task 2
+    Create a simple HTML5 application by choice that uses LocalStorage APIs. 
+    Using Modernizr.load() provide fallbacks for older browsers. 
+    Use polyfills by choice (e.g. https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills). 
+    Test in old browsers.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="scripts/modernizr.custom.56880.js"></script>
+
+    <script>
+        Modernizr.load({
+            test: Modernizr.geolocation,
+            nope: ['scripts/polyfill.js', 'scripts/storage.js']
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <header>
+            <h3>Please have a look at the Console to see the content of the LocalStorage</h3>
+            <p>Tested for IE 7+, Firefox, Chrome</p>
+        </header>
+    </div>
+    <script>
+        localStorage.clear();
+        localStorage.setItem("name", "Doncho Minkov");
+        console.log(localStorage["name"]);
+    </script>
+</body>
+</html>
