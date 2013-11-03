@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Data", "Movies.Data\Movies.Data.csproj", "{BBB683A4-8721-419B-B5C9-8F9BDB5FA689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movies.Client", "Movies.Client\Movies.Client.csproj", "{5C033AE1-DF73-4799-8836-C91CEF9F5691}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBB683A4-8721-419B-B5C9-8F9BDB5FA689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB683A4-8721-419B-B5C9-8F9BDB5FA689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB683A4-8721-419B-B5C9-8F9BDB5FA689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB683A4-8721-419B-B5C9-8F9BDB5FA689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C033AE1-DF73-4799-8836-C91CEF9F5691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C033AE1-DF73-4799-8836-C91CEF9F5691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C033AE1-DF73-4799-8836-C91CEF9F5691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C033AE1-DF73-4799-8836-C91CEF9F5691}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

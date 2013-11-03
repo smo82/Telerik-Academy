@@ -1,0 +1,22 @@
+﻿@using LybraryMVC.Client.ViewModels;
+@model BookDetailModel
+
+
+<fieldset style="margin:20px;">
+    <label for="editorTitle">Title:</label>
+    @(Html.EditorFor(b => b.Title))
+
+    <label for="editorTitle">Content:</label>
+    @(Html.EditorFor(b => b.Content))
+
+    <label for="editorTitle">Author:</label>
+    @(Html.EditorFor(b => b.Author))
+
+    <label for="CategorySelector">Category:</label>
+    @(
+     Html.Kendo().DropDownListFor(b => b.CategoryId)
+        .DataValueField("CategoryId")
+        .DataTextField("Name")
+        .BindTo((System.Collections.IEnumerable)ViewData["categories"])
+    )
+</fieldset>

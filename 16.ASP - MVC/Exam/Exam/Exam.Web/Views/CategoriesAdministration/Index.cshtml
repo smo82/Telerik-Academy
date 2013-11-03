@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Categories administration";
+}
+
+<h2>Index</h2>
+
+@(Html.Kendo()
+    .Grid<Exam.Web.Models.CategoryViewModel>()
+    .Name("categories-grid")
+    .Pageable()
+    .Sortable()
+    .Editable(edit =>
+            {
+                edit.Mode(GridEditMode.InLine);
+            })
+    .Filterable()
+    .Pageable()
+    .Columns(col =>
+            {
+                col.Bound(m => m.Name);
+                col.Command(com =>
+                            {
+                                com.Edit();
+                                com.Destroy();
+                            }).Title("Categories");
+            })
+    .ToolBar(tool => tool.Create())
+    .DataSource(data =>
+            {
+                data.Ajax()
+                    .ServerOperation(true)
+                    .PageSize(10)
+                    .Model(m =>
+                        {
+                            m.Id("CategoryId");
+                        })
+                    .PageSize(5)
+                    .Read("ReadCategories", "CategoriesAdministration")
+                    .Create("CreateCategory", "CategoriesAdministration")
+                    .Update("UpdateCategory", "CategoriesAdministration")
+                    .Destroy("DestroyCategory", "CategoriesAdministration");
+            }))

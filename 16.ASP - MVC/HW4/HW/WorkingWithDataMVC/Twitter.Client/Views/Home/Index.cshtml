@@ -1,0 +1,70 @@
+﻿@using Twitter.Models.ViewModels;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+            </hgroup>
+        </div>
+    </section>
+}
+
+@{
+    IEnumerable<UserProfileViewModel> userProfilesData = (IEnumerable<UserProfileViewModel>)ViewBag.UserProfiles;
+    List<SelectListItem> userProfiles = userProfilesData.Select(userProfile => new SelectListItem()
+    {
+        Value = userProfile.UserId.ToString(),
+        Text = userProfile.UserName
+    }).ToList();
+
+    IEnumerable<TagViewModel> tagsData = (IEnumerable<TagViewModel>)ViewBag.Tags;
+    List<SelectListItem> tags = tagsData.Select(tag => new SelectListItem()
+    {
+        Value = tag.TagId.ToString(),
+        Text = tag.Name
+    }).ToList();
+}
+
+<strong>Search by Users</strong>
+@using(Ajax.BeginForm("GetByUser", "Tweets", new AjaxOptions
+{
+    UpdateTargetId = "tweetsDisplay",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    @Html.DropDownList("userId", userProfiles, new { onChange = "$(this.form).submit();" })
+}
+
+<strong>Search by Tags</strong>
+@using(Ajax.BeginForm("GetByTag", "Tweets", new AjaxOptions
+{
+    UpdateTargetId = "tweetsDisplay",
+    InsertionMode = InsertionMode.Replace,
+}))
+{
+    @Html.DropDownList("tagId", tags, new { onChange = "$(this.form).submit();" })
+}
+
+<strong>Tweets</strong>
+<div id="tweetsDisplay">
+    @Html.Partial("_DisplayTweets", (IEnumerable<TweetViewModel>)ViewBag.CurrentUserTweets)
+</div>
+
+@section Scripts {
+    <script>
+        var tweetGetByUserUrl = "@(this.Url.Action("Tweets", "GetByUser", new { }, this.Request.Url.Scheme))";
+        function userProfileDropDownOnChange() {
+            $.ajax({
+                url: tweetGetByUserUrl,
+                data: { id: $(this).val() },
+                success: function (data) {
+                    $("#tweetsDisplay").html(data);
+                }
+            });
+        }
+    </script>
+}

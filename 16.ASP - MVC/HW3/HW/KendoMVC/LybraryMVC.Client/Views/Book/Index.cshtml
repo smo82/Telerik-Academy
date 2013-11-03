@@ -1,0 +1,59 @@
+﻿@using LybraryMVC.Client.ViewModels;
+@model IEnumerable<CategoryDetailModel>
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<BookDetailModel>()
+    .Name("BooksGrid")
+    .DataSource(data =>
+        {
+            data.Ajax()
+                .Model(model =>
+                {
+                    model.Id(book => book.BookId);
+                    model.Field(book => book.BookId).Editable(false);
+                })
+                .Read("ReadBooks", "Book")
+                .Create("CreateBook", "Book")
+                .Update("UpdateBook", "Book")
+                .Destroy("DeleteBook", "Book")
+                .PageSize(5)
+                .Sort(sort => sort.Add("BookId"));
+        })
+    .Columns(columns =>
+    {
+        columns.Bound(book => book.BookId);
+        columns.Bound(book => book.Title);
+        columns.Bound(book => book.Content);
+        columns.Bound(book => book.Author);
+        columns.ForeignKey(book => book.CategoryId, Model, "CategoryId", "Name");
+        columns.Command(command =>
+        {
+            command.Edit();
+            command.Destroy();
+        });
+    })
+    .Events(events =>
+    {
+        events.Edit("onGridEdit");
+    })
+    .ToolBar(tool => tool.Create())
+    .Sortable(configurator => configurator.SortMode(GridSortMode.SingleColumn))
+    .Pageable()
+    .Editable(editable => editable.Mode(GridEditMode.PopUp).TemplateName("_EditBook"))
+)
+
+<script>
+    function onGridEdit(args) {
+        args.container.find("input[name=BookId]").width("200");
+        args.container.find("input[name=BookId]").attr('disabled','disabled');
+        args.container.find("input[name=Title]").width("200");
+        args.container.find("input[name=Content]").width("200");
+        args.container.find("input[name=Author]").width("200");
+    }
+</script>

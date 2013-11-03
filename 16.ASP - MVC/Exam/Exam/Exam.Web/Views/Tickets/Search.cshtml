@@ -1,0 +1,47 @@
+@model IEnumerable<Exam.Web.Models.TicketViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row-fluid">
+    <div class="span2" style="padding: 10px">
+        <h3>Title</h3>
+    </div>
+    <div class="span3" style="padding: 10px">
+        <h3>Category Name</h3>
+    </div>
+    <div class="span2" style="padding: 10px">
+        <h3>Author Name</h3>
+    </div>
+    <div class="span2" style="padding: 10px">
+        <h3>Priority</h3>
+    </div>
+    <div class="span2" style="padding: 10px">
+        <h3>Mode details</h3>
+    </div>
+</div>
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    var ticket = Model.ElementAt(i);
+    <div class="row-fluid">
+        <div class="span2" style="padding: 10px">
+            <strong>@ticket.Title</strong>
+        </div>
+        <div class="span3" style="padding: 10px">
+            <strong>@ticket.CategoryName</strong>
+        </div>
+        <div class="span2" style="padding: 10px">
+            <strong>@ticket.AuthorName</strong>
+        </div>
+        <div class="span2" style="padding: 10px">
+            <strong>@ticket.PriorityAsString</strong>
+        </div>
+        <div class="span2" style="padding: 10px">
+            <strong><a href="/Tickets/Details?TicketId=@(ticket.TicketId)" class="btn">More details...</a></strong>
+        </div>
+    </div>
+}

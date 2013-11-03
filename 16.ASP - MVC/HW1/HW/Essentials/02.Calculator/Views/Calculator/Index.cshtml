@@ -1,0 +1,58 @@
+﻿@model _02.Calculator.Models.CalculatorData
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Bit Calculator</h1>
+            </hgroup>
+            <p>
+        </div>
+    </section>
+}
+<h3>We suggest the following:</h3>
+@{
+    var kiloList = Model.Kilos.Select(x => new SelectListItem()
+    {
+        Selected = Model.Kilo == x,
+        Text = x,
+    });
+
+    var typeList = Model.Types.Select(x => new SelectListItem()
+    {
+        Selected = Model.Type == x.Key,
+        Text = x.Value + " - " + x.Key,
+        Value = x.Key
+    });
+}
+
+@using (Html.BeginForm("Index", "Calculator", FormMethod.Post))
+{
+    <p>
+        <label for="quantity">Quantity:</label>
+        @Html.TextBox("quantity", Model.Quantity)
+    </p>
+    <p>
+        <label for="type">Type:</label>
+        @Html.DropDownList("type", typeList)
+    </p>
+    <p>
+        <label for="kilo">Kilo:</label>
+        @Html.DropDownList("kilo", kiloList)
+    </p>
+    
+    <p>
+        <input type="submit" value="Calculate" /></p>
+}
+
+Storage (Kilo = @(Model.Kilo) bits)
+
+@{
+    decimal kilo = decimal.Parse(Model.Kilo);
+    
+    foreach (KeyValuePair<string, string> amount in Model.Amounts)
+    {
+        <p><strong>@(Model.Types[amount.Key])</strong> @(amount.Value)</p>
+        <hr />
+    }
+}

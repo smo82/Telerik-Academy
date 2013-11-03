@@ -1,0 +1,11 @@
+﻿@using Twitter.Models.ViewModels;
+@model IEnumerable<TweetViewModel>
+
+@{
+    foreach (TweetViewModel tweet in Model)
+    {
+        <div>
+            @tweet.TweetId - @tweet.Content
+        </div>
+    }
+}

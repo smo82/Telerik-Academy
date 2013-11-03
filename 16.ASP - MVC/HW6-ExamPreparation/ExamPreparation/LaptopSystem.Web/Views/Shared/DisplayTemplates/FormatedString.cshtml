@@ -1,0 +1,11 @@
+﻿@model string
+
+@{
+    if (@Model.Length > 20){
+        @Model.Substring(0, 20)@:...
+    }
+    else
+    {
+        @Model
+    }
+}

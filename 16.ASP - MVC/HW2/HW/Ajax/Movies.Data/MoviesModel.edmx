@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MoviesDbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MoviesDbModelStoreContainer">
+          <EntitySet Name="Movies" EntityType="MoviesDbModel.Store.Movies" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Movies">
+          <Key>
+            <PropertyRef Name="MovieId" />
+          </Key>
+          <Property Name="MovieId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Director" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Year" Type="date" Nullable="false" />
+          <Property Name="MaleActorName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="MaleActorAge" Type="int" Nullable="false" />
+          <Property Name="FemaleActorName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="FemaleActorAge" Type="int" Nullable="false" />
+          <Property Name="StudioName" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="StudioAddress" Type="nvarchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MoviesDbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MoviesDbEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Movies" EntityType="MoviesDbModel.Movie" />
+        </EntityContainer>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="MovieId" />
+          </Key>
+          <Property Name="MovieId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Director" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MaleActorName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="MaleActorAge" Type="Int32" Nullable="false" />
+          <Property Name="FemaleActorName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="FemaleActorAge" Type="Int32" Nullable="false" />
+          <Property Name="StudioName" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="StudioAddress" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MoviesDbModelStoreContainer" CdmEntityContainer="MoviesDbEntities">
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="MoviesDbModel.Movie">
+              <MappingFragment StoreEntitySet="Movies">
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="MaleActorName" ColumnName="MaleActorName" />
+                <ScalarProperty Name="MaleActorAge" ColumnName="MaleActorAge" />
+                <ScalarProperty Name="FemaleActorName" ColumnName="FemaleActorName" />
+                <ScalarProperty Name="FemaleActorAge" ColumnName="FemaleActorAge" />
+                <ScalarProperty Name="StudioName" ColumnName="StudioName" />
+                <ScalarProperty Name="StudioAddress" ColumnName="StudioAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

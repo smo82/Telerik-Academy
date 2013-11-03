@@ -1,0 +1,78 @@
+﻿@model Movies.Data.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Movie</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Director)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Director)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Year)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Year)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MaleActorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaleActorName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MaleActorAge)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaleActorAge)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FemaleActorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FemaleActorName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FemaleActorAge)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FemaleActorAge)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudioName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudioName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StudioAddress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StudioAddress)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

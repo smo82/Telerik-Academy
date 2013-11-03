@@ -1,0 +1,99 @@
+﻿@model  IEnumerable<Movies.Data.Movie>
+
+
+@Ajax.ActionLink("Create", "Create", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "create-field"
+})
+
+<table id="movies-table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaleActorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaleActorAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FemaleActorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FemaleActorAge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudioName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudioAddress)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaleActorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaleActorAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemaleActorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FemaleActorAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudioAddress)
+            </td>
+            <td>
+
+                @Ajax.ActionLink("Edit", "Edit", new { MovieId = item.MovieId }, new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "edit-field"
+            })
+                |
+            
+            @Ajax.ActionLink("Delete", "Delete", new { MovieId = item.MovieId }, new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "delete-field"
+            })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="create-field">
+</div>
+
+<div id="edit-field">
+</div>
+
+<div id="delete-field">
+</div>

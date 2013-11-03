@@ -1,0 +1,40 @@
+﻿@using LybraryMVC.Client.ViewModels;
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@(Html.Kendo()
+    .Grid<CategoryDetailModel>()
+    .Name("CategoriesGrid")
+    .DataSource(data =>
+        {
+            data.Ajax()
+                .Model(model =>
+                {
+                    model.Id(category => category.CategoryId);
+                    model.Field(category => category.CategoryId).Editable(false);
+                })
+                .Read("ReadCategories", "Category")
+                .Create("CreateCategory", "Category")
+                .Update("UpdateCategory", "Category")
+                .Destroy("DeleteCategory", "Category")
+                .PageSize(5)
+                .Sort(sort => sort.Add("CategoryId"));
+        })
+    .Columns(columns =>
+    {
+        columns.Bound(category => category.CategoryId).Width(100);
+        columns.Bound(category => category.Name);
+        columns.Command(command =>
+        {
+            command.Edit();
+            command.Destroy();
+        }).Width(170);
+    })
+    .ToolBar(tool => tool.Create())
+    .Sortable(configurator => configurator.SortMode(GridSortMode.SingleColumn))
+    .Pageable()
+)

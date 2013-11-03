@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LybraryMVC.Client", "LybraryMVC.Client\LybraryMVC.Client.csproj", "{276944A0-2DDA-4A4D-8F89-3DB66E56F6CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryMVC.Data", "LibraryMVC.Data\LibraryMVC.Data.csproj", "{5BC957DF-A6DA-4D2D-804F-1C428667B8AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{276944A0-2DDA-4A4D-8F89-3DB66E56F6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{276944A0-2DDA-4A4D-8F89-3DB66E56F6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{276944A0-2DDA-4A4D-8F89-3DB66E56F6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{276944A0-2DDA-4A4D-8F89-3DB66E56F6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC957DF-A6DA-4D2D-804F-1C428667B8AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC957DF-A6DA-4D2D-804F-1C428667B8AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC957DF-A6DA-4D2D-804F-1C428667B8AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC957DF-A6DA-4D2D-804F-1C428667B8AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
