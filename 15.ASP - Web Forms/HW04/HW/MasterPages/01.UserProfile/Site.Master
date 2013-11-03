@@ -1,0 +1,33 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="_01.UserProfile.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>User profile</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="PersonalInfo.aspx">Personal Info</a></li>
+                <li><a href="Friends.aspx">Friends</a></li>
+                <li><a href="AdditionalInfo.aspx">Additional Info</a></li>
+            </ul>
+        </nav>
+        <form id="contentForm" runat="server">
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </form>
+        <footer>
+            <strong>&copy; Telerik, 2013</strong>
+        </footer>
+    </div>
+</body>
+</html>

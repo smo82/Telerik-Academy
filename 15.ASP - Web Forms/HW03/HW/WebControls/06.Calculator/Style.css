@@ -1,0 +1,11 @@
+﻿input[type="submit"]{
+    width:50px;
+}
+
+#previousValue {
+    height: 30px;
+}
+
+#TextBoxResult {
+    width: 98%;
+}

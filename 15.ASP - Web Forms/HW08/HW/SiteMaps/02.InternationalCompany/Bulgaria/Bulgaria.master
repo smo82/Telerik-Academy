@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Bulgaria.master.cs" Inherits="_02.InternationalCompany.BulgariaMaster" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder" runat="server">
+    <div id="innerMaster">
+        <div id="innerContent">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderBulgaria" runat="server" />
+            <asp:Literal id="languageSpecificContent" Text="" runat="server" />
+        </div>
+    </div>
+</asp:Content>

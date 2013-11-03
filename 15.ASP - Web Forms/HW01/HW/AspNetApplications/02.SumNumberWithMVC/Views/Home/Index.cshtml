@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <h1>Sum two numbers (MVC)</h1>
+        </div>
+    </section>
+}
+
+<label for="tb_firstNumber">First Number</label>
+<input type="text" name="firstNumber" id="tb_firstNumber" value="" />
+<label for="tb_secondNumber">Second Number</label>
+<input type="text" name="secondNumber" id="tb_secondNumber" value="" />
+<br />
+<button id="btn_sum">Sum</button>
+<br />
+<label for="sumResult">Sum:</label>
+<strong id="sumResult"></strong>
+
+<script type="text/javascript">
+    $(function () {
+        $('#btn_sum').click(function () {
+            var firstNumberValue = parseFloat($('#tb_firstNumber').val());
+            firstNumberValue = firstNumberValue || 0;
+
+            var secondNumberValue = parseFloat($('#tb_secondNumber').val());
+            secondNumberValue = secondNumberValue || 0;
+
+            var data = {
+                firstNumber: firstNumberValue,
+                secondNumber: secondNumberValue
+            };
+
+            $.ajax({
+                type: "POST",
+                data: data,
+                url: '@Url.Action("ProcessSumClick", "Home")',
+           dataTyp: "html",
+           success: function (result) {
+               $('#sumResult').text(result);
+           }
+        });
+      });
+    });
+</script>

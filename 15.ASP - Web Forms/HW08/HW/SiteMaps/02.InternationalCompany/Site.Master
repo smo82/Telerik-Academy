@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="_02.InternationalCompany.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1>International Company "Telerik"</h1>
+        </header>
+        <form id="masterForm" runat="server">
+
+            <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" SkipLinkText=""
+                EnableViewState="False" IncludeStyleBlock="false" Orientation="Horizontal"
+                DataSourceID="SiteMapDataSource" StaticDisplayLevels="2">
+            </asp:Menu>
+            <asp:SiteMapPath ID="SiteMapPathBreadcrump" runat="server" />
+
+            <div id="mainContent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+        </form>
+        <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" />
+        <footer>
+            <strong>&copy; Telerik, 2013</strong>
+        </footer>
+    </div>
+</body>
+</html>

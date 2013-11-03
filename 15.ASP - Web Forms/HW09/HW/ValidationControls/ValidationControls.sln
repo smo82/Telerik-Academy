@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.RegistrationForm", "01.RegistrationForm\01.RegistrationForm.csproj", "{4C325B68-B2A7-49C3-8614-FF0B6633E747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.GroupValidation", "02.GroupValidation\02.GroupValidation.csproj", "{5B73F152-75DB-419A-BC13-55F1A693201B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C325B68-B2A7-49C3-8614-FF0B6633E747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C325B68-B2A7-49C3-8614-FF0B6633E747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C325B68-B2A7-49C3-8614-FF0B6633E747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C325B68-B2A7-49C3-8614-FF0B6633E747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B73F152-75DB-419A-BC13-55F1A693201B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B73F152-75DB-419A-BC13-55F1A693201B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B73F152-75DB-419A-BC13-55F1A693201B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B73F152-75DB-419A-BC13-55F1A693201B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

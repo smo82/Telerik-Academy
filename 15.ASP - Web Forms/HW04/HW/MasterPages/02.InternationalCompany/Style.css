@@ -1,0 +1,72 @@
+﻿body, header, footer, div, nav, aside, ul, li {
+    margin:0;
+    padding:0;
+}
+
+#wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+header, footer {
+    width: 100%;
+    height: 80px;
+    background: #753737;
+    padding: 20px;
+    padding-right:0;
+}
+
+footer {
+    height: 20px;
+    clear: both;
+}
+
+nav {
+    padding: 5px 20px;
+    padding-right:0;
+    width: 100%;
+    height: 35px;
+    background: #808080;
+    font-size: 1.2em;
+    clear: both;
+}
+
+    nav ul {
+        padding:0;
+        margin:0;
+    }
+        nav ul li {
+            display:inline-block;
+            padding: 5px 10px;
+        }
+
+#masterNavigationList {
+    float: left;
+}
+
+#languageChoiseList {
+    float: right;
+}
+
+aside {
+    float: left;
+    width: 150px;
+    height: 150px;
+    background: #a39f9f;
+}
+
+    aside ul {
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+
+#innerContent {
+    float:left;
+    height: 150px;
+    padding-left: 20px;
+}
+
+#innerMaster {
+    clear: both;
+}
+
+
