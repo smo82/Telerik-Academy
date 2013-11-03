@@ -1,0 +1,1 @@
+You should remove the Stretch="None" property, or to change it to Stretch="Fill" 
